@@ -1,0 +1,23 @@
+# Claude session context (ephemeral, no value in versioning)
+.context/
+
+# Claude Code runtime state (lock files, session locks)
+.claude/*.lock
+.claude/*.state
+.claude/scheduled_tasks.lock
+
+# OS / editor
+.DS_Store
+*.swp
+*~
+
+# Local environment / secrets
+.env
+.env.*
+*.local
+
+# Local team config — do not commit your filled-in copy
+config/team.yaml
+
+# Local names config — your forbidden patterns
+.claude/names.txt

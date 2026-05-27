@@ -1,0 +1,35 @@
+# Team configuration example.
+# Copy this file to `config/team.yaml` for local use. The local copy is gitignored.
+#
+# This config is referenced by 02_leadership/pr_hygiene_mandate.md and other operational files.
+
+owner:
+  name: "[Brain Owner]"
+  github_handle: "your-github-handle"
+  email: "you@example.com"
+  timezone: "America/Sao_Paulo"
+
+teams:
+  - name: example-team-one
+    purpose: "Frontend / mobile platform"
+    github_handle: your-org/example-team-one
+    chat_channel: "#team-one"
+    lead: example-lead-handle
+
+  - name: example-team-two
+    purpose: "Data platform / analytics"
+    github_handle: your-org/example-team-two
+    chat_channel: "#team-two"
+    lead: example-lead-handle-two
+
+# Direct reports — one entry per person you 1:1 with.
+# Real names and details belong in `09_people/<name>.md`, not here.
+# This config holds only the routing identifiers your scripts need.
+direct_reports:
+  - github_handle: example-handle-1
+    team: example-team-one
+    cadence: weekly
+
+  - github_handle: example-handle-2
+    team: example-team-two
+    cadence: bi-weekly

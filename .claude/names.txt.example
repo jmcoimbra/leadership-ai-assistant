@@ -1,0 +1,7 @@
+# Forbidden patterns for outbound content. Used by .claude/hooks/check-names.sh.
+# One regex per line. Case-insensitive. Lines starting with # are comments.
+#
+# Examples (uncomment and customize):
+# Coimbra-Prado        # someone keeps misspelling your last name
+# Giovanni             # single 'n' is correct; double 'n' is a recurring typo
+# Granola              # if you use krisp.ai and want to avoid claiming the other tool
