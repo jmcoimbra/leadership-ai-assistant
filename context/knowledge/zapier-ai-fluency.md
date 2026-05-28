@@ -1,7 +1,7 @@
 # Zapier AI Fluency Rubric — Operational Knowledge
 > Source: Zapier blog (Wade Foster, May 2025; V2 March 2026), @aschwags3 tweet (April 2026) | Owner: [Brain Owner] | Pillar: Pillar 4 (Embrace AI at every level) | Last Updated: 2026-04-09
 
-Zapier's 4-tier AI fluency framework applied to hiring, onboarding, and team development. V2 (March 2026) raised the Capable bar from "used AI with purpose" to "AI embedded in core work with repeatable systems and measurable impact." Used as descriptive vocabulary alongside [Your CEO]'s [Your Company] AI 7-tier ladder. [Your CEO]'s 7-tier ladder is the scoring system of record (definitions TBD — see `03_ai_native_transformation/ai_tier_framework.md`).
+Zapier's 4-tier AI fluency framework applied to hiring, onboarding, and team development. V2 (March 2026) raised the Capable bar from "used AI with purpose" to "AI embedded in core work with repeatable systems and measurable impact." Used as descriptive vocabulary alongside [Your CEO]'s [Your Company] AI 7-tier ladder. [Your CEO]'s 7-tier ladder is the scoring system of record (definitions TBD — see `03_ai_native_transformation/ai_adoption_roadmap.md`).
 
 > Measurable Outcome: Zapier V2 levels referenced in every IDP hiring scorecard by 2026-05-31
 > Escalation Trigger: If hiring begins for [Brain Owner]'s teams without AI fluency bar defined in interview scorecard
@@ -88,8 +88,8 @@ IDP template: `33ca84ed40248174a3d8c8258b68647d`. Uses [Peer Manager]'s Basic/In
 
 | File | Connection |
 |------|-----------|
-| `03_ai_native_transformation/ai_tier_framework.md` | [Your Company] AI 7-tier framework (single source of truth for tier assignment) |
+| `03_ai_native_transformation/ai_adoption_roadmap.md` | [Your Company] AI 7-tier framework (single source of truth for tier assignment) |
 | `context/knowledge/ai-resistant-evals.md` | Take-home evaluation design, blind-delegation detection |
-| `context/knowledge/ai-agents-in-action.md` | 7-component diagnostic for AI systems |
+| `99_archive/agentic_systems_implementation.md` | 7-component diagnostic for AI systems |
 | `03_ai_native_transformation/ai_baseline_assessment.md` | Per-team current state baselines |
 | Notion `33da84ed402481c9905aeec78fa74d72` | [Peer Manager]'s Proposed Job Posting Updates with AI Competency Requirements (all 5 engineering roles). Claude Code as primary tool, Rails reframed as preferred not required for 4+ AI candidates |

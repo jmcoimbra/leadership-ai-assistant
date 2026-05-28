@@ -25,8 +25,9 @@ Senior Engineering Managers who want an AI-native brain that:
    - `00_foundation/brain_governance.md` — set your pillars and dates.
    - `config/team.yaml.example` — copy to `config/team.yaml`, fill in your teams.
    - `.claude/names.txt` — add forbidden patterns for the names hook.
-4. **Fill the templates** in `09_people/`, `10_career/`, `11_compliance_security/`, `12_projects/`. Use the `_template_*.md` files as starting points.
-5. **Run your first weekly review** using `07_operating_rhythms/weekly_review.md`.
+4. **Capture YOUR voice.** The shipped `context/knowledge/voice-profile.md` is a starting voice, not yours. Run the `voice-capture` skill (`.claude/skills/voice-capture/SKILL.md`) with 10-20 samples of your own writing (Slack, commits, docs) and let it rewrite the voice profile to match how you actually communicate.
+5. **Fill the templates** in `09_people/`, `10_career/`, `11_compliance_security/`, `12_projects/`. Use the `_template_*.md` files as starting points.
+6. **Run your first weekly review** using `07_operating_rhythms/weekly_review.md`.
 
 ## Structure
 

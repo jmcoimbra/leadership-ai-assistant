@@ -95,7 +95,7 @@ Scenario: [PRD behavior in plain English]
 2. **Blast Radius Analysis** (ref: Blast Radius section). Persist to local artifact per issue.
 3. **Deployment Strategy** (ref: Deployment Strategy section).
 4. **Observability Design**: which SLIs affected, monitors needed, service tier, dashboards (ref: `sre-operations.md`). **Adoption measurement**: PAMF tracker spec (events, actors, first/last use definitions, success metric threshold). Must align with Adoption Criteria from Discovery.
-5. **Test Strategy (BDD-driven)**: refine BDD scenarios from Pre-Design Bridge. For each scenario: assign test layer (unit/integration/E2E), target repo, owner. Every PRD behavior must map to at least one test scenario. Gaps = PRD coverage holes to flag to Product before Build starts. Coverage targets per repo (ref: `04_qa_brain/qa_coverage_framework.md`).
+5. **Test Strategy (BDD-driven)**: refine BDD scenarios from Pre-Design Bridge. For each scenario: assign test layer (unit/integration/E2E), target repo, owner. Every PRD behavior must map to at least one test scenario. Gaps = PRD coverage holes to flag to Product before Build starts. Coverage targets per repo (ref: `04_team_brains/_template_team_brain.md`).
 6. **Feature Flag Plan** (if user/merchant-visible): flag name, rollout plan, cleanup ticket (ref: `[your-org]-dev-workflow.md`).
 7. **ADR**: Initiative = formal ADR (template below). Feature = lightweight "Decision" section.
 8. **Risk Classification**: Standard/High/Critical per `[your-org]-dev-workflow.md`.

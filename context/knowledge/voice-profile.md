@@ -8,6 +8,10 @@ Behavioral rules for written and spoken communication produced by the brain owne
 
 This is the canonical reference for the deterministic-language rule in `00_foundation/brain_governance.md`. Hooks in `.claude/hooks/` enforce a subset of these at write-time.
 
+## Adopters: Replace This Profile With Yours
+
+The patterns below are a **starting voice**, not yours. Before relying on this file, run the `voice-capture` skill (`.claude/skills/voice-capture/SKILL.md`) with 10-20 samples of your own writing. The skill will extract YOUR patterns and rewrite this file in place. Until you do, AI drafts will inherit a voice that probably is not yours.
+
 ## Greetings & Closings
 
 - **"Hi" not "Hey".** Hey is too casual for written work artifacts.

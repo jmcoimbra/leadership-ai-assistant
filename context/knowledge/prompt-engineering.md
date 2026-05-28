@@ -1,6 +1,6 @@
 # Prompt Engineering — Operational Knowledge
 
-> Archive: `99_archive/prompt_engineering_genai_raw.md`
+> Archive: `99_archive/prompt_engineering_techniques.md`
 > Owner: [Brain Owner] | Pillar: Pillar 4 (AI Execution) | Last Updated: 2026-03-21
 > Measurable Outcome: 5+ skills patched with PE patterns by 2026-05-15
 > Escalation Trigger: If evaluator rubrics remain prose-based after 30 days

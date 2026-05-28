@@ -1,7 +1,7 @@
 # Software Testing Principles
 > Source: Myers, G. J., Sandler, C., & Badgett, T. (2011). *The Art of Software Testing*, 3rd ed. Wiley. | Owner: [Brain Owner] | Pillar: Pillar 4 (AI Execution) | Last Updated: 2026-05-08
 
-Distilled doctrine from 11 chapters. Knowledge file landed at `context/knowledge/qa-testing-doctrine.md` under the testing category. Cross-link to existing `testing-infrastructure.md`. Reinforces QE-as-enabler Hard Constraint with primary-source authority.
+Distilled doctrine from 11 chapters. Knowledge file landed at `99_archive/software_testing_principles.md` under the testing category. Cross-link to existing `testing-infrastructure.md`. Reinforces QE-as-enabler Hard Constraint with primary-source authority.
 
 ## Ch 2 — The Psychology and Economics of Software Testing
 

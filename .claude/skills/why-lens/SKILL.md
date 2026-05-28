@@ -100,7 +100,7 @@ Rules for the template:
 - **Suggested opening** is omitted entirely when filters 1, 3, and 4 all pass.
 - Total length: 4 lines on a clean pass, 5 lines when a rewrite is needed.
 - Quote the actual opening of the draft in the **Opens with** line. No paraphrase.
-- Operator name comes from the draft when present, or from the team roster (`09_people/team_roster.md`) when implied. If neither, flag `No`.
+- Operator name comes from the draft when present, or from the team roster (`09_people/_template_team_roster.md`) when implied. If neither, flag `No`.
 
 ### Worked example: passing draft
 

@@ -17,14 +17,14 @@ CLAUDE.md already mandates "evidence-first, no guesses". This file converts the 
 |---------------|-------------------------------|
 | File path (brain or repo) | `Read` or `ls` the path. Never write a path you have not opened in this session. |
 | File path with line number (`file.md:42`) | `Read` the file at that line range. The cited content must match the claim. |
-| Person name | `Read` `09_people/team_roster.md` or `config/team.yaml`. Never guess spelling. Never infer language preference. |
+| Person name | `Read` `09_people/_template_team_roster.md` or `config/team.yaml`. Never guess spelling. Never infer language preference. |
 | URL (any kind) | Must be (a) given by the user in this conversation, (b) present in a brain file you just read, or (c) returned by an MCP tool in this session. Never construct URLs from patterns. |
 | Notion page or DB ID | `notion-fetch` it now, or read the canonical list in `.claude/commands/_preamble.md`. Never claim a page exists without fetching. |
 | Jira ticket | `getJiraIssue` or `searchJiraIssuesUsingJql` before claiming state, ownership, or status. Stale ticket state is the most common failure mode. |
 | GitHub PR | `gh pr view <N>` (with `GH_TOKEN=""` prefix) before classifying as open / merged / approved / needs-review. |
 | Looker dashboard, metric, or number | Query the canonical source (Notion DB, Sheet, Looker URL) directly. Brain dashboard summaries drift. The source is authoritative. See `contextual-rules.md` "Brain dashboards drift" rule. |
 | Calendar event or meeting time | `mcp__claude_ai_Google_Calendar__list_events` or `mcp__google-calendar__list_events`. Never call something a meeting without confirming it on the calendar. |
-| Decision or commitment | Search `99_archive/decision_log.md` and recent meeting-ingest commits before asserting "X was decided". See `contextual-rules.md` "Before deferring an answer to a future person/meeting" rule. |
+| Decision or commitment | Search `99_archive/` and recent meeting-ingest commits before asserting "X was decided". See `contextual-rules.md` "Before deferring an answer to a future person/meeting" rule. |
 | Project status, owner, or metric | Read the project file under `12_projects/` or query the canonical tracker. Do not cite from memory of prior sessions. |
 | Quote attributed to a person | Read the source transcript or message. Quoted text must match verbatim. |
 | Pillar reference | Always expand with readable name. See `contextual-rules.md` "Referencing pillars". |

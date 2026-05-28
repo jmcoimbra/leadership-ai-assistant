@@ -207,7 +207,7 @@ Distilled for understanding [your-org]-mobile-app codebase and mobile developmen
 - **iOS deploy automation:** `ios-deploy ios beta`, `ios-deploy android beta`. Match for iOS cert management. Automates build, signing, store upload.
 - **GitHub Actions:** Lint + type-check + test on PR. iOS deploy automation deploy on main merge.
 - **Husky:** Pre-commit hooks for lint-staged. ESLint + Prettier enforced before commits.
-- [[your-org]-mobile-app: See `context/knowledge/ios-deploy-patterns.md` for [Your Company]-specific iOS deploy automation setup.]
+- [[your-org]-mobile-app: See `context/knowledge/react-native.md` for [Your Company]-specific iOS deploy automation setup.]
 
 ## Debugging
 
@@ -229,7 +229,7 @@ Distilled for understanding [your-org]-mobile-app codebase and mobile developmen
 - Asset checklist: app icons (all required sizes/resolutions per device), launch screens, promotional screenshots.
 - Post-release: mobile versions have longer lifespan than web. Many users don't auto-update. Every version counts.
 - **Expo deployment [Modern]:** EAS Build for cloud builds. EAS Submit for store submission. OTA updates via `expo-updates` (JS-only changes without store review).
-- [[your-org]-mobile-app: iOS deploy automation automates build + deploy. See `context/knowledge/ios-deploy-patterns.md`.]
+- [[your-org]-mobile-app: iOS deploy automation automates build + deploy. See `context/knowledge/react-native.md`.]
 
 ## Component Libraries
 

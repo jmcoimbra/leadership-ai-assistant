@@ -33,24 +33,24 @@ This command produces read-only output. No brain files are modified. No gating n
 Read these files (all required):
 
 **Career tier:**
-1. `10_career/cto_trajectory.md` — gap analysis, quarterly milestones, evidence sections
-2. `10_career/development_goals_2026.md` — 3 development goals with progress
-3. `10_career/executive_mentorship_tracker.md` — insights, action plans, habits
-4. `10_career/review_cycle_evidence.md` — accumulated evidence log
+1. `10_career/_template_career_trajectory.md` — gap analysis, quarterly milestones, evidence sections
+2. `10_career/_template_career_trajectory.md` — 3 development goals with progress
+3. `10_career/_template_career_trajectory.md` — insights, action plans, habits
+4. `10_career/_template_career_trajectory.md` — accumulated evidence log
 
 **Leadership tier:**
-5. `02_leadership/assertiveness_playbook.md` — influence tracker entries
-6. `02_leadership/performance_gap_enforcer.md` — gap closure status
-7. `02_leadership/visibility_plan.md` — visibility actions log
+5. `context/knowledge/voice-profile.md` — influence tracker entries
+6. `02_leadership/pr_hygiene_mandate.md` — gap closure status
+7. `02_leadership/async_communication_standard.md` — visibility actions log
 
 **Domain tier:**
-8. `04_qa_brain/qa_authority_model.md` — QA block events, authority assertions
-9. `08_metrics/ai_adoption_metrics.md` — team AI usage data
-10. `08_metrics/leadership_influence_metrics.md` — initiative completions
+8. `04_team_brains/_template_team_brain.md` — QA block events, authority assertions
+9. `08_metrics/_template_team_scorecard.md` — team AI usage data
+10. `08_metrics/_template_team_scorecard.md` — initiative completions
 11. `03_ai_native_transformation/[your-company]_ai_tier_framework.md` — team heat map (legacy CWR pending re-grade)
 
 **Compliance/execution tier:**
-12. `11_compliance_security/compliance_operational_model.md` — compliance contributions
+12. `11_compliance_security/_template_compliance_program.md` — compliance contributions
 13. `12_projects/projects_tracker.md` — initiative completion status
 
 **External:**
@@ -60,7 +60,7 @@ Read these files (all required):
 
 Find the date of the last [Your CTO] 1:1 by:
 1. Check Google Calendar for past [Your CTO] meetings (`gcal_list_events` or `gcal_search_events` for "[Brain Owner] / [Your CTO]")
-2. Or parse `10_career/review_cycle_evidence.md` for the most recent entry date
+2. Or parse `10_career/_template_career_trajectory.md` for the most recent entry date
 
 Set `WINDOW_START` = date of last [Your CTO] 1:1.
 Set `WINDOW_END` = today.

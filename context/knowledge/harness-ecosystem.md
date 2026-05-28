@@ -41,7 +41,7 @@ From 2026-04-17 Slack thread:
 >
 > _Orchestration_ is another axis: multi-agent coordination vs. Harness Engineering building how a single agent instance rides an LLM.
 
-Vocabulary encoded in `03_ai_native_transformation/ai_how_layer.md` (Capability Artifact Lens section). Cross-reference for tier mapping in `03_ai_native_transformation/ai_tier_framework.md`.
+Vocabulary encoded in `03_ai_native_transformation/ai_how_layer.md` (Capability Artifact Lens section). Cross-reference for tier mapping in `03_ai_native_transformation/ai_adoption_roadmap.md`.
 
 ## Steal Decisions
 
@@ -100,7 +100,7 @@ Harness awareness is itself an AI leverage point: knowing which peer harness to 
 | File | Connection |
 |------|-----------|
 | `03_ai_native_transformation/ai_how_layer.md` | Capability Artifact Lens — Prompt/Context/Harness/Orchestration |
-| `03_ai_native_transformation/ai_tier_framework.md` | Tier → expected artifact level mapping |
+| `03_ai_native_transformation/ai_adoption_roadmap.md` | Tier → expected artifact level mapping |
 | `context/knowledge/idp-patterns.md` | AI Tier pointer + drafting rules |
 | `context/knowledge/zapier-ai-fluency.md` | 4-tier fluency rubric (not to be confused with [Your CEO]'s 7-tier) |
 | `12_projects/projects_tracker.md` | idp-convergence initiative referencing 7-tier ladder |

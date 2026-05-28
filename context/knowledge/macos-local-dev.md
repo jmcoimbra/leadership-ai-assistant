@@ -111,5 +111,5 @@ Each `<X.Y>` is a symlink to the actual Cellar (Homebrew) or `/Library/Framework
 | File | Connection |
 |------|-----------|
 | `12_projects/rosetta_intel_homebrew_migration.md` | Personal migration from Intel Homebrew to arm64 Homebrew, full Phase A/B/C plan |
-| `context/knowledge/ios-deploy-patterns.md` | [Mobile Team]-owned ios-deploy will reinstall under arm64 Homebrew in Phase B |
+| `context/knowledge/react-native.md` | [Mobile Team]-owned ios-deploy will reinstall under arm64 Homebrew in Phase B |
 | `context/knowledge/conductor.md` | Conductor app internals, sub-agent MCP access, workspace lifecycle |

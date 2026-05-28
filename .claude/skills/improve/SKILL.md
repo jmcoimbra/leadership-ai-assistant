@@ -22,7 +22,7 @@ Capture what this session taught, patch what can be improved, and leave the syst
 ## Step 0: Load Prior Learnings
 
 Before auditing the session, read the knowledge base to build on what previous sessions captured:
-- Read `context/knowledge/index.md` to see all topic files and coverage map
+- Read `context/knowledge/categories/README.md` to see all topic files and coverage map
 - Read relevant topic files from `context/knowledge/` based on what this session touched
 - Use this context to avoid re-proposing changes that were already applied
 - If a finding contradicts an existing knowledge entry, flag it for update rather than creating a duplicate
@@ -241,7 +241,7 @@ Sort each proposed improvement by target:
 | Knowledge base | `context/knowledge/` topic files | Debugging insights, platform patterns, stable conventions |
 | Brain files | `00_foundation/` through `12_projects/` | Evidence, decisions, metric updates, governance fixes |
 | Commands | `.claude/commands/*.md` | New or improved slash commands |
-| Review evidence | `10_career/review_cycle_evidence.md` | Pushback, milestones, feedback, influence moments |
+| Review evidence | `10_career/_template_career_trajectory.md` | Pushback, milestones, feedback, influence moments |
 | Governance | Any file | Missing owner, pillar, metric, or escalation trigger |
 
 ## Step 2b: Skill Location Check
@@ -289,7 +289,7 @@ Format:
 1. [CLAUDE.md] Add contextual rule for X → Y action
 2. [context/knowledge/mcp-tools.md] Capture Z debugging pattern
 3. [.claude/commands/slack-triage.md] New command proposal
-4. [10_career/review_cycle_evidence.md] Log influence moment from today
+4. [10_career/_template_career_trajectory.md] Log influence moment from today
 5. [09_people/_template_individual_development_profile.md] Update with AI adoption evidence
 
 Apply all? Or specify numbers to apply (e.g., "1,2,4"):
@@ -299,7 +299,7 @@ After approval, apply using Edit tool. Preserve existing content structure. Show
 
 ### Fast-path: Auto-apply for knowledge-file-only batches
 
-When ALL proposed changes are scoped to brain knowledge files — `context/knowledge/*.md` (any topic file including `deep-agent-evals.md`) and `context/knowledge/index.md` only — apply them immediately without waiting for approval. Still present the numbered diff summary, but follow it with "Applied autonomously (knowledge-file-only batch)." and proceed.
+When ALL proposed changes are scoped to brain knowledge files — `context/knowledge/*.md` (any topic file including `deep-agent-evals.md`) and `context/knowledge/categories/README.md` only — apply them immediately without waiting for approval. Still present the numbered diff summary, but follow it with "Applied autonomously (knowledge-file-only batch)." and proceed.
 
 **Conditions for auto-apply:**
 - Every target path starts with `context/knowledge/`
@@ -357,7 +357,7 @@ Route evidence, decisions, and metrics to the brain file system of record:
 
 Route technical patterns and tool behaviors to the structured knowledge base:
 
-1. Read `context/knowledge/index.md` to see existing topic files
+1. Read `context/knowledge/categories/README.md` to see existing topic files
 2. For each technical learning, identify the matching topic file (or propose a new one)
 3. **Verify-before-canonize (VBC) gate.** Before writing any pattern that asserts the existence, count, or shape of an external artifact (Notion template sections, PR template fields, form schemas, enum values, API response fields, config keys, workflow stages, checklist items, form questions, checkbox lists), verify the premise against the canonical source in the current session. If the premise is not source-verified in-session, route the observation as a question in the knowledge file ("Is §X commonly missing?", "Does field Y exist?"), not a rule ("§X is commonly missing", "field Y is commonly blank").
    - **Two-gate trigger** (both must match to fire VBC):
@@ -549,7 +549,7 @@ Read each changed file fresh. Look for:
 
 ### Telemetry Append (MANDATORY)
 
-In the same step as the BRAIN_REVIEW sentinel emission, append exactly one row to `08_metrics/sentinel_telemetry.md`'s `## Log` table:
+In the same step as the BRAIN_REVIEW sentinel emission, append exactly one row to `08_metrics/_template_team_scorecard.md`'s `## Log` table:
 
 ```
 | YYYY-MM-DD HH:MM | improve-review | <SENTINEL> | <reason or summary> | <files or blank> |
@@ -592,7 +592,7 @@ Plain text. No markdown formatting around the sentinel. A future scheduled or `/
 
 ### Telemetry Append (MANDATORY for Step 10)
 
-In the same step as the BRAIN_IMPROVE sentinel emission, append exactly one row to `08_metrics/sentinel_telemetry.md`'s `## Log` table:
+In the same step as the BRAIN_IMPROVE sentinel emission, append exactly one row to `08_metrics/_template_team_scorecard.md`'s `## Log` table:
 
 ```
 | YYYY-MM-DD HH:MM | improve | <SENTINEL> | <reason or summary> | <files or blank> |

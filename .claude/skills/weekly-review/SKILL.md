@@ -49,15 +49,15 @@ The "brain dashboards drift" problem (`contextual-rules.md` Evidence & Data Rule
 
 Read these 9 core files. They feed topic generation and multiple subsequent steps. Do not summarize - hold raw content for extraction across all steps.
 
-1. `08_metrics/stability_metrics.md`
-2. `08_metrics/ai_adoption_metrics.md`
-3. `08_metrics/leadership_influence_metrics.md`
+1. `08_metrics/_template_team_scorecard.md`
+2. `08_metrics/_template_team_scorecard.md`
+3. `08_metrics/_template_team_scorecard.md`
 4. `12_projects/projects_tracker.md`
-5. `09_people/team_roster.md`
-6. `10_career/cto_trajectory.md`
-7. `11_compliance_security/compliance_operational_model.md`
-8. `02_leadership/assertiveness_playbook.md`
-9. `10_career/executive_mentorship_tracker.md`
+5. `09_people/_template_team_roster.md`
+6. `10_career/_template_career_trajectory.md`
+7. `11_compliance_security/_template_compliance_program.md`
+8. `context/knowledge/voice-profile.md`
+9. `10_career/_template_career_trajectory.md`
 
 After reading, proceed to Phase A.5.
 
@@ -68,7 +68,7 @@ Run AFTER Phase A loads, BEFORE Step 0 generates topics. Catches reframes that i
 **Why:** Scorecard rows are dashboards; recent decision_log entries and Monthly Tracking entries are the truth. Brain files frequently carry a stale top-of-file row alongside a fresh tracking entry that reframes the metric. Topics built on the stale row are already wrong. Source: 2026-05-09 user correction after I proposed a "Phase 1 9 days overdue" R&D Leadership topic when Phase 1 was reframed 8 days earlier (2026-05-01).
 
 **Method:**
-1. Read `99_archive/decision_log.md`. Extract entries dated within the last 14 days.
+1. Read `99_archive/`. Extract entries dated within the last 14 days.
 2. For each Phase A metric file (`stability_metrics.md`, `ai_adoption_metrics.md`, `leadership_influence_metrics.md`), read the bottom 3 rows of every Monthly / Quarterly / Weekly Tracking table.
 3. Cross-reference: any entry that changes a target, baseline, escalation trigger, or status becomes a "recent reframe."
 4. List the corresponding stale lines (top-of-file scorecard rows that have not been updated to match the reframe).
@@ -98,20 +98,20 @@ If 0 reframes detected: output "No reframes in last 14 days. Scorecard rows auth
 ## Step 0: Topic Generation (5 min)
 
 Read these additional source files:
-- `04_qa_brain/qa_coverage_framework.md`
-- `04_qa_brain/qa_authority_model.md`
-- `05_aps_brain/aps_metrics_model.md`
-- `06_dev_support_brain/dev_support_operational_model.md`
-- `02_leadership/visibility_plan.md`
-- `02_leadership/performance_gap_enforcer.md`
-- `10_career/development_goals_2026.md`
+- `04_team_brains/_template_team_brain.md`
+- `04_team_brains/_template_team_brain.md`
+- `04_team_brains/_template_team_brain.md`
+- `04_team_brains/_template_team_brain.md`
+- `02_leadership/async_communication_standard.md`
+- `02_leadership/pr_hygiene_mandate.md`
+- `10_career/_template_career_trajectory.md`
 - `03_ai_native_transformation/ai_adoption_roadmap.md`
-- `01_strategy/strategic_pillars.md`
+- `01_strategy/_template_strategic_pillars.md`
 
 Then:
 1. Scan all loaded files for signals: wins, risks, stalls, approaching deadlines, escalation triggers hit
 2. Generate 5 candidate topics
-3. Score each on 4 dimensions per `07_operating_rhythms/topic_generation_protocol.md`:
+3. Score each on 4 dimensions per `07_operating_rhythms/weekly_review.md`:
    - Urgency (1-5): 5 = deadline within 7 days or escalation triggered / 3 = within 30 days / 1 = no pressure
    - Visibility (1-5): 5 = relevant to [Your CEO]/[Your CDO]/[Your CTO] / 3 = peers or broader engineering / 1 = internal only
    - Career Impact (1-5): 5 = directly closes a gap or demonstrates CTO competency / 3 = indirect / 1 = none
@@ -133,10 +133,10 @@ PUSHBACK PREP: [Anticipated objection + response]
 ```
 
 **Meeting prep triggers:** Check Google Calendar (`gcal_list_events`) for this week:
-- R&D Leadership meeting this week? Note 72-hour prep per `07_operating_rhythms/rnd_leadership_meeting_playbook.md`
+- R&D Leadership meeting this week? Note 72-hour prep per `07_operating_rhythms/one_on_one_protocol.md`
 - [Your CTO] 1:1 tomorrow? Generate the 1-1-1 (one metric, one risk, one recommendation) per `07_operating_rhythms/one_on_one_protocol.md`
 
-**Eureka surfacing:** Read `context/knowledge/eureka-log.md` if it exists. Take the most recent 10 entries within the last 7 days. Each eureka is a candidate topic for R&D Leadership or [Your CTO] 1:1. If a eureka contradicts a current commitment or assumption tracked in `12_projects/projects_tracker.md`, set the topic's Visibility dimension to 5 (the dimension max per `07_operating_rhythms/topic_generation_protocol.md`) and add a `[EUREKA-CONTRADICT]` flag in the topic's frame. Use the flag as a tiebreaker when two topics score the same, not as a score modifier. Do not invent topics; eurekas augment, they do not replace, the topic generation logic.
+**Eureka surfacing:** Read `context/knowledge/eureka-log.md` if it exists. Take the most recent 10 entries within the last 7 days. Each eureka is a candidate topic for R&D Leadership or [Your CTO] 1:1. If a eureka contradicts a current commitment or assumption tracked in `12_projects/projects_tracker.md`, set the topic's Visibility dimension to 5 (the dimension max per `07_operating_rhythms/weekly_review.md`) and add a `[EUREKA-CONTRADICT]` flag in the topic's frame. Use the flag as a tiebreaker when two topics score the same, not as a score modifier. Do not invent topics; eurekas augment, they do not replace, the topic generation logic.
 
 Output:
 
@@ -286,7 +286,7 @@ Output:
 
 **Feeds Step 5 (AI Check):** AI-assisted ratio per team feeds the Team AI Usage table. Step 5 references Step 0a numbers; do not double-count.
 
-**Feeds Step 2 (Metric Check):** if `08_metrics/engineering_delivery_metrics.md` is stale (>30 days), use Step 0a data to propose a refresh.
+**Feeds Step 2 (Metric Check):** if `08_metrics/_template_team_scorecard.md` is stale (>30 days), use Step 0a data to propose a refresh.
 
 ## Step 1: Execution Check (10 min)
 
@@ -299,7 +299,7 @@ Data sources:
 Checks:
 1. Scan `projects_tracker.md` for any project with no activity in 21+ days
 2. List all open GitHub PRs with days-open. Flag any >14 days.
-3. Compare brain initiatives (from `01_strategy/strategic_pillars.md`) vs Notion DB entries. Flag discrepancies in both directions: brain-only (invisible to team) and Notion-only (unaccountable).
+3. Compare brain initiatives (from `01_strategy/_template_strategic_pillars.md`) vs Notion DB entries. Flag discrepancies in both directions: brain-only (invisible to team) and Notion-only (unaccountable).
 4. Any initiative stuck in "conceptual" for >14 days? Either add an execution plan or recommend killing it.
 
 Output:
@@ -328,7 +328,7 @@ Output:
 
 ## Step 2: Metric Check (10 min)
 
-Read additionally: `08_metrics/engineering_delivery_metrics.md`
+Read additionally: `08_metrics/_template_team_scorecard.md`
 
 Checks:
 1. Status each metric domain as GREEN / YELLOW / RED based on current values vs targets
@@ -361,8 +361,8 @@ Output:
 
 Read additionally:
 - All 8 person files: `09_people/{report1,report2,...}.md`
-- `09_people/talent_review_tracker.md`
-- `02_leadership/stakeholder_map.md`
+- `09_people/_template_individual_development_profile.md`
+- `09_people/_template_team_roster.md`
 
 Checks:
 1. 1:1 staleness: anyone without a 1:1 in 21 days? (Respect active pause overrides if documented.)
@@ -457,8 +457,8 @@ For each team (QA, [Mobile Team], Dev Support), assess 4 criteria by scanning pe
 ## Step 4: Assertiveness & Communication (5 min)
 
 Checks:
-1. Review `02_leadership/assertiveness_playbook.md` influence tracker: any entries logged this week?
-2. Did QA exercise authority this week? Check `04_qa_brain/qa_authority_model.md` for block events.
+1. Review `context/knowledge/voice-profile.md` influence tracker: any entries logged this week?
+2. Did QA exercise authority this week? Check `04_team_brains/_template_team_brain.md` for block events.
 3. Check person files for recent Performance Observations entries: did I give specific feedback to at least one person this week?
 4. Did I use Context - Ask - Owner - Deadline format in async messages? (Dev Goal 3)
 5. Am I avoiding a conversation? Present as a self-assessment question.
@@ -526,7 +526,7 @@ Output:
 Checks:
 1. Did I demonstrate any CTO competency this week? Map evidence to gaps from `cto_trajectory.md`.
 2. Am I making progress on the current quarter's milestone?
-3. Review `10_career/development_goals_2026.md`: any goal still "Not started" that should have moved?
+3. Review `10_career/_template_career_trajectory.md`: any goal still "Not started" that should have moved?
 4. Review mentorship commitments in `executive_mentorship_tracker.md`: any overdue action plans? Any insights with "Applied? No" for >30 days?
 5. **Query Goals Tracker DB live (mandatory).** Do NOT cite the static habit-rep snapshot in `executive_mentorship_tracker.md` (e.g., "Future-value 13/21" from 2026-05-01 triage); that snapshot decays daily as new reps log. Instead, run `mcp__claude_ai_Notion__notion-query-database-view` against the canonical view URL `https://www.notion.so/31aa84ed402480a597acced6ccf8c8da?v=31aa84ed402480df9b96000c48f9e2b9` (All Goals view, data source `31aa84ed-4024-80dd-b9a9-000bb3868086`), filter for `Goal name` containing `Habit:`, read live `Start value` per row. `notion-query-database-view` requires a view URL (with `?v=`), not a bare data source ID; if the canonical URL ever returns 400, recover by running `notion-fetch` on the DB ID first and reading the live view URL from the schema. Threshold check: flag if <7x after 2 weeks from creation, <21x after 4 weeks. If the MCP call fails or rate-limits, fall back to the static snapshot but label it explicitly in the output: `"DB unavailable, citing YYYY-MM-DD snapshot (may be N days stale)"`. Source: 2026-05-09 weekly review cited 8-day-old static numbers as if current. 2026-05-24 run guessed a view URL and got 400. Step 6b enforcement scoring depends on accurate reps; stale numbers produce wrong YELLOW/RED calls.
 6. **Retrospective habit scan:** Review this week's meeting scripts and Slack activity (from `.context/slack-triage-latest.md` if available) for habit evidence missed by real-time detection. The 4 habits: Reframe limiting beliefs, Future-value framing, Circle of Influence filter, Proactive response choice. For each newly detected instance, log to the matching `Habit:` page in Goals Tracker DB (fetch page → append repetition log row → bump Start value). Report newly logged instances in output.
@@ -579,7 +579,7 @@ Output:
 
 ## Step 6a: Insight Application Check (3 min)
 
-Read `10_career/ai_engineering_book.md` and `10_career/executive_mentorship_tracker.md` (already loaded in Phase A for mentorship tracker).
+Read `10_career/ai_engineering_book.md` and `10_career/_template_career_trajectory.md` (already loaded in Phase A for mentorship tracker).
 
 1. **Flag overdue action plans** (>14 days past deadline): hard fail, surface as urgency 5 topic for Step 0
 2. **Cross-reference unapplied insights against next week's calendar.** For each unapplied insight, check if next week has a meeting that touches its domain:
@@ -600,7 +600,7 @@ If no matching meetings: "No practice opportunities this week. Pick 1 insight to
 
 ## Step 6b: Mentorship Enforcement (2 min)
 
-Data source: `10_career/executive_mentorship_tracker.md` (already loaded in Phase A).
+Data source: `10_career/_template_career_trajectory.md` (already loaded in Phase A).
 
 ### 6b-1. Count overdue items
 
@@ -688,7 +688,7 @@ Checks:
 1. Any active workstream past its deadline in `compliance_operational_model.md`?
 2. Is the next compliance team meeting scheduled? Check Google Calendar. If not scheduled: flag.
 3. Any Bridge Letter or audit action items due this week?
-4. Any compliance-related decision made but not logged in `99_archive/decision_log.md`?
+4. Any compliance-related decision made but not logged in `99_archive/`?
 
 Output:
 
@@ -714,7 +714,7 @@ Output:
 Data sources:
 - Google Calendar (`gcal_list_events`) for past week's meetings
 - Notion Meeting Transcripts DB (ID per `_preamble.md`) via `mcp__claude_ai_Notion__notion-search` or `notion-fetch`
-- `07_operating_rhythms/meeting_ingestion_protocol.md` for cadence rules (24h for 1:1s and leadership, 48h for all others)
+- `07_operating_rhythms/weekly_review.md` for cadence rules (24h for 1:1s and leadership, 48h for all others)
 
 Checks:
 1. List past week's meetings from calendar
@@ -865,7 +865,7 @@ Present all proposed brain file updates for approval:
 2. Route action items to relevant brain files (list each target file and change)
 3. Update stale metric files if data was gathered
 4. Add assertiveness entries if surfaced
-5. Log evidence to `10_career/review_cycle_evidence.md` if career-relevant findings emerged
+5. Log evidence to `10_career/_template_career_trajectory.md` if career-relevant findings emerged
 
 **Format:** Show each proposed update as a numbered list with target file and change description. Wait for explicit approval before applying. ("Apply all? Or specify numbers.")
 
@@ -883,7 +883,7 @@ After generating the final report and proposing brain file updates, save the rev
    - This is mandatory — do not omit the icon.
 3. **Content:** The full Weekly Review Report (Health Dashboard, Topics, Priorities, All Action Items, Say No To) plus the proposed brain file updates list
 4. Do NOT include the detailed step-by-step outputs (Steps 0-9) in Notion - only the consolidated Final Output section and proposed updates. The full detail lives in the brain commit.
-5. **Strip brain-internal paths from the Notion content before creating the page.** No `00_foundation/...`, `01_strategy/...`, `02_leadership/...`, `08_metrics/...`, `09_people/...`, `10_career/...`, `11_compliance_security/...`, `12_projects/...`, `13_infrastructure/...`, `99_archive/...`, `context/...`, `.claude/...`, `CLAUDE.md`, `AGENTS.md` paths. Replace with the substance directly (e.g., write "PCI evidence" not "compliance_operational_model.md", write "the assertiveness tracker" not "02_leadership/assertiveness_playbook.md"). Brain file commit SHAs and external IDs (Notion page IDs, Jira keys, PR URLs) are fine. Source: 2026-05-09 Notion create call to `35ca84ed-4024-81e4-a1ab-d8b51d0be432` was blocked by `check-brain-paths.sh` hook on first attempt because the "Brain Updates Applied This Session" + "Key Patterns Captured" sections embedded paths. Hook caught it (working as designed); skill should catch it first.
+5. **Strip brain-internal paths from the Notion content before creating the page.** No `00_foundation/...`, `01_strategy/...`, `02_leadership/...`, `08_metrics/...`, `09_people/...`, `10_career/...`, `11_compliance_security/...`, `12_projects/...`, `13_infrastructure/...`, `99_archive/...`, `context/...`, `.claude/...`, `CLAUDE.md`, `AGENTS.md` paths. Replace with the substance directly (e.g., write "PCI evidence" not "compliance_operational_model.md", write "the assertiveness tracker" not "context/knowledge/voice-profile.md"). Brain file commit SHAs and external IDs (Notion page IDs, Jira keys, PR URLs) are fine. Source: 2026-05-09 Notion create call to `35ca84ed-4024-81e4-a1ab-d8b51d0be432` was blocked by `check-brain-paths.sh` hook on first attempt because the "Brain Updates Applied This Session" + "Key Patterns Captured" sections embedded paths. Hook caught it (working as designed); skill should catch it first.
 6. This is an AUTONOMOUS action - create the page and report the URL. Do not ask for approval. Personal DB, only [Brain Owner] reads. Source: 2026-05-17 user correction. Brain-file edits remain gated separately.
 
 ## Error Handling

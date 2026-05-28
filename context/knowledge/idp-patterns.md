@@ -47,7 +47,7 @@ Two distinct ladders. Do not conflate them:
 1. **[Your CEO]'s 7-tier AI Adoption Rubric** — lightly agreed across EMs on 2026-04-17 as shared vocabulary. Tier 1-7 definitions not captured in brain yet. All 8 IDPs carry "[Your Company] AI Tier TBD (post EM calibration, target 2026-04-25)" placeholder. Owner: [Your CEO].
 2. **Zapier 4-tier fluency rubric** — Unacceptable/Capable/Adaptive/Transformative. Captured in `context/knowledge/zapier-ai-fluency.md`. Descriptive vocabulary, used in hiring scorecards. Not the scoring system of record ([Your CEO]'s 7-tier is).
 
-Until [Your CEO] publishes 7-tier definitions, IDPs reference Zapier V2 tier only. Cross-check ratings against the Capability Artifact Lens in `03_ai_native_transformation/ai_tier_framework.md` — if the IC has not shipped the artifact level expected at their tier, the rating is aspirational.
+Until [Your CEO] publishes 7-tier definitions, IDPs reference Zapier V2 tier only. Cross-check ratings against the Capability Artifact Lens in `03_ai_native_transformation/ai_adoption_roadmap.md` — if the IC has not shipped the artifact level expected at their tier, the rating is aspirational.
 
 Escalation: if [Your CEO] has not published 7-tier definitions by 2026-04-30, raise in #rnd-leadership and request a deadline.
 
@@ -74,5 +74,5 @@ Escalation: if [Your CEO] has not published 7-tier definitions by 2026-04-30, ra
 
 - `mcp-notion.md` — Page Sharing & Permissions (sharing not programmatic; "individual" = private)
 - `voice-profile.md` — Domain Vocabulary table
-- `03_ai_native_transformation/ai_tier_framework.md` — [Your Company] AI 7-tier for AI Fluency Snapshot
-- `03_ai_native_transformation/projects_tracker.md` — idp-convergence initiative
+- `03_ai_native_transformation/ai_adoption_roadmap.md` — [Your Company] AI 7-tier for AI Fluency Snapshot
+- `12_projects/projects_tracker.md` — idp-convergence initiative

@@ -46,7 +46,7 @@ The brain project IS an agentic system. The 7-component framework diagnoses it.
 | Sensory | Tool results in current context | Ephemeral, per-session |
 | Short-term | Conversation history | Compressed automatically |
 | Long-term semantic | `context/knowledge/` files | Facts, patterns, tool behaviors |
-| Long-term episodic | `99_archive/decision_log.md`, meeting notes, 1:1 logs | Dated experiences |
+| Long-term episodic | `99_archive/`, meeting notes, 1:1 logs | Dated experiences |
 | Long-term procedural | `.claude/commands/` skills, CLAUDE.md contextual rules | How-to encoded as triggers |
 
 **Memory compression pattern:**

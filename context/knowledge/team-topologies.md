@@ -50,7 +50,7 @@ Routing rule for Apple-related work across the 90+ branded variants.
 
 Test: if the work is "build or change app code", [Mobile Team] owns. If the work is "manage merchant Apple Account credentials and operational responses to Apple platform changes" (Account Holder agreements, 2FA challenges, cert renewals as merchant-facing operations), Dev Support owns.
 
-Source: 2026-05-08 [Your CTO] 1:1 prep. Initial routing of the [partner-agreement] operationalization ([External Counterparty] consent agreement + 27 blocked merchants) assigned the operational build to [Mobile Team]. User corrected: "No, this lands in Dev Supp. [Mobile Team] will have access to the secrets vault." See `12_projects/apple_developer_shared_access.md` and `context/knowledge/ios-deploy-patterns.md` Apple Developer Account Roles section.
+Source: 2026-05-08 [Your CTO] 1:1 prep. Initial routing of the [partner-agreement] operationalization ([External Counterparty] consent agreement + 27 blocked merchants) assigned the operational build to [Mobile Team]. User corrected: "No, this lands in Dev Supp. [Mobile Team] will have access to the secrets vault." See `12_projects/apple_developer_shared_access.md` and `context/knowledge/react-native.md` Apple Developer Account Roles section.
 
 ## Dev Support Dual Mandate
 

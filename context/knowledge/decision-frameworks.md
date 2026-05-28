@@ -1,5 +1,5 @@
 # Decision Frameworks — Operational Knowledge
-> Author: Christian, B., & Griffiths, T. (2016). *Algorithms to Live By* | Source: `99_archive/algorithms_to_live_by_raw.md` | Owner: [Brain Owner] | Pillar: Pillar 4 (AI Execution) + Pillar 5 (Play Big) | Last Updated: 2026-05-15
+> Author: Christian, B., & Griffiths, T. (2016). *Algorithms to Live By* | Source: `99_archive/algorithmic_thinking.md` | Owner: [Brain Owner] | Pillar: Pillar 4 (AI Execution) + Pillar 5 (Play Big) | Last Updated: 2026-05-15
 
 Decision-quality frameworks from computer science applied to leadership work. Two sections: (A) coaching vocabulary for 1:1s and management practice, (B) self-application heuristics for own scheduling, prediction, and team-policy design.
 
@@ -200,4 +200,4 @@ Source: 2026-05-15 JULI-139 MVP scope consult. 3 of 12 doc recommendations flipp
 
 ## Source
 
-Re-derive depth from Notion Books DB entry `35aa84ed-4024-8171-b404-c6b285792372`. Brain tracker: `10_career/algorithms_to_live_by_book.md`. Raw distillation: `99_archive/algorithms_to_live_by_raw.md`.
+Re-derive depth from Notion Books DB entry `35aa84ed-4024-8171-b404-c6b285792372`. Brain tracker: `10_career/algorithms_to_live_by_book.md`. Raw distillation: `99_archive/algorithmic_thinking.md`.

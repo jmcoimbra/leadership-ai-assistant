@@ -58,9 +58,9 @@ If $ARGUMENTS is non-empty: treat as the proposal text.
 If $ARGUMENTS is empty: prompt [Brain Owner] to paste the proposal inline or name the brain file that contains it.
 
 Load context:
-- Read `02_leadership/assertiveness_playbook.md` for current influence tracker
-- Read `10_career/cto_trajectory.md` for active development goals
-- If the proposal relates to a specific pillar, read `01_strategy/strategic_pillars.md`
+- Read `context/knowledge/voice-profile.md` for current influence tracker
+- Read `10_career/_template_career_trajectory.md` for active development goals
+- If the proposal relates to a specific pillar, read `01_strategy/_template_strategic_pillars.md`
 
 ## Step 1: Summarize the Proposal
 
@@ -100,7 +100,7 @@ Impact if false: [what breaks in the proposal]
 
 Who is affected but not represented?
 
-- **Internal:** Which team, role, or function is missing from the framing? (Check against `02_leadership/stakeholder_map.md`)
+- **Internal:** Which team, role, or function is missing from the framing? (Check against `09_people/_template_team_roster.md`)
 - **External:** Which customer segment, partner (POS, payments, Amex), or merchant tier is unaccounted for?
 - **Temporal:** Does the proposal ignore second-order effects beyond the immediate term? What happens at month 6, month 12?
 

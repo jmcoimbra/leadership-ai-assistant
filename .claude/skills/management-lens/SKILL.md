@@ -14,7 +14,7 @@ During meeting-prep Step 4 (Generate Prep Script), when the meeting matches a 1:
 
 ## What It Does
 
-After loading the person's brain file (already done by meeting-prep Step 3a), load `context/knowledge/managers-path.md` and generate a `### Management Lens` section (3-5 lines total) appended to the 1:1 template.
+After loading the person's brain file (already done by meeting-prep Step 3a), load `99_archive/engineering_management_practice.md` and generate a `### Management Lens` section (3-5 lines total) appended to the 1:1 template.
 
 ## Two Sub-Sections
 
@@ -72,7 +72,7 @@ If both produce a nudge, combine into one. Do not duplicate.
 - Always tie back to [Your Company] business context (merchant reliability, AI product quality, platform scale, QA authority).
 - If no relevant observations exist in the last 30 days, say so: "No recent observations to assess. Log more frequently."
 - Keep it to 3-5 lines total. This is a lens, not a report.
-- Update the Growth Edge column in `context/knowledge/managers-path.md` Per-Report Level Mapping table when 1:1 observations surface new growth edges.
+- Update the Growth Edge column in `99_archive/engineering_management_practice.md` Per-Report Level Mapping table when 1:1 observations surface new growth edges.
 
 ## Operating Rules (migrated from memory tier 2026-04-27)
 
@@ -80,5 +80,5 @@ If both produce a nudge, combine into one. Do not duplicate.
 - **Team framing ([Brain Owner]'s canonical):** QA = enablers; [Mobile Team] = self-service to platform team destination; DS = SA path improving TAM [Your Company]'s way. Do not substitute taxonomies. When summarizing the teams to leadership or peers, use this exact framing. Source: 2026-04-24 Q1 one-pager review with [Your CTO].
 - **Tiger Team standup role:** [Your CTO] leads, [Brain Owner] coordinates. Assess coordination quality, not facilitation quality. [Brain Owner]'s score is on whether owners hit their commitments and rotating handoffs land cleanly, not on whether he ran the meeting.
 - **People docs private by default.** IDPs, talent reviews, comp docs are created as private/detached Notion pages. Never under a teamspace parent (private-parent inheritance is automatic). Sharing a private page = explicit, scoped grant per person, not via permissions cascade.
-- **IC team attribution: home team always wins.** When an IC ships work in another team's repo or dashboard, frame the action under the IC's home team and call out the cross-team beneficiary explicitly. Example: "DS: [Direct Report] will ship the reactive-vs-automation dashboard, used by [Mobile Team] for whirlwind tracking" — NOT "[Mobile Team]: [Direct Report] will ship..." Cross-reference `09_people/team_roster.md` before any team-attribution call. QA = [Senior IC], [Direct Report]. [Mobile Team] = [Team Lead], [Senior IC], [Direct Report], [Direct Report]. DS = [Direct Report], [Direct Report]. Repo / dashboard domain ([your-company]-appops, etc.) never overrides home team in scripts, briefs, or commitment blocks.
+- **IC team attribution: home team always wins.** When an IC ships work in another team's repo or dashboard, frame the action under the IC's home team and call out the cross-team beneficiary explicitly. Example: "DS: [Direct Report] will ship the reactive-vs-automation dashboard, used by [Mobile Team] for whirlwind tracking" — NOT "[Mobile Team]: [Direct Report] will ship..." Cross-reference `09_people/_template_team_roster.md` before any team-attribution call. QA = [Senior IC], [Direct Report]. [Mobile Team] = [Team Lead], [Senior IC], [Direct Report], [Direct Report]. DS = [Direct Report], [Direct Report]. Repo / dashboard domain ([your-company]-appops, etc.) never overrides home team in scripts, briefs, or commitment blocks.
 - **Spec ownership = stakeholder alignment ownership.** When a direct report owns a spec or proposal, they drive alignment with stakeholders ([Your CTO], peer EMs, partners). EM does not insert themselves as the messenger. Manager surfaces the alignment dependency as the report's action ("alinha com X antes de abrir spec do Y"); report executes the ping. Generalizes the cross-team meeting ownership test in `managers-path.md`: if EM facilitates the upstream alignment, future asks route through EM by default and the report never grows the relationship. Source: 2026-05-04 PR #168 review draft where I wrote "Vou pingar o [Your CTO]" for [Senior IC]'s Layer 0/1 dependency; user correction redirected to [Senior IC] pinging [Your CTO] herself.
