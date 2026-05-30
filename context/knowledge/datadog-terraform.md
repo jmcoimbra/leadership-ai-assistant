@@ -208,7 +208,7 @@ resource "datadog_monitor" "segmentation_memory_forecast" {
 
 - `linear` for steady growth (memory, disk)
 - `seasonal` for cyclical patterns (request volume)
-- Threshold 1900MB matches BUGS-4025 OOM baseline (24% of hourly windows peak >1900MB)
+- Threshold 1900MB matches the sampled OOM baseline (24% of hourly windows peak >1900MB)
 
 ## SLO Pattern
 

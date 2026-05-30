@@ -5,6 +5,10 @@
 
 Information density is audience-dependent. Engineering audiences require depth. Compliance and external audiences require minimal surface area. Giving a compliance officer an engineering answer is not accuracy — it is risk creation.
 
+## Measurable Outcome
+
+Every executive-facing update states the decision, impact, owner, and deadline in the first 150 words.
+
 ## Decision Matrix
 
 | Audience | Mode | What to Include | What to Exclude |

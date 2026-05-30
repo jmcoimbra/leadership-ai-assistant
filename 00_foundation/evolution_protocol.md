@@ -50,6 +50,10 @@ Set quarterly refactor dates during onboarding. Suggested cadence: every 13 week
 | `12_projects/` | Active initiatives, project tracker, status sync | [Brain Owner] |
 | `99_archive/` | Distilled book concepts, decision log template, historical records | [Brain Owner] |
 
+## AI Integration
+
+Use AI to detect entropy before it becomes structural debt: duplicate concepts, stale metrics, missing owners, missing escalation triggers, and files that no longer map to a strategic pillar. The agent proposes file moves or consolidations, but the brain owner approves structural changes before commit.
+
 ## Anti-Entropy Rules
 
 - No file is added "to think about later." If it is not ready for governance, it stays in `99_archive/` as a draft.

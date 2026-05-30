@@ -109,3 +109,7 @@ This is organic, not mandated as a separate initiative. The brain grows smarter 
 
 - AI adoption roadmap: `03_ai_native_transformation/ai_adoption_roadmap.md`
 - AI baseline assessment: `03_ai_native_transformation/ai_baseline_assessment.md`
+
+## AI Integration
+
+This file defines the AI integration layer for each team. Use AI to turn repeated work into workflow candidates, then require a human owner, trigger, tool, and proof metric before adoption.

@@ -322,11 +322,11 @@ When a Datadog alert posts to Slack and you need the monitor details, the bot bo
    - `Suggested Resources`: dashboard links routed off the monitor
    - `Message Sent To`: Slack channel routing string
 
-Source: 2026-05-24 Datadog alert in `#rnd-apple-pie-release-cut-monitoring`. First attempt chased DD MCP/CLI/1Password CLI; second attempt delegated to `[engineering-toolkit]:investigate:datadog-context` which reported no access. Browser path produced full monitor details in one `read_page` call after the user shared the URL.
+Source: 2026-05-24 Datadog alert in the release monitoring channel. First attempt chased DD MCP/CLI/1Password CLI; second attempt delegated to `[engineering-toolkit]:investigate:datadog-context` which reported no access. Browser path produced full monitor details in one `read_page` call after the user shared the URL.
 
 ## [Mobile Team] Release-Cut Monitor Inventory
 
-Owner: [Your CTO]. All routed to `#rnd-apple-pie-release-cut-monitoring` and scoped by `version:<release>-<release>` tag.
+Owner: [Your CTO]. All routed to the release monitoring channel and scoped by `version:<release>-<release>` tag.
 
 | Monitor ID | Name | Platform |
 |------------|------|----------|
@@ -348,4 +348,4 @@ Owner: [Your CTO]. All routed to `#rnd-apple-pie-release-cut-monitoring` and sco
 
 **Interpretation:** Raw SUM grows mechanically with rollout coverage. Compare per-session rate, not raw count, before treating a Warn as a regression signal. Multiple Warn fires within an hour can be the rolling 1h SUM brushing the threshold as it slides forward; not necessarily two distinct events.
 
-Source: 2026-05-24 v49.2.2 hotfix ([Mobile Team]2-1277 / BUGS-4185) rollout monitoring. Monitor 265904739 fired Warn twice (3156/hr against 3000/hr warn, 47% below 6000/hr alert). Both events same monitor, same condition, 23 min apart.
+Source: 2026-05-24 hotfix rollout monitoring. Monitor 265904739 fired Warn twice (3156/hr against 3000/hr warn, 47% below 6000/hr alert). Both events same monitor, same condition, 23 min apart.

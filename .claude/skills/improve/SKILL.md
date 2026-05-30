@@ -175,7 +175,7 @@ Scan this session's outputs (Slack drafts, meeting scripts, proposals, async mes
 4. **Proactive response choice** — in friction, chose proposal/action over complaint/blame
 
 For each detected instance:
-1. Fetch the matching `Habit:` page from Goals Tracker DB (data source: `31aa84ed-4024-80dd-b9a9-000bb3868086`)
+1. Fetch the matching `Habit:` page from the configured goals tracker when available
 2. Append row to Repetition Log: `| [next #] | [date] | [situation] | [old pattern] | [new behavior] | [result] |`
 3. Bump `Start value` by 1
 

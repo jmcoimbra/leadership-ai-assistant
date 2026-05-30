@@ -20,14 +20,17 @@ Senior Engineering Managers who want an AI-native brain that:
 
 1. **Clone this repo locally.** Do not push your filled-in copy to a public remote — it will contain your team's data.
 2. **Read `AGENTS.md`** to see the always-on rules your agent will follow.
-3. **Customize the placeholders:**
+3. **Run the first-use checklist** in `FIRST_RUN.md`.
+4. **Choose your tool adapter** in `ADAPTERS.md`.
+5. **Customize the placeholders:**
    - `[Brain Owner]`, `[Your CTO]`, `[Your CEO]`, `[Your Company]`, etc. — search and replace.
    - `00_foundation/brain_governance.md` — set your pillars and dates.
    - `config/team.yaml.example` — copy to `config/team.yaml`, fill in your teams.
    - `.claude/names.txt` — add forbidden patterns for the names hook.
-4. **Capture YOUR voice.** The shipped `context/knowledge/voice-profile.md` is a starting voice, not yours. Run the `voice-capture` skill (`.claude/skills/voice-capture/SKILL.md`) with 10-20 samples of your own writing (Slack, commits, docs) and let it rewrite the voice profile to match how you actually communicate.
-5. **Fill the templates** in `09_people/`, `10_career/`, `11_compliance_security/`, `12_projects/`. Use the `_template_*.md` files as starting points.
-6. **Run your first weekly review** using `07_operating_rhythms/weekly_review.md`.
+6. **Capture YOUR voice.** The shipped `context/knowledge/voice-profile.md` is a starting voice, not yours. Run the `voice-capture` skill (`.claude/skills/voice-capture/SKILL.md`) with 10-20 samples of your own writing (Slack, commits, docs) and let it rewrite the voice profile to match how you actually communicate.
+7. **Fill the templates** in `09_people/`, `10_career/`, `11_compliance_security/`, `12_projects/`. Use the `_template_*.md` files as starting points.
+8. **Run validation** with `python3 scripts/audit_brain.py`.
+9. **Run your first weekly review** using `07_operating_rhythms/weekly_review.md`.
 
 ## Structure
 
@@ -47,6 +50,8 @@ Senior Engineering Managers who want an AI-native brain that:
 | `99_archive/` | Distilled concepts from technical and leadership books |
 | `context/knowledge/` | Reusable patterns for AI, observability, testing, integrations |
 | `.claude/` | Skills, hooks, commands the agent loads |
+| `context/specs/` | Behavioral contracts for long-running skills and command-like workflows |
+| `scripts/` | Provider-neutral validation scripts |
 
 ## Design Principles
 
@@ -67,6 +72,7 @@ Senior Engineering Managers who want an AI-native brain that:
 - [ ] Create `10_career/career_trajectory.md` from the template
 - [ ] Set your forbidden-pattern list in `.claude/names.txt`
 - [ ] Customize `.claude/hooks/check-pillar.sh` with your pillar names (if you keep pillars)
+- [ ] Run `python3 scripts/audit_brain.py` and fix every error
 
 ## What Was Stripped
 

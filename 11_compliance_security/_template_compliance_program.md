@@ -36,6 +36,10 @@ People outside your org you rely on (security team, legal, external auditors). S
 - **Audit response window:** [SLA for responding to auditor questions]
 - **Evidence refresh:** [Frequency for re-collecting evidence files]
 
+## Measurable Outcome
+
+Each compliance workstream has a status, deadline, owner, private evidence reference, and response SLA.
+
 ## AI Integration
 
 Use AI for: drafting control narratives, summarizing evidence packages, checking new code against control requirements. Do not feed AI any sensitive partner-negotiation context or named PII.

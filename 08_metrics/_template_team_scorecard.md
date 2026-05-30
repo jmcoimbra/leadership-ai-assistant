@@ -30,3 +30,7 @@ Latest cycle observations. Surface anything that moves >10% week-over-week.
 ## Escalation Triggers
 
 - [Metric crosses threshold] → [Action, who is notified, by when]
+
+## AI Integration
+
+Use AI to compare current metric values against thresholds, detect stale sources, and draft owner-specific follow-ups. The metric owner verifies the source before any status is sent externally.

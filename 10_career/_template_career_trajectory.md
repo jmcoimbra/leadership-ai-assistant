@@ -55,6 +55,14 @@ Things you tend to do that block your trajectory. Look for them in real time.
 
 - [Specific to you — e.g., over-explaining when challenged]
 
+## Escalation
+
+If no milestone evidence is logged during a quarter, schedule a career development 1:1 with the brain owner's manager within 14 days.
+
+## AI Integration
+
+Use AI to collect evidence from projects, reviews, feedback, and operating rhythms, then map each item to a target competency. The brain owner verifies evidence before using it in career conversations.
+
 ## Cross-References
 
 - `07_operating_rhythms/mid_cycle_checkpoint_protocol.md` — formal check-in protocol

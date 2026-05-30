@@ -83,3 +83,7 @@ Every team member must bookmark these two URLs (replace `{username}` with your G
 | `12_projects/projects_tracker.md` | Staleness rules (>14 days, >30 days) |
 | `02_leadership/async_communication_standard.md` | CONTEXT/ASK/OWNER/DEADLINE format for escalations |
 | `07_operating_rhythms/weekly_review.md` | PR staleness check |
+
+## AI Integration
+
+Use AI to scan open PRs for age, reviewer non-response, missing context, and unclear ownership. Draft follow-up comments for the brain owner to send.

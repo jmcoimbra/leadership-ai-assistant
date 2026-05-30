@@ -2,8 +2,8 @@
 
 **Owner:** [Brain Owner]
 **Pillar:** Pillar 4 (AI Execution)
-**Measurable Outcome:** Zero fabricated citations in outbound content (Slack drafts, email drafts, Notion pages, meeting scripts) over rolling 4 weekly reviews. Baseline: ~3 incidents/month tracked in `error-correction-log.md` Q1-Q2 2026. Target: 0 by 2026-Q3 close.
-**Escalation Trigger:** Any user correction of a fabricated citation that reached outbound content. Log to `error-correction-log.md` and audit which gate failed.
+**Measurable Outcome:** Zero fabricated citations in outbound content (chat drafts, email drafts, private workspace pages, meeting scripts) over rolling 4 weekly reviews. Baseline: set during onboarding in `context/knowledge/error-correction-log.md`. Target: 0 by the next quarterly refactor.
+**Escalation Trigger:** Any user correction of a fabricated citation that reached outbound content. Log to `context/knowledge/error-correction-log.md` and audit which gate failed.
 
 Before any agent writes a citation into outbound content, run the mechanical check that matches the citation type. Verification is not a hope or a vibe. It is a tool call.
 
@@ -19,7 +19,7 @@ CLAUDE.md already mandates "evidence-first, no guesses". This file converts the 
 | File path with line number (`file.md:42`) | `Read` the file at that line range. The cited content must match the claim. |
 | Person name | `Read` `09_people/_template_team_roster.md` or `config/team.yaml`. Never guess spelling. Never infer language preference. |
 | URL (any kind) | Must be (a) given by the user in this conversation, (b) present in a brain file you just read, or (c) returned by an MCP tool in this session. Never construct URLs from patterns. |
-| Notion page or DB ID | `notion-fetch` it now, or read the canonical list in `.claude/commands/_preamble.md`. Never claim a page exists without fetching. |
+| Private workspace page or DB ID | Fetch it with the configured connector, or read the canonical list in the private adapter file. Never claim a page exists without fetching. |
 | Jira ticket | `getJiraIssue` or `searchJiraIssuesUsingJql` before claiming state, ownership, or status. Stale ticket state is the most common failure mode. |
 | GitHub PR | `gh pr view <N>` (with `GH_TOKEN=""` prefix) before classifying as open / merged / approved / needs-review. |
 | Looker dashboard, metric, or number | Query the canonical source (Notion DB, Sheet, Looker URL) directly. Brain dashboard summaries drift. The source is authoritative. See `contextual-rules.md` "Brain dashboards drift" rule. |
@@ -45,7 +45,7 @@ Mandatory before any of:
 
 - Slack draft send (any channel, any recipient, any tool)
 - Email draft creation
-- Notion page create or update
+- Private workspace page create or update
 - Meeting script generation (Stage 3 of `meeting-prep`)
 - Weekly review topic body generation
 - Brain file edit that asserts external state (status, ownership, metric, person)

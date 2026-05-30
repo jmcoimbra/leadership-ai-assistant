@@ -1,6 +1,6 @@
 ---
 name: why-lens
-description: WHY-first framing check for any communication that opens a discussion, proposes a new direction, or changes an existing approach. Auto-activates on stakeholder messages, team-level proposals, new ideas, change-of-approach pitches, RFC/PRD intros, meeting talking points, and Slack threads that seed a decision. Based on "Comece pelo porquê" (Start With Why) by Simon Sinek. Source mapping: Notion Books DB `327a84ed-4024-817c-be0b-cdbf75899927`.
+description: WHY-first framing check for any communication that opens a discussion, proposes a new direction, or changes an existing approach. Auto-activates on stakeholder messages, team-level proposals, new ideas, change-of-approach pitches, RFC/PRD intros, meeting talking points, and Slack threads that seed a decision. Based on "Comece pelo porquê" (Start With Why) by Simon Sinek. Source mapping: private books database entry.
 ---
 
 # WHY Lens
@@ -137,4 +137,4 @@ Input draft opening: "We are upgrading RuboCop to 1.65 across all repos."
 - **Concrete rewrites only.** When suggesting a new opening, write the actual sentence in [Brain Owner]'s voice: short, declarative, deterministic, no hedging, no em dashes, no forbidden phrases ("perhaps", "leveraging", "ensuring", "streamlining", "fostering").
 - **Stack with other skills.** Run `why-lens` first (framing), then `writing-docs` (structure) or `slack-communication` (channel, voice) on top. The WHY Check is reusable input for those skills.
 - **Internal-only application.** The frameworks inform the reasoning. Never expose them in user-facing output. The output sounds like [Brain Owner]'s operating brain, not a book report.
-- **Source of depth.** When in doubt about a concept's application, re-derive from the Notion Books DB entry `327a84ed-4024-817c-be0b-cdbf75899927`. Do not invent.
+- **Source of depth.** When in doubt about a concept's application, re-derive from the configured private books database entry. Do not invent.

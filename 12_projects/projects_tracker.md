@@ -31,6 +31,10 @@ Keep last 4 weeks. Archive older entries to `99_archive/` quarterly.
 - **>21 days no commit:** Surface in weekly review
 - **>30 days no commit:** Vision > Execution violation. Resolve in same week.
 
+## Escalation
+
+If an active project has no logged movement for 21 days, decide within 7 days: ship, re-scope, archive, or escalate to the sponsor.
+
 ## AI Integration
 
 - Use AI to scan detail files weekly and surface stale projects in your weekly review.

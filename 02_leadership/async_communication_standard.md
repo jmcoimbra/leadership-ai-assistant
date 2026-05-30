@@ -37,6 +37,10 @@ IMPACT IF NO ACTION: [What happens if this is ignored.]
 4. **Always state impact of inaction** — Make the cost of ignoring your message explicit.
 5. **Keep it under 150 words** — If it's longer, it needs a document, not a message.
 
+## Escalation
+
+If a strategic async message goes unanswered for 48 hours after its deadline, escalate to the owner named in the message with the original ask and impact.
+
 ## AI Integration
 
 Before sending any strategic message, run it through AI with this prompt: "Remove all hedging language. Make the ask explicit. Add a deadline and impact statement. Keep it under 150 words."

@@ -19,26 +19,11 @@ Identity → Career Aspiration (IC) → AI Fluency Snapshot → Growth Goals (30
 
 ## Language Routing
 
-Per `feedback_1on1_language.md` memory:
-- EN: [Direct Report], [Senior IC], [Direct Report], [Team Lead]
-- PT-BR: [Senior IC], [Direct Report], [Direct Report], [Direct Report]
+Set language preference in each individual development profile. Do not infer language from team defaults.
 
-## Parent Page
+## Private Workspace Routing
 
-`344a84ed-4024-8194-aed0-f2b89c30d186` — IDPs — [Brain Owner]'s Team (2026). Private. 8 IC subpages nested underneath.
-
-## IC Page IDs
-
-| IC | Page ID |
-|----|---------|
-| [Team Lead] | `344a84ed-4024-819b-88ba-d4c625be943c` |
-| [Senior IC] | `344a84ed-4024-81ae-916d-c4c4297aca12` |
-| [Direct Report] | `344a84ed-4024-815e-bbaf-c562542459b0` |
-| [Direct Report] | `344a84ed-4024-8137-b9e5-d787f09956f9` |
-| [Direct Report] | `344a84ed-4024-8123-a4ae-c4fd5f9a51d1` |
-| [Direct Report] | `344a84ed-4024-811f-bb3b-efcdb1d4f1e2` |
-| [Senior IC] | `344a84ed-4024-8145-86e7-fb3ff7e1b4c1` |
-| [Direct Report] | `344a84ed-4024-815f-a300-e7226e712f36` |
+Store private page IDs and sharing links outside this public template. In this repo, reference the private system by topic only.
 
 ## [Your Company] AI Tier (Definition Pending)
 
@@ -49,15 +34,15 @@ Two distinct ladders. Do not conflate them:
 
 Until [Your CEO] publishes 7-tier definitions, IDPs reference Zapier V2 tier only. Cross-check ratings against the Capability Artifact Lens in `03_ai_native_transformation/ai_adoption_roadmap.md` — if the IC has not shipped the artifact level expected at their tier, the rating is aspirational.
 
-Escalation: if [Your CEO] has not published 7-tier definitions by 2026-04-30, raise in #rnd-leadership and request a deadline.
+Escalation: if the company AI tier definition is missing by the onboarding deadline, raise it in the leadership forum and request an owner plus publication date.
 
 ## Drafting Rules
 
 - IDP pages are IC-facing. No internal framework names (e.g., no "[Coaching Framework] lens," no "Source of Truth" references).
 - **Impersonate the observation.** [Brain Owner] owns every signal on the page. No third-party attribution ("[Your CTO] 2026-04-10 signal," "per [Peer Manager 2]," "from talent review," "CEO Exceptional recognition," "per peer feedback from X"). If another leader surfaced it, [Brain Owner] takes it as his own before writing it into the IDP.
-- **No internal HR language.** No "flight risk," "talent review," "calibration doctrine," "AI Usage 1:1 dates," "BUGS-XXXX coaching" references. Rewrite as observable behavior in the IC's terms.
+- **No internal HR language.** No "flight risk," "talent review," "calibration doctrine," or internal ticket coaching references. Rewrite as observable behavior in the IC's terms.
 - Confidential personal context (e.g., health, family) excluded from page content.
-- Sharing is manual via Notion UI. MCP cannot grant access. See `mcp-notion.md` Page Sharing & Permissions.
+- Sharing is manual unless the private adapter explicitly supports permissions.
 
 ## Visual Conventions
 
@@ -72,7 +57,6 @@ Escalation: if [Your CEO] has not published 7-tier definitions by 2026-04-30, ra
 
 ## Cross-References
 
-- `mcp-notion.md` — Page Sharing & Permissions (sharing not programmatic; "individual" = private)
 - `voice-profile.md` — Domain Vocabulary table
 - `03_ai_native_transformation/ai_adoption_roadmap.md` — [Your Company] AI 7-tier for AI Fluency Snapshot
 - `12_projects/projects_tracker.md` — idp-convergence initiative

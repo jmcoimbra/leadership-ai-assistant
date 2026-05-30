@@ -89,7 +89,7 @@ Why disler over hoangsonww's Monitor: disler is hook-event-driven on Claude Code
 
 Why CCC moved from SKIP to ADOPT: the prior decision was scoped to "steal skills into the brain." The runtime question is different. CCC's session launcher, PR tab, calendar / todo aggregation, and console overlay are exactly the daily-driver surface Conductor + vanilla CLI fail at. Krisp source plugin (replacing CCC's [other-transcription-tool] coupling) deferred until daily-driver use exposes the actual friction.
 
-Full plan: `~/.claude/plans/system-instruction-you-are-working-elegant-backus.md`. Initiative: `12_projects/personal_ai_tool.md`.
+Full plan belongs in the private planning system when it contains owner-specific details.
 
 ## AI Integration
 
@@ -124,7 +124,7 @@ Brain converged to drn/dots architecture in a single session. All 4 waves shippe
 
 **Closed-loop self-correction:** `/improve` Step 0.5 detects any new `memory/*.md` write as RED-flag anti-pattern. `/dream` is dormant — fires only when /improve catches a rogue write, then routes it. Future sessions cannot accidentally re-introduce the memory tier.
 
-**Source:** `12_projects/brain_memory_redesign.md` (initiative file, full wave-by-wave detail). Plan: `~/.claude/plans/system-instruction-you-are-working-woolly-karp.md`. Captured 2026-04-27.
+**Source:** private initiative plan, captured as a generic pattern here on 2026-04-27.
 
 ## v0.2 Argus Pivot (2026-05-26)
 
@@ -237,4 +237,3 @@ Clean, single-purpose upstream PRs to [Your CDO]'s repos merge fast. PR #2 (slac
 - Single-commit, single-purpose PRs ride the fast path.
 - Body should lead with the bug story (concrete repro), not the patch summary.
 - Include backward-compat note explicitly; reduces reviewer questions.
-

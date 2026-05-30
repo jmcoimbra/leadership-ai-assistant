@@ -6,7 +6,7 @@ description: Synthesize CTO trajectory evidence from 14+ brain files into a 5-mi
 
 Synthesize scattered career evidence into a structured brief for [Your CTO] 1:1 preparation.
 
-Read `.claude/commands/_preamble.md` for shared constants.
+Read `.claude/commands/_preamble.md` for shared constants and adapter rules. External systems are optional in the public template.
 
 ## Usage
 
@@ -47,14 +47,14 @@ Read these files (all required):
 8. `04_team_brains/_template_team_brain.md` — QA block events, authority assertions
 9. `08_metrics/_template_team_scorecard.md` — team AI usage data
 10. `08_metrics/_template_team_scorecard.md` — initiative completions
-11. `03_ai_native_transformation/[your-company]_ai_tier_framework.md` — team heat map (legacy CWR pending re-grade)
+11. `03_ai_native_transformation/ai_adoption_roadmap.md` — team heat map and adoption evidence
 
 **Compliance/execution tier:**
 12. `11_compliance_security/_template_compliance_program.md` — compliance contributions
 13. `12_projects/projects_tracker.md` — initiative completion status
 
 **External:**
-14. Goals Tracker DB (data source per `_preamble.md`) — habit repetition counts
+14. Optional goals tracker or calendar source when configured — habit repetition counts
 
 ## Phase B: Determine Time Window
 

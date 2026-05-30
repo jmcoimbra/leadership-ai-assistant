@@ -45,3 +45,7 @@ Data collection owner: [Team Lead]. Deadline: [YYYY-MM-DD].
 ## Escalation
 
 If productivity deltas are not measured against these baselines by the Phase 2 deadline in `ai_adoption_roadmap.md`: Phase 1 investment is unproven. Escalate to leadership with data request.
+
+## AI Integration
+
+Use AI to cluster repeated manual work, identify candidate workflows, and draft measurement plans. The team lead confirms actual baselines before the assessment is marked active.

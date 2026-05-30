@@ -15,6 +15,14 @@ Define the 3-5 pillars your engineering org bets on this year. Every initiative,
 | 4 | [Pillar 4 Name] | | | |
 | 5 | [Pillar 5 Name] | | | |
 
+## Escalation
+
+If any active initiative cannot map to one of these pillars, decide within 7 days: add a pillar, rewrite the initiative, or archive it.
+
+## AI Integration
+
+Use AI to classify projects, people development goals, and operating metrics against these pillars during weekly review. Any unclassified item is flagged for owner review.
+
 ## How to Use
 
 - **Every brain file maps to one pillar** (header: `> Pillar: N`).

@@ -19,7 +19,6 @@ echo "--- Run: $(date '+%Y-%m-%d %H:%M:%S %z') ---" >> "$LOG"
 # Adapt this prompt and allowedTools to your task.
 # Example: run a daily morning scan that drafts a status message.
 claude -p \
-  --dangerously-skip-permissions \
   --max-budget-usd 0.50 \
   --allowedTools "Read,Write,Edit,Glob,Grep" \
   "Read AGENTS.md and 07_operating_rhythms/weekly_review.md. Run the Monday weekly review checklist against current brain state. Draft a summary." \

@@ -18,7 +18,7 @@ Approximate crosswalk of Zapier V2 and peer EM frameworks. Used for translating 
 | Transformative | Accelerating | Championing | AI as autonomous workflow, human designs and reviews |
 | — | Multiplying | — | Re-engineers how the team/org operates with AI |
 
-Source threads: #rnd-leadership Apr 8 (Zapier rubric + hiring), Apr 17 ([Your CEO] 7-tier adopted as canonical).
+Source threads: leadership calibration discussions on Zapier rubric and company AI tiers.
 
 ## What Zapier Adds
 

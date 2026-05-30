@@ -22,3 +22,15 @@ Run this during weekly review:
 - [ ] Anyone without a 1:1 in 21+ days?
 - [ ] Anyone with stale growth goals (no movement in 30 days)?
 - [ ] Anyone whose talent-review tier is older than 1 cycle?
+
+## Measurable Outcome
+
+Every direct report has a linked development profile within 7 days of joining and a 1:1 logged within the configured cadence.
+
+## Escalation
+
+If any direct report is missing a profile or misses cadence by 21 days, flag RED in weekly review and schedule the next 1:1 within 48 hours.
+
+## AI Integration
+
+Use AI to compare the roster against people profiles, detect stale 1:1 cadence, and draft reminders for the brain owner.

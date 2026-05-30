@@ -72,6 +72,14 @@ Long-running notes on what this person wants from their career — separate from
 
 - [Behaviors specific to this person that signal trouble — e.g., goes quiet when overloaded]
 
+## Escalation
+
+If no 1:1 is logged for 21 days, schedule the next 1:1 within 48 hours. If a growth goal has no evidence for 30 days, reset the goal with the direct report in the next 1:1.
+
+## AI Integration
+
+Use AI to prepare 1:1 agendas, extract action items from notes, detect stale growth goals, and draft feedback in observed-behavior language. Do not store raw sensitive personal context in this file.
+
 ## Cross-References
 
 - `07_operating_rhythms/one_on_one_protocol.md` — 1:1 prep and execution

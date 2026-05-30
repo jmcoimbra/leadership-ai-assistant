@@ -359,7 +359,7 @@ Also:
 
 Second use: `/mobile-team:review-checklist` ported from `[your-org]-manager-plugins/managers` to `[your-org]-team-claude-plugins/mobile-team` (PR #54, 2026-04-24, landed v0.34.0 → v0.34.1 after [Team Lead]'s 3-finding review).
 
-Contract: **do NOT change** canonical IDs (Notion page `32ca84ed-4024-8107-b8a1-eb88f0a6eab3`, DB `9d1b46aa-f9a3-4806-bf45-28f1d14ccfe1`), `{{CANONICAL_SECTIONS}}` embedding contract, drift-guard wording, or Authority rule text. Those are the org-wide source-of-truth contracts that both plugins must keep identical.
+Contract: **do NOT change** canonical private workspace IDs, `{{CANONICAL_SECTIONS}}` embedding contract, drift-guard wording, or Authority rule text. Those are the org-wide source-of-truth contracts that both plugins must keep identical.
 
 ## Miro Plugin ([your-org]-ai/plugins)
 
@@ -382,7 +382,7 @@ Reusable skill templates ported across personal harnesses:
 - **session-wrap:** session wrap-up.
 - **interview:** interview skill.
 
-Source: Slack `#rnd-operations` thread (2026-03-25).
+Source: shared engineering operations thread (2026-03-25).
 
 ## Conductor Workspace Plugin-Agent Gap
 

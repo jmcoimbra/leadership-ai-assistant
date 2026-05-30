@@ -17,7 +17,7 @@
 | Internal-critical | [your-org]-core (sidekiq_segmentation), [your-org]-offer | 99.5% | 3.6 hr/month | Batch/async. OOM on segmentation already consuming budget |
 | Internal-support | [your-org]-admin, [your-org]-[your-idp-tool] | 99.0% | 7.2 hr/month | Internal tools. Lower cost of brief outages |
 
-**Error budget rule (SRE Ch3):** If error budget is spent, freeze non-critical changes on that service until budget recovers. This replaces vibes-based prioritization. Example: sidekiq_segmentation OOM (24% of hourly windows peak >1900 MB per BUGS-4025). If that exceeds 99.5% budget, it is a P1. If within budget, it is backlog.
+**Error budget rule (SRE Ch3):** If error budget is spent, freeze non-critical changes on that service until budget recovers. This replaces vibes-based prioritization. Example: background worker OOM (24% of hourly windows peak >1900 MB in sampled incident data). If that exceeds 99.5% budget, it is a P1. If within budget, it is backlog.
 
 ## PagerDuty Auto-Resolve Paging Behavior
 
@@ -49,7 +49,7 @@ Auto-resolved incidents still page on-call before resolving. The sequence: alert
 ### Throughput SLI (segmentation-specific)
 - **Metric:** Hourly segmentation jobs completed without OOM / total scheduled
 - **Source:** ECS task status + Datadog sidekiq.job traces
-- **Baseline:** ~76% (24% OOM windows per BUGS-4025)
+- **Baseline:** ~76% (24% OOM windows in sampled incident data)
 
 ## Toil Inventory
 

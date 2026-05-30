@@ -253,7 +253,7 @@ The reframe converts a directive doc into a joint working doc using 7 frameworks
 | Table with one column | Not a table | Rewrite as a list |
 | Screenshot as the only source of truth | Unsearchable, rots with UI | Caption + link to canonical source |
 | Recommendations in a "discussion starter" doc | User asked for surface, the draft delivered fixes | Cut "should/recommend/we propose" lines. Pure observation only. Closing line opens questions, does not answer them. Source: 2026-04-27 PRD scope drift Section 4 v1 overshoot |
-| Operational hot-fix cited as PRD scope drift | Conflates runtime/ops issues with spec gaps | PRD scope drift = spec missed the requirement at write-time. Operational hot-fix = launch worked but operational state needs ongoing tuning. Drop the example if it is the latter. Source: 2026-04-27 Mamba+/Taco Bamba SendGrid DKIM (BUGS-4023, BUGS-3932) miscategorized as [Mobile Team] PRD-drift evidence |
+| Operational hot-fix cited as PRD scope drift | Conflates runtime/ops issues with spec gaps | PRD scope drift = spec missed the requirement at write-time. Operational hot-fix = launch worked but operational state needs ongoing tuning. Drop the example if it is the latter. Source: 2026-04-27 email-domain hotfix miscategorized as [Mobile Team] PRD-drift evidence |
 
 ## Co-Activation with Other Skills
 

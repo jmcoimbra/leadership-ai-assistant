@@ -200,4 +200,4 @@ Source: 2026-05-15 JULI-139 MVP scope consult. 3 of 12 doc recommendations flipp
 
 ## Source
 
-Re-derive depth from Notion Books DB entry `35aa84ed-4024-8171-b404-c6b285792372`. Brain tracker: `10_career/algorithms_to_live_by_book.md`. Raw distillation: `99_archive/algorithmic_thinking.md`.
+Re-derive depth from the private books database when configured. Raw distillation: `99_archive/algorithmic_thinking.md`.

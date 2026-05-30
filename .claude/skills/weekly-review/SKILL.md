@@ -6,7 +6,7 @@ description: Monday weekly review. Scans all brain state, generates ranked topic
 
 Scan full brain state, generate ranked topics, audit all operating domains, and produce next week's plan. This is your Monday operating rhythm. Without it, initiatives drift, metrics stale, and the brain decays.
 
-Read `.claude/commands/_preamble.md` for shared constants (Notion DB IDs, Slack channel IDs, team roster path, GH CLI workaround).
+Read `.claude/commands/_preamble.md` for shared constants and adapter rules. In the public template, external systems are optional. Use local brain files first and label unavailable external facts as unverified.
 
 **Runtime:** 30-45 minutes. Non-negotiable.
 
@@ -35,7 +35,7 @@ Pattern source: nilbuild/diffity tour skill, "pick a mode first" as the first in
 | Draft external communications | Autonomous (never send) |
 | Create calendar events, update Jira, post to Slack | Gated |
 
-| Save weekly review to Notion | Autonomous (create automatically, report URL). Personal DB, only [Brain Owner] reads. Source: 2026-05-17 user correction "this type doesn't need to be gated, only myself is reading this notion page". |
+| Save weekly review to a private destination | Gated unless the brain owner has explicitly configured an autonomous destination in their private setup. |
 
 **Context window note:** This command reads 15-20 brain files. If output quality degrades in later steps, defer Steps 7-9 to a follow-up invocation.
 
@@ -69,7 +69,7 @@ Run AFTER Phase A loads, BEFORE Step 0 generates topics. Catches reframes that i
 
 **Method:**
 1. Read `99_archive/`. Extract entries dated within the last 14 days.
-2. For each Phase A metric file (`stability_metrics.md`, `ai_adoption_metrics.md`, `leadership_influence_metrics.md`), read the bottom 3 rows of every Monthly / Quarterly / Weekly Tracking table.
+2. For each local scorecard file in `08_metrics/`, read the bottom 3 rows of every Monthly / Quarterly / Weekly Tracking table when present.
 3. Cross-reference: any entry that changes a target, baseline, escalation trigger, or status becomes a "recent reframe."
 4. List the corresponding stale lines (top-of-file scorecard rows that have not been updated to match the reframe).
 
@@ -528,7 +528,7 @@ Checks:
 2. Am I making progress on the current quarter's milestone?
 3. Review `10_career/_template_career_trajectory.md`: any goal still "Not started" that should have moved?
 4. Review mentorship commitments in `executive_mentorship_tracker.md`: any overdue action plans? Any insights with "Applied? No" for >30 days?
-5. **Query Goals Tracker DB live (mandatory).** Do NOT cite the static habit-rep snapshot in `executive_mentorship_tracker.md` (e.g., "Future-value 13/21" from 2026-05-01 triage); that snapshot decays daily as new reps log. Instead, run `mcp__claude_ai_Notion__notion-query-database-view` against the canonical view URL `https://www.notion.so/31aa84ed402480a597acced6ccf8c8da?v=31aa84ed402480df9b96000c48f9e2b9` (All Goals view, data source `31aa84ed-4024-80dd-b9a9-000bb3868086`), filter for `Goal name` containing `Habit:`, read live `Start value` per row. `notion-query-database-view` requires a view URL (with `?v=`), not a bare data source ID; if the canonical URL ever returns 400, recover by running `notion-fetch` on the DB ID first and reading the live view URL from the schema. Threshold check: flag if <7x after 2 weeks from creation, <21x after 4 weeks. If the MCP call fails or rate-limits, fall back to the static snapshot but label it explicitly in the output: `"DB unavailable, citing YYYY-MM-DD snapshot (may be N days stale)"`. Source: 2026-05-09 weekly review cited 8-day-old static numbers as if current. 2026-05-24 run guessed a view URL and got 400. Step 6b enforcement scoring depends on accurate reps; stale numbers produce wrong YELLOW/RED calls.
+5. **Query the goals tracker live when configured.** Do NOT cite static habit-rep snapshots as current. Fetch the configured goals tracker view from the private adapter, filter for `Goal name` containing `Habit:`, and read live `Start value` per row. Threshold check: flag if <7x after 2 weeks from creation, <21x after 4 weeks. If the connector fails or is unavailable, fall back to the static snapshot but label it explicitly in the output: `"tracker unavailable, citing YYYY-MM-DD snapshot (may be N days stale)"`.
 6. **Retrospective habit scan:** Review this week's meeting scripts and Slack activity (from `.context/slack-triage-latest.md` if available) for habit evidence missed by real-time detection. The 4 habits: Reframe limiting beliefs, Future-value framing, Circle of Influence filter, Proactive response choice. For each newly detected instance, log to the matching `Habit:` page in Goals Tracker DB (fetch page → append repetition log row → bump Start value). Report newly logged instances in output.
 7. Purpose alignment: was this week's effort aligned with CTO trajectory purpose, or reactive drift?
 8. Obstinacao vs. Teimosia: any stalled initiative trying the same failed approach twice? If yes, force alternative path within 7 days.
@@ -883,8 +883,8 @@ After generating the final report and proposing brain file updates, save the rev
    - This is mandatory — do not omit the icon.
 3. **Content:** The full Weekly Review Report (Health Dashboard, Topics, Priorities, All Action Items, Say No To) plus the proposed brain file updates list
 4. Do NOT include the detailed step-by-step outputs (Steps 0-9) in Notion - only the consolidated Final Output section and proposed updates. The full detail lives in the brain commit.
-5. **Strip brain-internal paths from the Notion content before creating the page.** No `00_foundation/...`, `01_strategy/...`, `02_leadership/...`, `08_metrics/...`, `09_people/...`, `10_career/...`, `11_compliance_security/...`, `12_projects/...`, `13_infrastructure/...`, `99_archive/...`, `context/...`, `.claude/...`, `CLAUDE.md`, `AGENTS.md` paths. Replace with the substance directly (e.g., write "PCI evidence" not "compliance_operational_model.md", write "the assertiveness tracker" not "context/knowledge/voice-profile.md"). Brain file commit SHAs and external IDs (Notion page IDs, Jira keys, PR URLs) are fine. Source: 2026-05-09 Notion create call to `35ca84ed-4024-81e4-a1ab-d8b51d0be432` was blocked by `check-brain-paths.sh` hook on first attempt because the "Brain Updates Applied This Session" + "Key Patterns Captured" sections embedded paths. Hook caught it (working as designed); skill should catch it first.
-6. This is an AUTONOMOUS action - create the page and report the URL. Do not ask for approval. Personal DB, only [Brain Owner] reads. Source: 2026-05-17 user correction. Brain-file edits remain gated separately.
+5. **Strip brain-internal paths from private-destination content before creating the page.** No `00_foundation/...`, `01_strategy/...`, `02_leadership/...`, `08_metrics/...`, `09_people/...`, `10_career/...`, `11_compliance_security/...`, `12_projects/...`, `13_infrastructure/...`, `99_archive/...`, `context/...`, `.claude/...`, `CLAUDE.md`, `AGENTS.md` paths. Replace with the substance directly (e.g., write "PCI evidence" not "compliance_operational_model.md", write "the assertiveness tracker" not "context/knowledge/voice-profile.md"). Brain file commit SHAs and external IDs from configured private systems are fine.
+6. Creating external or private-destination pages is gated unless the brain owner configured an autonomous destination in the private adapter. Brain-file edits remain gated separately.
 
 ## Error Handling
 
