@@ -48,6 +48,8 @@ PUBLIC_AWS_IDS = {
     "658327ea-f89d-4fab-a63d-7e88639e58f6",
     "88a5eaf4-2fd4-4709-b370-b4c650ea3fcf",
 }
+CONFLICT_START_END = ("<<<<<<< ", ">>>>>>> ")
+CONFLICT_SEPARATOR = "======="
 
 
 def rel(path: Path) -> str:
@@ -121,6 +123,16 @@ def check_refs(errors: list[str]) -> None:
                 errors.append(f"{rel(path)}: broken local reference `{target}`")
 
 
+def check_conflicts(errors: list[str]) -> None:
+    for path in iter_files():
+        if path.suffix not in {".md", ".json", ".yaml", ".yml", ".sh", ".py", ".txt", ".example"}:
+            continue
+        text = path.read_text(errors="ignore")
+        for line_no, line in enumerate(text.splitlines(), start=1):
+            if line.startswith(CONFLICT_START_END) or line == CONFLICT_SEPARATOR:
+                errors.append(f"{rel(path)}:{line_no}: unresolved merge conflict marker")
+
+
 def check_private_data(errors: list[str], warnings: list[str]) -> None:
     for path in markdown_files():
         text = path.read_text(errors="ignore")
@@ -150,6 +162,7 @@ def main() -> int:
     strict_placeholders = "--strict-placeholders" in sys.argv
     check_governance(errors, warnings)
     check_refs(errors)
+    check_conflicts(errors)
     check_private_data(errors, warnings if strict_public else [])
     if strict_placeholders:
         check_placeholders(warnings)

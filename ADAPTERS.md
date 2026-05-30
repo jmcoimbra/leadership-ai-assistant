@@ -55,6 +55,10 @@ Before final output:
 - Run the relevant `.claude/hooks/*.sh` scripts against outbound drafts.
 - Do not send external communication without the brain owner's explicit approval.
 
+## Git Safety
+
+Git read commands can run in parallel. Git commands that mutate repository state must run alone: `git add`, `git commit`, `git merge`, `git rebase`, `git cherry-pick`, `git push`, and any command that writes `.git/index`. After a merge conflict, resolve files, run `git add` only after no other git process is active, then run the audit before committing.
+
 ## Adapter Maintenance
 
 When adding a new durable behavior:
