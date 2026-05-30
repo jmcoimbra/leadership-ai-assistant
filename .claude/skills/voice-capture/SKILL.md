@@ -82,7 +82,7 @@ After the owner confirms which findings to codify:
 1. **Update `context/knowledge/voice-profile.md`** in place. Preserve the existing section structure (Greetings, Sentence Structure, Deterministic Language, Anti-Patterns, etc.). Replace the example text with patterns confirmed for THIS owner.
 2. **Update `.claude/names.txt`** with any name misspellings or banned tool names the owner identified.
 3. **Update `.claude/hooks/check-pillar.sh`** if the owner uses different pillar names (or wants the hook disabled).
-4. **Append a session log** to `99_archive/voice_capture_sessions.md` with the date, sample count, and patterns codified. Do not store the raw samples — they may be sensitive.
+4. **Append a session log** to `99_archive/voice_capture_sessions.md` following the format defined in that file. Required fields: date and session type, samples analyzed (counts per source), confident patterns codified, new forbidden words, new banned patterns, rules removed from prior profile, open questions deferred, voice-profile.md diff summary, names.txt updates. Do not store the raw samples. They may be sensitive.
 
 ## Anti-Patterns
 

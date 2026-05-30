@@ -18,6 +18,8 @@ Senior Engineering Managers who want an AI-native brain that:
 
 ## How to Adopt
 
+> **Run `voice-capture` (step 6 below) before filling any templates.** The shipped voice profile is not yours. If you skip it and start drafting, the AI will write in someone else's voice and you will have to redo the work.
+
 1. **Clone this repo locally.** Do not push your filled-in copy to a public remote — it will contain your team's data.
 2. **Read `AGENTS.md`** to see the always-on rules your agent will follow.
 3. **Run the first-use checklist** in `FIRST_RUN.md`.
@@ -27,7 +29,7 @@ Senior Engineering Managers who want an AI-native brain that:
    - `00_foundation/brain_governance.md` — set your pillars and dates.
    - `config/team.yaml.example` — copy to `config/team.yaml`, fill in your teams.
    - `.claude/names.txt` — add forbidden patterns for the names hook.
-6. **Capture YOUR voice.** The shipped `context/knowledge/voice-profile.md` is a starting voice, not yours. Run the `voice-capture` skill (`.claude/skills/voice-capture/SKILL.md`) with 10-20 samples of your own writing (Slack, commits, docs) and let it rewrite the voice profile to match how you actually communicate.
+6. **Capture YOUR voice (day 1, before drafting).** The shipped `context/knowledge/voice-profile.md` is a starting voice, not yours. Run the `voice-capture` skill (`.claude/skills/voice-capture/SKILL.md`) with 10-20 samples of your own writing (Slack, commits, docs) and let it rewrite the voice profile to match how you actually communicate. Every session is logged to `99_archive/voice_capture_sessions.md`.
 7. **Fill the templates** in `09_people/`, `10_career/`, `11_compliance_security/`, `12_projects/`. Use the `_template_*.md` files as starting points.
 8. **Run validation** with `python3 scripts/audit_brain.py`.
 9. **Run your first weekly review** using `07_operating_rhythms/weekly_review.md`.
