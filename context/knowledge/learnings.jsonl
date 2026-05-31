@@ -1,0 +1,1 @@
+{"ts":"2026-05-31T21:27:18Z","type":"tool","key":"cortex_review_cli_auth_fallback","insight":"If claude -p /cortex:review fails with 401 before command execution, do not retry; apply local Cortex review rubrics manually and fix findings before merge.","confidence":9,"source":"observed","files":["context/knowledge/plugin-architecture.md"],"session":"1769722038"}

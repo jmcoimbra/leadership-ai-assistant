@@ -401,3 +401,11 @@ In Conductor workspaces, plugin Skills load and execute, but their nested Task s
 **Workaround:** When `[engineering-toolkit]:review` (or any plugin Skill that fans out to nested subagents) is needed in a Conductor workspace, fall back to manual review for small PRs (≤10 files, ≤200 lines diff). The multi-agent ceremony adds little signal over a careful read. For larger PRs, run `/pr review` from a non-Conductor session. Worth flagging to the [engineering-toolkit] repo owner so plugin agents register correctly across all session types.
 
 Source: 2026-04-29 [your-org]-app-preview PR #10 review fell back to manual review across all 7 perspectives. 4 findings raised, all addressed before merge.
+
+## Cortex Review CLI Authentication Failure
+
+The Cortex plugin command may be installed while the underlying Claude CLI cannot authenticate. In that state, `claude -p "/cortex:review ..."` exits with `401 Invalid authentication credentials` before the Cortex review command can run.
+
+**Fallback path:** Do not retry the same command. Read the local Cortex review command and agent files, then apply the Cortex rubrics manually against the diff. Use the correctness, security, performance, deployment-risk, reversibility, and QA lenses. Record that the automated Cortex invocation failed at the authentication layer, then fix every manual-review finding before merge.
+
+**Source:** 2026-05-31 leadership-ai-assistant decision-flow governance session. `claude -p "/cortex:review --agents=correctness,security,performance,deployment-risk,reversibility,qa"` failed with `401 Invalid authentication credentials`; manual Cortex rubric review found one QA/correctness gap and added a regression test.
