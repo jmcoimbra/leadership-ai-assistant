@@ -42,9 +42,9 @@ This is your Monday operating rhythm. Without a weekly review, initiatives drift
 - [ ] Did I give specific, constructive feedback to at least one person this week?
 
 ### 5. AI Check (5 min)
-- [ ] Are teams using their AI workflows this week?
-- [ ] Any new AI opportunity identified?
-- [ ] Did I use AI in my own work this week? (Eat your own cooking.)
+- [ ] Which team decision flows used AI this week?
+- [ ] Which AI workflow lacks a decision owner, trace, exception trigger, or flow metric?
+- [ ] Did AI reduce decision latency, validation queue depth, rework rate, defect leakage, error rate, or MTTR this week?
 
 ### 6. Career Check (5 min)
 - [ ] Review `10_career/` — did I demonstrate any growth-target competency this week?
@@ -77,7 +77,11 @@ If you skip the weekly review 2 weeks in a row: the brain is dying. Force a 1-ho
 
 ## AI Integration
 
-Use AI to pre-generate the weekly review by pulling data from: ticket tracker (bugs, tickets), chat (key threads), CI/CD (release data), and your calendar (meetings attended). You review and annotate — AI does the data gathering.
+| Decision | AI role | Human owner | Evidence inputs | Pass/fail criteria | Trace | Exception trigger | Flow metric |
+|----------|---------|-------------|-----------------|--------------------|-------|-------------------|-------------|
+| What needs owner action in this weekly review? | recommend | [Brain Owner] | Project tracker, scorecards, people files, PRs, tickets, chat threads, CI/CD data, calendar, AI decision contracts | Review output names top actions with owner, deadline, escalation trigger, and source evidence | Weekly review notes | Missing owner, stale metric, or AI workflow without decision contract blocks closeout | Open action age and stale metric count |
+
+Use AI to pre-generate the weekly review from source data. The brain owner reviews, annotates, and records decisions.
 
 ## Cross-References
 

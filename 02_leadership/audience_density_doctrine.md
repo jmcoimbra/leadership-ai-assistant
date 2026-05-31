@@ -36,4 +36,8 @@ Every executive-facing update states the decision, impact, owner, and deadline i
 
 ## AI Integration
 
+| Decision | AI role | Human owner | Evidence inputs | Pass/fail criteria | Trace | Exception trigger | Flow metric |
+|----------|---------|-------------|-----------------|--------------------|-------|-------------------|-------------|
+| Does the draft expose only the information this audience should receive? | validate | [Brain Owner] | Draft response, audience type, approved policy language, internal gap notes | External draft removes internal implementation detail and cites only approved public-facing facts | Final draft and source policy link | Any sentence exposing engineering gaps triggers rewrite or manager review | Rewrites caused by audience mismatch |
+
 Before sending external messages, run them through AI with: "Rewrite this for [audience]. Remove internal implementation detail. Reference policy/certification language only. Flag any sentence that exposes engineering gaps."

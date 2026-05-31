@@ -43,4 +43,8 @@ If a strategic async message goes unanswered for 48 hours after its deadline, es
 
 ## AI Integration
 
+| Decision | AI role | Human owner | Evidence inputs | Pass/fail criteria | Trace | Exception trigger | Flow metric |
+|----------|---------|-------------|-----------------|--------------------|-------|-------------------|-------------|
+| Is a strategic message ready to send? | validate | [Brain Owner] | Draft message, intended audience, required decision, owner, deadline, impact of inaction | Message states context, ask, owner, deadline, and impact within 150 words | Final draft and sent-message log | Missing ask, owner, deadline, or impact blocks send | Rework cycles before send |
+
 Before sending any strategic message, run it through AI with this prompt: "Remove all hedging language. Make the ask explicit. Add a deadline and impact statement. Keep it under 150 words."

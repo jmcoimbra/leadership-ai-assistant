@@ -61,6 +61,10 @@ If no milestone evidence is logged during a quarter, schedule a career developme
 
 ## AI Integration
 
+| Decision | AI role | Human owner | Evidence inputs | Pass/fail criteria | Trace | Exception trigger | Flow metric |
+|----------|---------|-------------|-----------------|--------------------|-------|-------------------|-------------|
+| Which career milestone needs evidence or manager discussion this cycle? | recommend | [Brain Owner] | Projects, reviews, feedback, operating rhythms, competency targets, evidence log | Evidence maps to a target competency and has a source; missing quarterly evidence triggers career discussion | Evidence log and manager 1:1 prep | No milestone evidence during a quarter triggers manager 1:1 within 14 days | Milestone evidence gap count |
+
 Use AI to collect evidence from projects, reviews, feedback, and operating rhythms, then map each item to a target competency. The brain owner verifies evidence before using it in career conversations.
 
 ## Cross-References

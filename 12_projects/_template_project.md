@@ -43,7 +43,11 @@ Date-stamped log of decisions made on this project. Format: `[YYYY-MM-DD]: [Deci
 
 ## AI Integration
 
-How the agent participates in this project. Be specific — which command, which skill, what data.
+| Decision | AI role | Human owner | Evidence inputs | Pass/fail criteria | Trace | Exception trigger | Flow metric |
+|----------|---------|-------------|-----------------|--------------------|-------|-------------------|-------------|
+| [Decision the project needs AI to draft, recommend, validate, decide, or monitor] | [AI role] | [Person] | [Facts, source files, metrics, tickets, customer signals] | [Pass/fail criteria] | [Decision log / PR / ticket / dashboard] | [Condition that forces human review] | [Decision latency / rework rate / error rate / MTTR] |
+
+Be specific about which command, skill, and data source AI uses. A project AI workflow is not active until the decision owner and trace are named.
 
 ## Cross-References
 

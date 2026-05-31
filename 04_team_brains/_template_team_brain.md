@@ -45,7 +45,11 @@ Index of operational procedures owned by this team. One-line description + link.
 
 ## AI Integration
 
-How AI shows up in this team's daily work. Reference the relevant entries in `03_ai_native_transformation/ai_how_layer.md`.
+| Decision | AI role | Human owner | Evidence inputs | Pass/fail criteria | Trace | Exception trigger | Flow metric |
+|----------|---------|-------------|-----------------|--------------------|-------|-------------------|-------------|
+| [Decision this team's AI workflow changes] | [draft / recommend / validate / decide / monitor] | [Team Lead] | [Dashboards, tickets, PRs, incidents, customer signals] | [Pass/fail criteria for the decision] | [Where the decision record lives] | [Condition that routes to human review] | [Decision latency / rework rate / error rate / MTTR] |
+
+Reference the relevant entries in `03_ai_native_transformation/ai_how_layer.md`. A team AI workflow is not active until this table has a named decision, human owner, evidence inputs, trace, exception trigger, and flow metric.
 
 ## Escalation Triggers
 

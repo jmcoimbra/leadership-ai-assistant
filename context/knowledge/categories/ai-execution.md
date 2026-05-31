@@ -22,6 +22,7 @@ Load when the task involves:
 
 | File | Why Load |
 |------|----------|
+| `agentic-sdlc-decision-flow.md` | AI workflow decision roles, evidence, trace, exception path, and flow metrics |
 | `prompt-engineering.md` | 5 principles, structured output validation, prompt chaining, self-consistency |
 | `plugin-architecture.md` | Plugin repos, marketplace sync, skill design, complexity ladder |
 | `claude-code-hooks.md` | PreToolUse / PostToolUse / Stop hook patterns, exit codes, blocking semantics |

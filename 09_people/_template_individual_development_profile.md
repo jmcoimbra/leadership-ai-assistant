@@ -78,6 +78,10 @@ If no 1:1 is logged for 21 days, schedule the next 1:1 within 48 hours. If a gro
 
 ## AI Integration
 
+| Decision | AI role | Human owner | Evidence inputs | Pass/fail criteria | Trace | Exception trigger | Flow metric |
+|----------|---------|-------------|-----------------|--------------------|-------|-------------------|-------------|
+| Which development topic or follow-up needs manager action before the next 1:1? | recommend | [Brain Owner] | 1:1 log, growth goals, action items, delegation maturity, performance observations | Agenda item is evidence-backed, tied to a goal or risk, and has owner and next action | Next 1:1 agenda and profile update | No 1:1 in 21 days or no goal evidence in 30 days triggers scheduling or goal reset | Stale growth-goal count and action-item age |
+
 Use AI to prepare 1:1 agendas, extract action items from notes, detect stale growth goals, and draft feedback in observed-behavior language. Do not store raw sensitive personal context in this file.
 
 ## Cross-References

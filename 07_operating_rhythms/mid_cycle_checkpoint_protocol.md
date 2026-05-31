@@ -144,6 +144,8 @@ Present the evidence. Then shift the conversation forward — what does the seco
 
 ## AI Integration
 
-- **Evidence compilation:** Feed AI all source files. Prompt: "For each of my N development goals, compile the evidence that exists. For each, identify: strongest evidence, weakest evidence, and gaps. Be brutally honest."
-- **Self-assessment review:** Feed AI your self-assessment draft. Prompt: "Is this honest or is it hedging? Score the honesty 1-5. Flag any language that sounds like excuse-making. Rewrite the gaps to be more direct."
-- **Rehearsal:** Practice the manager presentation with AI playing your manager. The manager will ask hard follow-up questions. Practice staying direct, data-backed, and non-defensive.
+| Decision | AI role | Human owner | Evidence inputs | Pass/fail criteria | Trace | Exception trigger | Flow metric |
+|----------|---------|-------------|-----------------|--------------------|-------|-------------------|-------------|
+| Is each development goal on track at the midpoint? | validate | [Brain Owner] | Development goals, evidence log, project outcomes, feedback, self-assessment draft | Each goal has evidence, honest status, gap, next action, and owner | Mid-cycle checkpoint notes | Goal with zero evidence or self-assessment score 2 or below triggers course-correction 1:1 | Evidence-gap count and course-correction latency |
+
+Use AI for evidence compilation, self-assessment review, and rehearsal. The brain owner verifies the evidence and owns the final manager conversation.

@@ -61,8 +61,8 @@ Define per direct report in their `09_people/<name>.md` file. Default recommenda
 
 ## AI Integration
 
-Use AI to:
-- Pre-generate 1:1 agendas from the person's `09_people/` file
-- Identify patterns across 1:1 logs: are the same action items recurring? (indicates a systemic issue)
-- Suggest delegation opportunities based on the person's growth trajectory
-- Draft feedback based on recent performance observations
+| Decision | AI role | Human owner | Evidence inputs | Pass/fail criteria | Trace | Exception trigger | Flow metric |
+|----------|---------|-------------|-----------------|--------------------|-------|-------------------|-------------|
+| Which 1:1 topic needs manager attention now? | recommend | [Brain Owner] | Person file, last 1:1, open action items, growth goals, delegation maturity, performance observations | Agenda includes evidence-backed topic, decision or feedback need, owner, and follow-up action | 1:1 agenda and person-file log | Recurring action item, stale goal, or 21-day log gap triggers explicit discussion | Action-item age and stale goal count |
+
+Use AI to pre-generate 1:1 agendas, identify recurring action items, suggest delegation opportunities, and draft feedback based on recent performance observations.

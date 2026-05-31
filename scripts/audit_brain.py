@@ -43,6 +43,21 @@ PLACEHOLDER_ALLOWED = {
 
 PRIVATE_ID_RE = re.compile(r"\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b", re.I)
 HEADER_RE = re.compile(r"Owner:\s*.+\|\s*Pillar:\s*.+\|\s*Status:\s*.+\|\s*Last Audit:")
+AI_INTEGRATION_HEADING_RE = re.compile(r"^## AI Integration\s*$", re.M)
+AI_DECISION_CONTRACT_HEADER = (
+    "| Decision | AI role | Human owner | Evidence inputs | Pass/fail criteria | "
+    "Trace | Exception trigger | Flow metric |"
+)
+AI_DECISION_CONTRACT_FIELDS = (
+    "Decision",
+    "AI role",
+    "Human owner",
+    "Evidence inputs",
+    "Pass/fail criteria",
+    "Trace",
+    "Exception trigger",
+    "Flow metric",
+)
 LOCAL_REF_RE = re.compile(r"`([^`]+)`|\]\(([^)]+)\)")
 PUBLIC_AWS_IDS = {
     "658327ea-f89d-4fab-a63d-7e88639e58f6",
@@ -79,17 +94,48 @@ def allows_placeholders(path: Path) -> bool:
     return name in PLACEHOLDER_ALLOWED or "/_template" in name or name.endswith("/_template.md")
 
 
+def ai_integration_section(text: str) -> str | None:
+    match = AI_INTEGRATION_HEADING_RE.search(text)
+    if not match:
+        return None
+    rest = text[match.end():]
+    next_heading = re.search(r"^##\s+", rest, re.M)
+    return rest[: next_heading.start()] if next_heading else rest
+
+
+def has_ai_decision_contract(section: str) -> bool:
+    if AI_DECISION_CONTRACT_HEADER not in section:
+        return False
+    lines = [line.strip() for line in section.splitlines()]
+    try:
+        header_index = lines.index(AI_DECISION_CONTRACT_HEADER)
+    except ValueError:
+        return False
+    for line in lines[header_index + 1:]:
+        if not line.startswith("|"):
+            continue
+        cells = [cell.strip() for cell in line.strip("|").split("|")]
+        if all(set(cell) <= {"-"} for cell in cells if cell):
+            continue
+        if len(cells) == len(AI_DECISION_CONTRACT_FIELDS) and all(cells):
+            return True
+    return False
+
+
 def check_governance(errors: list[str], warnings: list[str]) -> None:
     for path in markdown_files():
-        if not is_core_file(path) or path.name == "compliance_audit.md":
+        if not is_core_file(path):
             continue
         text = path.read_text(errors="ignore")
         name = rel(path)
         header = "\n".join(text.splitlines()[:4])
         if not HEADER_RE.search(header):
             errors.append(f"{name}: missing standard governance header")
-        if "## AI Integration" not in text:
+        section = ai_integration_section(text)
+        if section is None:
             errors.append(f"{name}: missing ## AI Integration")
+        elif not has_ai_decision_contract(section):
+            errors.append(f"{name}: missing AI Decision Contract table in ## AI Integration")
         if not re.search(r"baseline|target|measurable|metric|outcome|→|->", text, re.I):
             warnings.append(f"{name}: no obvious measurable outcome cue")
         if not re.search(r"escalation|escalate|flagged RED|trigger", text, re.I):

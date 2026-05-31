@@ -25,6 +25,7 @@ Load when the task involves:
 | File | Why Load |
 |------|----------|
 | `sdlc-pipeline.md` | Phase gates, Patch/Feature/Initiative, embedded adoption tracking |
+| `agentic-sdlc-decision-flow.md` | Decision-flow doctrine for AI-native SDLC gates |
 | `agile-frameworks.md` | Scrum/Kanban/Discovery rituals, PRD acceptance, capacity tradeoffs |
 | `writing-docs.md` | Docs structure, audience-aware framing, RFC patterns |
 | `dbt-patterns.md` | state:modified cascade, incremental multi-source, long-lived branch rebase |

@@ -1,5 +1,5 @@
 # Compliance Audit Protocol
-> Owner: [Brain Owner] | Pillar: All | Status: Enforced | Last Audit: [YYYY-MM-DD]
+> Owner: [Brain Owner] | Pillar: All | Status: Enforced | Last Audit: 2026-05-31
 
 ## Purpose
 
@@ -23,6 +23,7 @@ Enforced by the agent every time a file is created or modified (see CLAUDE.md "F
 | 1 | Has named owner in header | Every file write |
 | 2 | Maps to a strategic pillar | Every file write |
 | 3 | Updated within the last 90 days | Every file write (check existing files during weekly review) |
+| 4 | AI Integration section contains an AI Decision Contract table | Every operational domain file write |
 
 Files failing Tier 1 at write-time must be fixed before committing.
 
@@ -34,8 +35,9 @@ Run quarterly against files in: `01_strategy/`, `03_ai_native_transformation/`, 
 |---|-----------|-----------|
 | 1 | Contains at least one measurable outcome (baseline -> target -> date) | |
 | 2 | Defines escalation trigger | |
+| 3 | AI Decision Contract names decision, AI role, human owner, evidence, pass/fail criteria, trace, exception trigger, and flow metric | |
 
-Files scoring 0/2 are flagged RED - remediate within 14 days or archive.
+Files scoring 0/3 are flagged RED - remediate within 14 days or archive.
 
 ## Tier 3 - Semi-Annual Language Audit (Strategic/Leadership Files)
 
@@ -92,7 +94,8 @@ Run against `10_career/` files:
 
 ## AI Integration
 
-- Agent enforces Tier 1 at write-time automatically (no manual effort)
-- Quarterly audit: agent discovers files via glob, runs Tier 2 checks, populates results table
-- Semi-annual: agent reads strategic/leadership files and flags banned language patterns
-- Agent pre-generates audit report before quarterly refactor session
+| Decision | AI role | Human owner | Evidence inputs | Pass/fail criteria | Trace | Exception trigger | Flow metric |
+|----------|---------|-------------|-----------------|--------------------|-------|-------------------|-------------|
+| Is a brain file compliant enough to commit or keep active? | validate | [Brain Owner] | File headers, AI Decision Contract tables, measurable outcomes, escalation triggers, audit schedule | Tier 1 errors equal 0 and Tier 2 RED files have remediation or archive decision | Audit output and quarterly refactor notes | Any Tier 1 error blocks commit; any Tier 2 RED file older than 14 days escalates to owner review | Non-compliant file count and remediation age |
+
+Use AI to discover files, run Tier 1 and Tier 2 checks, populate audit reports, and flag stale decision contracts. The brain owner verifies remediation decisions before commit.

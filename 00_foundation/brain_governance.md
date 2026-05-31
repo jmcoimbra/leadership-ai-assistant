@@ -1,5 +1,5 @@
 # Brain Governance
-> Owner: [Brain Owner] | Pillar: All | Status: Enforced | Last Audit: [YYYY-MM-DD]
+> Owner: [Brain Owner] | Pillar: All | Status: Enforced | Last Audit: 2026-05-31
 
 ## Purpose
 
@@ -35,8 +35,8 @@ Required pattern: `[verb] [thing] from [baseline] to [target] by [date]`.
 ### Rule 6 — Quarterly refactor mandatory
 See `07_operating_rhythms/quarterly_refactor_checklist.md`. Set the next refactor date during onboarding.
 
-### Rule 7 — AI integration must be explicit
-Every operational domain file must include a section: `## AI Integration` that defines how AI is used in that domain. No domain operates without an AI leverage point.
+### Rule 7: AI integration must be a decision contract
+Every operational domain file must include a section: `## AI Integration` with an AI Decision Contract table. The table must define the decision AI affects, the AI role (`draft` | `recommend` | `validate` | `decide` | `monitor`), human owner, evidence inputs, pass/fail criteria, trace location, exception trigger, and flow metric. No domain operates with AI activity that lacks a decision owner and measurable flow impact.
 
 ### Rule 8 — Execution bias enforcement
 Every document must answer:
@@ -81,6 +81,12 @@ New durable behavioral patterns go to `.claude/skills/<skill>/SKILL.md` so they 
 
 ### Rule 15 — Spec lifecycle
 Commands >200 lines OR with evaluator rubrics MUST have a behavioral spec in `context/specs/`. Specs describe WHAT a command does (behavioral contract), not HOW (implementation).
+
+## AI Integration
+
+| Decision | AI role | Human owner | Evidence inputs | Pass/fail criteria | Trace | Exception trigger | Flow metric |
+|----------|---------|-------------|-----------------|--------------------|-------|-------------------|-------------|
+| Does a file meet governance before commit? | validate | [Brain Owner] | Changed files, governance rules, audit output | File has owner, pillar, status, audit date, measurable outcome, escalation trigger, and AI Decision Contract when required | Audit output and git diff | Any audit error or missing decision contract blocks commit | Non-compliant files at commit time |
 
 ## Compliance Verification
 

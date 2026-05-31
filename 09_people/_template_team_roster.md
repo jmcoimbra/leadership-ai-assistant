@@ -33,4 +33,8 @@ If any direct report is missing a profile or misses cadence by 21 days, flag RED
 
 ## AI Integration
 
+| Decision | AI role | Human owner | Evidence inputs | Pass/fail criteria | Trace | Exception trigger | Flow metric |
+|----------|---------|-------------|-----------------|--------------------|-------|-------------------|-------------|
+| Which person needs cadence or profile action this week? | validate | [Brain Owner] | Roster, people profiles, last 1:1 dates, growth-goal dates, talent-review dates | Every direct report has linked profile, current cadence, and recent 1:1 within threshold | Weekly review people check | Missing profile or 21-day cadence miss triggers scheduling within 48 hours | Cadence miss count and profile creation latency |
+
 Use AI to compare the roster against people profiles, detect stale 1:1 cadence, and draft reminders for the brain owner.

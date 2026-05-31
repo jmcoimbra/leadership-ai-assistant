@@ -1,5 +1,5 @@
 # Evolution Protocol
-> Owner: [Brain Owner] | Pillar: All | Status: Enforced | Last Audit: [YYYY-MM-DD]
+> Owner: [Brain Owner] | Pillar: All | Status: Enforced | Last Audit: 2026-05-31
 
 ## Purpose
 
@@ -11,7 +11,7 @@ Before creating any new directory or file:
 
 1. **Define the boundary.** What does this domain cover? What does it NOT cover?
 2. **Define measurable outputs.** What metrics does this domain own? What are the baselines?
-3. **Define the AI integration layer.** How does AI participate in this domain?
+3. **Define the AI decision contract.** Which decision does AI affect, which evidence does it use, who owns the human judgment, and what flow metric moves?
 4. **Define escalation triggers.** What conditions trigger escalation? To whom?
 5. **Map to a strategic pillar.** If it does not map to one of your defined pillars, it does not belong.
 6. **Assign an owner and a review date.** No orphan files.
@@ -52,7 +52,11 @@ Set quarterly refactor dates during onboarding. Suggested cadence: every 13 week
 
 ## AI Integration
 
-Use AI to detect entropy before it becomes structural debt: duplicate concepts, stale metrics, missing owners, missing escalation triggers, and files that no longer map to a strategic pillar. The agent proposes file moves or consolidations, but the brain owner approves structural changes before commit.
+| Decision | AI role | Human owner | Evidence inputs | Pass/fail criteria | Trace | Exception trigger | Flow metric |
+|----------|---------|-------------|-----------------|--------------------|-------|-------------------|-------------|
+| Does a proposed brain change reduce entropy or create duplicate structure? | recommend | [Brain Owner] | File tree, cross-references, metrics freshness, owner fields, AI Decision Contract tables | Change has one source of truth, owner, pillar, measurable output, escalation trigger, and no duplicate concept | Evolution notes and git diff | Duplicate concept, missing owner, or missing decision contract blocks the structural change | Duplicate concept count and stale metric count |
+
+Use AI to detect entropy before it becomes structural debt. The brain owner approves structural changes before commit.
 
 ## Anti-Entropy Rules
 

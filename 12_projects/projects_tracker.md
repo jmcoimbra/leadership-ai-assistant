@@ -37,5 +37,8 @@ If an active project has no logged movement for 21 days, decide within 7 days: s
 
 ## AI Integration
 
-- Use AI to scan detail files weekly and surface stale projects in your weekly review.
-- Use AI to draft status updates per project from recent commits + chat threads.
+| Decision | AI role | Human owner | Evidence inputs | Pass/fail criteria | Trace | Exception trigger | Flow metric |
+|----------|---------|-------------|-----------------|--------------------|-------|-------------------|-------------|
+| Which active project needs status action this week? | recommend | [Brain Owner] | Detail files, commit dates, project stage, owner, deadline, chat or ticket evidence | Project has movement within 21 days or an explicit ship, pause, archive, or escalation decision | Projects tracker and weekly review notes | No logged movement for 21 days triggers weekly review action | Stale project count and status-decision latency |
+
+Use AI to scan detail files weekly, surface stale projects in weekly review, and draft status updates from recent commits and source evidence.

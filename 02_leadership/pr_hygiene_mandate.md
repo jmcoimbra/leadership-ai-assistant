@@ -86,4 +86,8 @@ Every team member must bookmark these two URLs (replace `{username}` with your G
 
 ## AI Integration
 
+| Decision | AI role | Human owner | Evidence inputs | Pass/fail criteria | Trace | Exception trigger | Flow metric |
+|----------|---------|-------------|-----------------|--------------------|-------|-------------------|-------------|
+| Which PRs need follow-up or escalation this week? | recommend | [Brain Owner] | Open PR age, review-request status, chat socialization, reviewer response timestamps, ownership fields | PR has owner, reviewer, context, and no SLA breach; breached PR gets follow-up draft | Weekly PR audit and follow-up draft | No response after 48 hours or PR age over 14 days escalates per mandate | PR review latency and stale PR count |
+
 Use AI to scan open PRs for age, reviewer non-response, missing context, and unclear ownership. Draft follow-up comments for the brain owner to send.

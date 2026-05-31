@@ -3,7 +3,7 @@
 > Owner: [Brain Owner] | Pillar: Pillar 4 (Embrace AI at every level) + Pillar 5 (Graduate from scrappy startup. Play Big)
 > Measurable Outcome: 100% of Initiative-scale work passes Discovery gate before Design starts by 2026-07-31
 > Escalation: Initiative bypassing Discovery gate: EM flags to team, requires completion before Design. Repeated bypasses or strategic disagreements: R&D Leadership
-> Last Updated: 2026-04-26 (Design Reference Library added to Phase 1 Design: Top 5 Trade-offs, Fantastic Four NFRs, 12-Spoke Security Wheel from ByteByteGo Big Archive 2024)
+> Last Updated: 2026-05-31 (Decision inventory added before Design)
 
 Full lifecycle pipeline from "should we build this?" to "it's retired cleanly." Each phase has entry/exit criteria (quality gates), required artifacts, and cross-references to existing brain files. This file is a routing table, not an encyclopedia. Detail lives in the referenced files.
 
@@ -27,12 +27,17 @@ Full lifecycle pipeline from "should we build this?" to "it's retired cleanly." 
 
 1. **Adoption Criteria** via `/[engineering-toolkit]:review-adoption-criteria` or `/[engineering-toolkit]:pamf-interview`. Score above threshold.
 2. **Problem Statement** (1 paragraph): what problem, for whom, quantified impact.
-3. **Ubiquitous Language & Taxonomy** (DDD-style). Before any capabilities are written:
+3. **Decision Inventory**:
+   - List each decision the initiative changes or creates.
+   - For each decision, define: decision, current owner, evidence required, pass/fail criteria, waiting cost, AI role, human role, metric, and trace location.
+   - Valid AI roles: draft, recommend, validate, decide, monitor.
+   - A workflow does not count as AI-native unless it reduces decision latency, increases validation confidence, or improves exception routing in a measurable trace.
+4. **Ubiquitous Language & Taxonomy** (DDD-style). Before any capabilities are written:
    - Pick the **canonical term** for every domain noun the project introduces or redefines (person, department, service user, role, scope, tenant, etc.).
    - List **rejected synonyms** explicitly ("department" canonical → "group", "team", "org unit" rejected). Prevents drift.
    - **Code alignment check**: if the product extends an existing system, grep the repo. The canonical term must match what code already uses, or the project commits to a rename with its cost in scope. Vocabulary that does not match the code is a debt entry, not an optional cleanup.
    - Every capability, spec, and test must use canonical terms. Reviewers reject synonyms.
-4. **Entity & Hierarchy Model** (WHAT level, no schema):
+5. **Entity & Hierarchy Model** (WHAT level, no schema):
    - **Entities controlled** (nouns the product governs): list with one-line definition each.
    - **Hierarchy rules**: which entity contains/implies which. Example: "Department contains people. A role granted to a department reaches every person in it."
    - **Precedence rules**: when grants conflict, who wins. Example: "Person-level deny overrides department-level grant. Person-level grant is additive to department default."
@@ -43,30 +48,30 @@ Full lifecycle pipeline from "should we build this?" to "it's retired cleanly." 
      - On **deactivation** (person leaves, service retired): what cascades? What must survive (e.g. service-user tokens must not die with the human who created them)?
      - On **addition to a growing surface** (new tool, new endpoint, new feature flag, new integration): what gate runs before the new item becomes usable? Is adding an item automatic-grant to existing actors, or explicit-grant-only? If a sensitivity classification attaches to each item (read-gated, write/admin, privilege tier), the **onboarding gate is itself a product-discovery capability**, not a technical detail.
    - **Read-gating**: the default is not "everyone can read." Sensitive sources (sales-only data in Gong, Salesforce; financial queries in Snowflake; PII surfaces) are named and gated from day one. Public reads are the exception, not the rule.
-5. **Technical Feasibility** checked against [[your-org]-tech-radar](https://github.com/[your-org]/[your-org]-tech-radar). New technology not on radar: propose via tech radar PR, discuss with R&D Leadership. Pipeline routes discussion, does not block new tech.
-6. **Blast Radius Pre-Assessment** (ref: Blast Radius section below).
-7. **Debt Pre-Assessment**: what existing debt blocks/complicates this? What debt will this create?
-8. **UI & System Reconnaissance** (required when extending an existing product; skip for greenfield). Before the capability list is final:
+6. **Technical Feasibility** checked against [[your-org]-tech-radar](https://github.com/[your-org]/[your-org]-tech-radar). New technology not on radar: propose via tech radar PR, discuss with R&D Leadership. Pipeline routes discussion, does not block new tech.
+7. **Blast Radius Pre-Assessment** (ref: Blast Radius section below).
+8. **Debt Pre-Assessment**: what existing debt blocks/complicates this? What debt will this create?
+9. **UI & System Reconnaissance** (required when extending an existing product; skip for greenfield). Before the capability list is final:
    - Inventory what **already exists** in the product surface (admin UI, menus, models, policies, config fields). One file per concrete artifact: path + one-line role.
    - List the **gaps** the project must close. A gap is "this exists but is inert" (e.g. a menu with no enforcement), "this is missing entirely," or "this exists but its default is wrong for the product goal."
    - **Growing-surface check**: if the product controls a surface the org keeps adding to (tools, endpoints, flags, integrations, merchants), inventory both the current set **and** the lifecycle for adding new items. Who onboards? What classification attaches? What is the default-grant rule for existing actors on a new item? The onboarding lifecycle is a product-discovery capability when policy decisions attach at addition time.
    - Tie each capability to either "extends existing X" or "introduces new Y." Prevents accidental parallel implementations.
-9. **Transition Plan (expand → contract shape)** (required when the Initiative modifies an already-live system with current users depending on current behavior; skip for greenfield):
+10. **Transition Plan (expand → contract shape)** (required when the Initiative modifies an already-live system with current users depending on current behavior; skip for greenfield):
    - Describe the **current enforcement posture** explicitly ("everyone reads everything," "flat `manager?` gates all writes," "tokens tied to humans"). The posture is the starting contract the transition must not break silently.
    - Lay out phases as a table: phase name → enforcement posture in that phase → what lands → named exit criterion. Minimum structure: a Configure-and-Observe phase (new primitives available, zero enforcement, shadow-log records what decisions *would* fire), a Narrow-Enforcement phase (deny on the highest-sensitivity subset only), a Per-Surface Enforcement phase (tighten one Tool/category/module at a time, each with its own shadow-log window), and a Steady-State phase.
    - State the **observe-before-deny principle**: no cutover without a shadow-log window, no surface enforced in the same PR that introduces the primitive. If observation reveals unintended denies, rollback is to shadow, not to allow-all.
    - Name what the current posture maps to in the new world. Preserving current behavior through early phases is a deliberate choice, not a compromise.
-10. **Audit-Surface Reuse Inventory** (required when the Initiative introduces audit/tracking/logging requirements; skip if the product creates no attribution stakes):
+11. **Audit-Surface Reuse Inventory** (required when the Initiative introduces audit/tracking/logging requirements; skip if the product creates no attribution stakes):
    - Inventory existing tracking surfaces in the repo: every log table, event table, execution record, query log, webhook record. One row per surface: what it captures, join key back to Person/ServiceUser/Token, which of the new product's attribution needs it already covers.
    - State the **delta** — the *only* new audit stream this Initiative creates. One bounded target. Refuse a parallel catch-all table when existing surfaces cover the per-action trail.
    - **Scope-creep guard** written as a rule: "any request to audit X where X is already captured in an existing log row is answered by a join, not a new write." Traceability expands only where existing surfaces genuinely lack attribution.
    - Migration-name correction habit: verify every referenced table actually exists. Migration names can mislead (e.g. `add_request_ip_to_audit_logs.rb` added columns to three `*_query_logs` tables, not an `audit_logs` table).
-11. **Self-Raised Enquiries**. The Technical PM raises the questions the stakeholder forgot to ask. Minimum: 2 per entity × 3 per lifecycle transition × 3 per precedence rule. These feed Open Questions and the Stress Test. Asking "did you mean X or Y?" at Discovery is cheaper than rework at Build.
-12. **Stress Test** via `/devils-advocate` before presenting to R&D Leadership.
+12. **Self-Raised Enquiries**. The Technical PM raises the questions the stakeholder forgot to ask. Minimum: 2 per entity × 3 per lifecycle transition × 3 per precedence rule. These feed Open Questions and the Stress Test. Asking "did you mean X or Y?" at Discovery is cheaper than rework at Build.
+13. **Stress Test** via `/devils-advocate` before presenting to R&D Leadership.
 
 **Spec-oriented output rule.** Discovery deliverables read like a PRD, not an essay. Capabilities are verifiable statements ("As [actor], I can [action] so that [outcome]"). Lifecycle transitions are state → trigger → result rows. Specs live in a dedicated appendix; narrative paragraphs are limited to Problem Statement and Scope.
 
-**Exit gate:** Adoption criteria pass. Problem statement approved. Ubiquitous Language defined with rejected synonyms. Entity & Hierarchy model complete (entities, hierarchy, precedence, lifecycle defaults, read-gating). Tech radar checked (new tech proposed if needed). Blast radius mapped. Debt acknowledged with plan. UI recon produced when extending existing product. Transition plan produced when modifying already-live behavior. Audit-surface reuse inventory produced when attribution is at stake. Self-raised enquiries logged. Capabilities written as specs, not prose.
+**Exit gate:** Adoption criteria pass. Problem statement approved. Decision inventory complete. Ubiquitous Language defined with rejected synonyms. Entity & Hierarchy model complete (entities, hierarchy, precedence, lifecycle defaults, read-gating). Tech radar checked (new tech proposed if needed). Blast radius mapped. Debt acknowledged with plan. UI recon produced when extending existing product. Transition plan produced when modifying already-live behavior. Audit-surface reuse inventory produced when attribution is at stake. Self-raised enquiries logged. Capabilities written as specs, not prose.
 
 ## Pre-Design Bridge (Feature + Initiative)
 
@@ -86,6 +91,8 @@ Scenario: [PRD behavior in plain English]
 ## Phase 1: Design (Feature + Initiative)
 
 **Entry:** Discovery gate passed (Initiative) or work item scoped (Feature). BDD test suite draft available.
+
+**Decision-flow rule:** Design must preserve the Discovery decision inventory. Any new approval, validation gate, or rollback decision added during Design gets an owner, evidence input, pass/fail criteria, trace, exception trigger, and metric before Build starts.
 
 **Required artifacts:**
 

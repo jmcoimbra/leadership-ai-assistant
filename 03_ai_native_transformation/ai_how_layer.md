@@ -3,7 +3,7 @@
 
 ## Purpose
 
-Define what AI-native work looks like for each team — concretely. Answer the question: "What does an engineer's Tuesday look like in the AI-native world?"
+Define what AI-native work looks like for each team. Answer the question: "Which decisions move faster or get safer on an engineer's Tuesday in the AI-native world?"
 
 Relying on the team to discover the answer organically does not work fast enough. Pave the way explicitly.
 
@@ -29,6 +29,21 @@ Use to classify what a person BUILDS, orthogonal to the AI tier framework (which
 
 Rule: promote the vocabulary in 1:1s and IDPs. "What layer is your next artifact?" beats "use AI more."
 
+## Decision-Flow Lens
+
+Every workflow candidate must identify the decision it changes before the team measures usage.
+
+| Field | Required answer |
+|-------|-----------------|
+| Decision | What decision moves work forward? |
+| Current owner | Who makes it today? |
+| Evidence | What facts are required? |
+| Criteria | What makes the decision pass or fail? |
+| Waiting cost | Decision latency, validation queue depth, rework rate, defect leakage, error rate, or MTTR |
+| AI role | draft, recommend, validate, decide, or monitor |
+| Human role | approver, exception handler, or system owner |
+| Trace | Where the decision record lives |
+
 ## The Rule
 
 1. **Use AI on your NORMAL work.** Not experiments. Not curiosity projects. Your existing daily tasks.
@@ -50,10 +65,10 @@ Rule: promote the vocabulary in 1:1s and IDPs. "What layer is your next artifact
 
 #### Behavioral Switches
 
-| # | Switch | Trigger | Tool | Done Signal |
-|---|--------|---------|------|-------------|
-| 1 | [Specific behavior change] | [When it fires] | [Which tool] | [What proves it worked] |
-| 2 | | | | |
+| # | Switch | Decision Changed | Trigger | AI Role | Human Owner | Tool | Done Signal |
+|---|--------|------------------|---------|---------|-------------|------|-------------|
+| 1 | [Specific behavior change] | [Decision moved or validated] | [When it fires] | [draft / recommend / validate / decide / monitor] | [Person] | [Which tool] | [Flow metric delta and trace] |
+| 2 | | | | | | | |
 
 #### Current Tools
 
@@ -112,4 +127,8 @@ This is organic, not mandated as a separate initiative. The brain grows smarter 
 
 ## AI Integration
 
-This file defines the AI integration layer for each team. Use AI to turn repeated work into workflow candidates, then require a human owner, trigger, tool, and proof metric before adoption.
+| Decision | AI role | Human owner | Evidence inputs | Pass/fail criteria | Trace | Exception trigger | Flow metric |
+|----------|---------|-------------|-----------------|--------------------|-------|-------------------|-------------|
+| Which team behavior switch is ready for adoption? | validate | [Brain Owner] + [Team Lead] | Behavioral switch table, decision-flow lens, baseline assessment, concern log | Switch has named decision, AI role, human owner, evidence, trace, exception trigger, and flow metric | Team section in this file | Switch with only tool usage and no decision-flow metric stays in draft | Decision latency, validation queue depth, rework rate, defect leakage, error rate, MTTR |
+
+This file defines the AI decision layer for each team. Use AI to turn repeated work into workflow candidates, then require a human owner, trigger, tool, proof metric, and decision trace before adoption.

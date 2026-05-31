@@ -42,7 +42,11 @@ Each compliance workstream has a status, deadline, owner, private evidence refer
 
 ## AI Integration
 
-Use AI for: drafting control narratives, summarizing evidence packages, checking new code against control requirements. Do not feed AI any sensitive partner-negotiation context or named PII.
+| Decision | AI role | Human owner | Evidence inputs | Pass/fail criteria | Trace | Exception trigger | Flow metric |
+|----------|---------|-------------|-----------------|--------------------|-------|-------------------|-------------|
+| Which compliance workstream needs evidence or response action? | recommend | [Brain Owner] | Workstream table, renewal dates, evidence references, response SLA, control narratives | Workstream has owner, deadline, private evidence reference, and current response status | Compliance program file and private evidence system reference | Missing evidence reference, missed SLA, or renewal within 30 days without readiness action triggers escalation | Audit-response latency and evidence-gap count |
+
+Use AI for drafting control narratives, summarizing non-sensitive evidence indexes, and checking new code against control requirements. Do not feed AI any sensitive partner-negotiation context or named PII.
 
 ## Cross-References
 

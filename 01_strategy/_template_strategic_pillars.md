@@ -21,6 +21,10 @@ If any active initiative cannot map to one of these pillars, decide within 7 day
 
 ## AI Integration
 
+| Decision | AI role | Human owner | Evidence inputs | Pass/fail criteria | Trace | Exception trigger | Flow metric |
+|----------|---------|-------------|-----------------|--------------------|-------|-------------------|-------------|
+| Does each active initiative map to a current strategic pillar? | validate | [Brain Owner] | Project list, pillar definitions, measurable outcomes, weekly review notes | Every active initiative maps to one pillar with baseline, target, owner, and deadline | Weekly review notes and pillar history | Unclassified initiative triggers owner review within 7 days | Unclassified initiative count |
+
 Use AI to classify projects, people development goals, and operating metrics against these pillars during weekly review. Any unclassified item is flagged for owner review.
 
 ## How to Use

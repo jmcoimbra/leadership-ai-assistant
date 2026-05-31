@@ -19,6 +19,7 @@ The governance doc says "quarterly refactor mandatory." This file defines exactl
 - [ ] Run `00_foundation/compliance_audit.md` against every file
 - [ ] Score each file
 - [ ] Flag RED files (score < 4/6)
+- [ ] Flag AI Integration sections without a complete AI Decision Contract
 - [ ] Remediate or archive RED files within 14 days
 
 ### 2. Dead Initiative Purge (30 min)
@@ -52,10 +53,11 @@ After each quarterly refactor, commit the changes with message: `Quarterly refac
 
 ## AI Integration
 
-- Run `/brain-audit` before each quarterly refactor to pre-populate the remediation checklist
-- AI executes Checks 1-7 (header compliance, staleness, language violations, orphaned metrics, dead initiatives, duplicate concepts, missing AI sections) autonomously
-- AI proposes fixes for approval; human decides which to apply
-- Post-refactor: AI verifies all RED items resolved and commits the updated files
+| Decision | AI role | Human owner | Evidence inputs | Pass/fail criteria | Trace | Exception trigger | Flow metric |
+|----------|---------|-------------|-----------------|--------------------|-------|-------------------|-------------|
+| Which files must be remediated or archived during quarterly refactor? | validate | [Brain Owner] | Audit output, file headers, stale metrics, duplicate concepts, AI Decision Contracts, project activity | RED files have remediation or archive decision within 14 days; decision contracts are complete | Quarterly refactor checklist and commit diff | RED file older than 14 days or missing decision contract triggers owner review | RED file count and remediation age |
+
+Run `/brain-audit` before each quarterly refactor to pre-populate the remediation checklist. AI executes checks for header compliance, staleness, language violations, orphaned metrics, dead initiatives, duplicate concepts, and missing AI Decision Contracts. The human decides which structural fixes to apply.
 
 ## Escalation
 
