@@ -1,6 +1,12 @@
 ---
 name: decision-protocol
-description: Decision-quality lens. Auto-activates on high-stakes ambiguity (architecture, destructive scope, data model, missing context) AND when presenting options to the user. Two patterns: Confusion Protocol (STOP + name + 2-3 options + ask) and Completeness Scoring (annotate options with X/10 coverage so user sees the tradeoff explicitly). Composes with intelligence-layers, sdlc-gate, devils-advocate.
+description: >-
+  Decision-quality lens. Auto-activates on high-stakes ambiguity
+  (architecture, destructive scope, data model, missing context) and when
+  presenting options to the user. Two patterns: Confusion Protocol
+  (STOP + name + 2-3 options + ask) and Completeness Scoring
+  (annotate options with X/10 coverage so user sees the tradeoff explicitly).
+  Composes with intelligence-layers, sdlc-gate, and devils-advocate.
 ---
 
 # Decision Protocol
