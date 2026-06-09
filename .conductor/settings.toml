@@ -1,0 +1,8 @@
+"$schema" = "https://conductor.build/schemas/settings.repo.schema.json"
+
+[scripts]
+run_mode = "concurrent"
+
+[prompts]
+general = "Read AGENTS.md first. Prefer the skill files in .claude/skills/ over command-era patterns. Load the workflow or lens that matches the task before drafting or editing."
+code_review = "Focus on correctness, behavior regressions, missing tests, and violations of this repo's governance and deterministic-language rules."

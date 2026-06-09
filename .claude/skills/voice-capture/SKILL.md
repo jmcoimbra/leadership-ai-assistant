@@ -1,6 +1,7 @@
 ---
 name: voice-capture
 description: Extract the brain owner's voice from sample writing and codify it into context/knowledge/voice-profile.md. Auto-triggers when the user pastes samples of their own writing, says "capture my voice", "extract my voice", "build my voice profile", or when first adopting this template.
+user_invocable: true
 ---
 
 # Voice Capture

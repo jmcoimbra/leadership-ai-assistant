@@ -4,17 +4,39 @@
 
 # Leadership AI Assistant
 
-**An AI-native operating system for Senior Engineering Managers.**
+**A skill-first operating system for Engineering Managers.**
 
-Not documentation. An operating system that encodes behavior, enforces accountability, and surfaces failure early.
+Not a general AI notebook. Not a documentation dump. Not a Claude-only harness. This skeleton encodes manager workflows, governance, and drafting discipline so an agent can help without inventing its own operating model.
 
 ## Who This Is For
 
-Senior Engineering Managers who want an AI-native brain that:
+Engineering Managers and Senior Engineering Managers who want a manager-assistance skeleton that:
 - Holds their voice, governance rules, and operating rhythms in one place
-- Pairs with Claude Code, Cursor, or any agent that reads the filesystem
+- Works with Claude Code, Codex, Cursor, Conductor, or any agent that reads the filesystem
 - Enforces deterministic language and prevents drift via hooks
 - Scales from one team to multiple teams without restructuring
+
+## Operating Model
+
+The skeleton has one contract:
+
+- `AGENTS.md` defines always-on rules.
+- `.claude/skills/*/SKILL.md` holds scoped workflows and lenses.
+- `ADAPTERS.md` explains how each tool applies those skills.
+- `scripts/audit_brain.py` enforces the contract mechanically.
+
+Claude-specific slash entrypoints are optional convenience only. They are not the product contract.
+
+## Core Manager Workflows
+
+- **Weekly review:** `weekly-review` operator workflow for ranked agenda, execution risks, and next-week plan.
+- **Voice capture:** `voice-capture` operator workflow for codifying the manager's actual writing patterns.
+- **1:1 prep:** `07_operating_rhythms/one_on_one_protocol.md` plus `management-lens` and `staff-development` overlays.
+- **Career brief:** `career-brief` operator workflow for manager-to-manager career evidence synthesis.
+- **PR review patterns:** `pr-review-patterns` review workflow for severity and comment discipline.
+- **Decision protocol:** `decision-protocol` auto-activation lens for high-stakes ambiguity.
+- **Document writing:** `writing-docs` auto-activation lens for longer-form artifacts.
+- **Session learning capture:** `improve` operator workflow for end-of-session durable learnings.
 
 ## How to Adopt
 
@@ -29,10 +51,10 @@ Senior Engineering Managers who want an AI-native brain that:
    - `00_foundation/brain_governance.md` — set your pillars and dates.
    - `config/team.yaml.example` — copy to `config/team.yaml`, fill in your teams.
    - `.claude/names.txt` — add forbidden patterns for the names hook.
-6. **Capture YOUR voice (day 1, before drafting).** The shipped `context/knowledge/voice-profile.md` is a starting voice, not yours. Run the `voice-capture` skill (`.claude/skills/voice-capture/SKILL.md`) with 10-20 samples of your own writing (Slack, commits, docs) and let it rewrite the voice profile to match how you actually communicate. Every session is logged to `99_archive/voice_capture_sessions.md`.
-7. **Fill the templates** in `09_people/`, `10_career/`, `11_compliance_security/`, `12_projects/`. Use the `_template_*.md` files as starting points.
+6. **Capture YOUR voice (day 1, before drafting).** The shipped `context/knowledge/voice-profile.md` is a starting voice, not yours. Load the `voice-capture` skill (`.claude/skills/voice-capture/SKILL.md`) with 10-20 samples of your own writing (Slack, commits, docs) and let it rewrite the voice profile to match how you actually communicate. Every session is logged to `99_archive/voice_capture_sessions.md`.
+7. **Fill the manager templates** in `04_team_brains/`, `08_metrics/`, `09_people/`, `10_career/`, and `12_projects/`. Use the `_template_*.md` files as starting points.
 8. **Run validation** with `python3 scripts/audit_brain.py`.
-9. **Run your first weekly review** using `07_operating_rhythms/weekly_review.md`.
+9. **Run your first weekly review** by loading `.claude/skills/weekly-review/SKILL.md` and choosing the appropriate mode.
 
 ## Structure
 
@@ -51,8 +73,8 @@ Senior Engineering Managers who want an AI-native brain that:
 | `12_projects/` | Active initiatives + project template |
 | `99_archive/` | Distilled concepts from technical and leadership books |
 | `context/knowledge/` | Reusable patterns for AI, observability, testing, integrations |
-| `.claude/` | Skills, hooks, commands the agent loads |
-| `context/specs/` | Behavioral contracts for long-running skills and command-like workflows |
+| `.claude/` | Skills and hooks the agent loads |
+| `context/specs/` | Behavioral contracts for long-running skills and workflows |
 | `scripts/` | Provider-neutral validation scripts |
 
 ## Design Principles
@@ -62,6 +84,13 @@ Senior Engineering Managers who want an AI-native brain that:
 - **Self-enforcing.** Hooks audit the brain at write time. The constitution audits itself quarterly.
 - **AI-native.** Every file is structured for machine consumption. Clean markdown, explicit sections, no ambiguity.
 - **Execution bias.** If a file does not change behavior or move a metric, it does not belong here.
+
+## Manager-Specific Boundaries
+
+- This repo is for manager operating state: scorecards, projects, people rhythms, career evidence, and drafting rules.
+- It is not a personal knowledge junk drawer.
+- It is not the place for raw meeting dumps without decisions, actions, and routing.
+- It is not the place for sensitive business data that governance says must live in a private system.
 
 ## Customization Checklist
 

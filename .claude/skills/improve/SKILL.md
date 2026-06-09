@@ -1,22 +1,24 @@
 ---
-description: End-of-session compounding improvement loop. Use at the end of any Claude session to capture learnings, patch skills, update brain files, and make the next session better. Run "/improve" before closing.
+name: improve
+description: End-of-session learning capture workflow. Use at the end of a session to capture durable learnings, patch skills, update brain files, and leave the skeleton stronger for the next run.
+user_invocable: true
 ---
 
 # Session Improvement Loop
 
 Capture what this session taught, patch what can be improved, and leave the system measurably better for the next session.
 
-**Philosophy:** Small bets, high frequency. Each /improve run compounds. Do not batch improvements - apply them now.
+**Philosophy:** Small bets, high frequency. Each run compounds. Do not batch improvements. Apply them now.
 
 ## Autonomy Model
 
 | Action | Mode |
 |--------|------|
 | Read full conversation history | Autonomous |
-| Read brain files, knowledge base, commands | Autonomous |
+| Read brain files, knowledge base, skills | Autonomous |
 | Audit session and classify findings | Autonomous |
 | Propose changes (show diffs) | Autonomous |
-| Apply changes to brain files / CLAUDE.md / commands | Gated (approval required) |
+| Apply changes to brain files / CLAUDE.md / skills | Gated (approval required) |
 | Commit and push to main | Gated (approval required) |
 
 ## Step 0: Load Prior Learnings
@@ -29,7 +31,7 @@ Before auditing the session, read the knowledge base to build on what previous s
 
 **Anti-corruption rule (memory tier eliminated 2026-04-27):** Never write to `memory/*.md`. The memory tier is gone; only `MEMORY.md` exists as a redirect stub. All new patterns route to skills, knowledge, brain, CLAUDE.md, or private/ per `00_foundation/brain_governance.md` Rule 14.
 
-This ensures each /improve run compounds on previous runs by routing into the correct tier from the start.
+This ensures each run compounds on previous runs by routing into the correct tier from the start.
 
 ## Step 0a: Learnings Staleness Check
 
@@ -72,7 +74,7 @@ The memory tier is eliminated. This step verifies no session re-introduced a wri
 
 ## Routing Defaults for New Patterns
 
-When this /improve run surfaces a new durable pattern, route to the correct tier per Rule 14. **Default precedence:**
+When this workflow surfaces a new durable pattern, route to the correct tier per Rule 14. **Default precedence:**
 
 1. **Behavioral rule that fires when a skill is in scope** → append to the relevant `.claude/skills/<skill>/SKILL.md` "Operating Rules" section.
 2. **Hard constraint that must apply every turn** → append to `CLAUDE.md` Hard Constraints.
@@ -86,10 +88,10 @@ When this /improve run surfaces a new durable pattern, route to the correct tier
 
 Review the full conversation and identify:
 
-1. **Skills/commands used** - Which slash commands, tools, MCP integrations, or brain files were invoked?
+1. **Skills and tools used** - Which skills, tools, MCP integrations, or brain files were invoked?
 2. **What worked** - Fast paths, good outputs, useful patterns
 3. **Friction points** - Where did the session slow down, require retries, or produce wrong output?
-4. **Missing capabilities** - What did the user ask for that required manual work instead of a command?
+4. **Missing capabilities** - What did the user ask for that required manual work instead of an existing skill or tool?
 5. **Incorrect assumptions** - What did the agent get wrong about context, file locations, or workflows?
 6. **Technical discoveries** - New API behaviors, tool quirks, MCP limitations, or platform patterns learned
 
@@ -99,13 +101,13 @@ Present findings as a structured table:
 | Category | Finding | Evidence | Action |
 |----------|---------|----------|--------|
 | Friction | Had to re-explain X context | Read foo.md L42; Grep "X" 0 hits | Add to CLAUDE.md contextual rules |
-| Missing  | No command for Y workflow   | Slack message_ts 1777307901.501839 | Propose new /Y command |
+| Missing  | No skill for Y workflow     | Slack message_ts 1777307901.501839 | Propose new skill |
 | Pattern  | Z technique worked well     | commit e42ebcf2 + 4 eval rows in deep-agent-evals.md | Capture in context/knowledge/ |
 ```
 
 ### Artifact-Grounding Rule
 
-LLMs do not have true introspection. When asked to explain a session, the model reports what it thinks happened, not what actually happened (Dan Dimerman, 2026-04-27 Slack thread C08U0AXFERE/1777307901.501839). Self-narrated audits drift toward confabulation and the next /improve cycle inherits the drift via Step 1b.
+LLMs do not have true introspection. When asked to explain a session, the model reports what it thinks happened, not what actually happened (Dan Dimerman, 2026-04-27 Slack thread C08U0AXFERE/1777307901.501839). Self-narrated audits drift toward confabulation and the next run inherits the drift via Step 1b.
 
 **Scope.** This rule applies to the Step 1 findings table only. Step 1c (Habit Evidence Detection) is governed by its own session-output scan and is out of scope.
 
@@ -129,23 +131,23 @@ Each row in the findings table MUST cite an artifact in the `Evidence` column. A
 
 ## Step 1a: Spec Alignment Check
 
-For each command/skill used in this session, check if a spec exists in `context/specs/`:
+For each long-running skill used in this session, check if a spec exists in `context/specs/`:
 
 1. Read `context/specs/index.md` for the spec registry
-2. For each command used, if a spec exists:
+2. For each long-running skill used, if a spec exists:
    - Compare session behavior against the spec's Behavioral Contract
    - Classify each relevant behavior: **SPEC-MATCH** (behavior matched), **SPEC-DRIFT** (behavior deviated from spec), **SPEC-GAP** (spec missing a behavior that occurred), **SPEC-WRONG** (spec describes incorrect behavior)
-3. If no spec exists for a command used: flag "No spec. Consider `/write-spec {command}`."
+3. If no spec exists for a skill that should have one: flag "No spec. Add `context/specs/<skill>.md`."
 
 ```
 ### Spec Alignment
-| Command | Spec | Behavior | Classification | Detail |
-|---------|------|----------|---------------|--------|
-| /meeting-prep | meeting-prep.spec.md | B6 | SPEC-DRIFT | Transcript not fetched despite spec requiring it |
-| /dream | — | — | No spec | Consider `/write-spec dream` |
+| Skill | Spec | Behavior | Classification | Detail |
+|-------|------|----------|---------------|--------|
+| weekly-review | weekly-review.md | B6 | SPEC-DRIFT | Transcript not fetched despite spec requiring it |
+| career-brief | — | — | No spec required | Under 200 lines and no evaluator rubric |
 ```
 
-**SPEC-DRIFT and SPEC-WRONG items feed into Step 3 as proposed spec or command patches.**
+**SPEC-DRIFT and SPEC-WRONG items feed into Step 3 as proposed spec or skill patches.**
 
 ## Step 1b: Eval Case Extraction
 
@@ -214,12 +216,12 @@ If `context/knowledge/eureka-log.md` does not exist, create it with header below
 
 **Owner:** [Brain Owner]
 **Pillar:** Pillar 4 (AI Execution)
-**Measurable Outcome:** Capture every first-principles insight that contradicts a prior assumption and gets explicit user acceptance. Surface monthly via /weekly-review.
-**Escalation Trigger:** If 0 eurekas logged across 4 consecutive weeks, audit /improve detection sensitivity (likely false-negative).
+**Measurable Outcome:** Capture every first-principles insight that contradicts a prior assumption and gets explicit user acceptance. Surface monthly via the weekly review workflow.
+**Escalation Trigger:** If 0 eurekas logged across 4 consecutive weeks, audit detection sensitivity in the session learning capture workflow.
 
 **Added:** <today>
-**Source:** /improve Step 1d. First-principles insights that contradicted conventional wisdom in-session and got user acceptance.
-**Surfaces in:** /weekly-review topic generation, [Your CTO] 1:1 prep.
+**Source:** session learning capture Step 1d. First-principles insights that contradicted conventional wisdom in-session and got user acceptance.
+**Surfaces in:** weekly review topic generation and [Your CTO] 1:1 prep.
 
 | Date | Topic | Insight | Conventional view | Evidence |
 |------|-------|---------|------------------|----------|
@@ -240,17 +242,17 @@ Sort each proposed improvement by target:
 | CLAUDE.md rules | `CLAUDE.md` contextual rules table | New triggers, guardrails, or workflow patterns |
 | Knowledge base | `context/knowledge/` topic files | Debugging insights, platform patterns, stable conventions |
 | Brain files | `00_foundation/` through `12_projects/` | Evidence, decisions, metric updates, governance fixes |
-| Commands | `.claude/commands/*.md` | New or improved slash commands |
+| Skills | `.claude/skills/<skill>/SKILL.md` | New or improved operator workflows and lenses |
 | Review evidence | `10_career/_template_career_trajectory.md` | Pushback, milestones, feedback, influence moments |
 | Governance | Any file | Missing owner, pillar, metric, or escalation trigger |
 
 ## Step 2b: Skill Location Check
 
-Before proposing any change to a command or skill file, classify its location:
+Before proposing any change to a skill file, classify its location:
 
 | Classification | Condition | Action |
 |---------------|-----------|--------|
-| Brain-local | Lives in `.claude/commands/` of this repo | Editable |
+| Brain-local | Lives in `.claude/skills/` of this repo | Editable |
 | External ([Your Company] plugin) | Referenced via `Skill(skill: "[your-company]:*")` | Never edit. Flag for [your-company]-ds-claude-plugins owner |
 | External (other plugin) | Any `Skill(skill: "X:Y")` where X is not this repo | Never edit. Log gap only |
 
@@ -274,8 +276,8 @@ For each improvement, show the exact diff:
 - Never propose changes that violate brain governance (check `00_foundation/brain_governance.md`)
 - Every proposed change must include: what changes, why it helps future sessions, and which pillar it serves
 - Check knowledge base from Step 0: if a pattern was already captured, update the existing entry instead of creating a new one
-- If a command was already patched for the same issue, skip it and note "already addressed in [date] session"
-- **Code-over-skills check:** Before proposing inline scripts (bash, Python, data transforms) in a command file, check if the logic belongs in a standalone script, [Your IDP Tool] query, or CLI tool instead. Commands are orchestrators, not script containers.
+- If a skill was already patched for the same issue, skip it and note "already addressed in [date] session"
+- **Code-over-skills check:** Before proposing inline scripts (bash, Python, data transforms) in a skill file, check if the logic belongs in a standalone script, [Your IDP Tool] query, or CLI tool instead. Skills are orchestrators, not script containers.
 - **Skill behavioral changes must include eval coverage.** When a Step 3 patch targets `.claude/skills/<name>/SKILL.md` and adds or modifies a behavioral rule (anything with a "MUST", "SHOULD", "Failure action", or new gate), the same change set MUST add at least one row to `context/knowledge/deep-agent-evals.md` Eval Case Library exercising the new behavior. Skill changes without eval coverage are blocked from Step 4 apply. Source: 2026-04-28 artifact-grounding rule shipped without eval, caught only by manual review (PR #116 finding #3).
 
 ## Step 4: Apply (With Approval)
@@ -288,7 +290,7 @@ Format:
 
 1. [CLAUDE.md] Add contextual rule for X → Y action
 2. [context/knowledge/mcp-tools.md] Capture Z debugging pattern
-3. [.claude/commands/slack-triage.md] New command proposal
+3. [.claude/skills/decision-protocol/SKILL.md] Tighten ambiguity gate
 4. [10_career/_template_career_trajectory.md] Log influence moment from today
 5. [09_people/_template_individual_development_profile.md] Update with AI adoption evidence
 
@@ -303,27 +305,27 @@ When ALL proposed changes are scoped to brain knowledge files — `context/knowl
 
 **Conditions for auto-apply:**
 - Every target path starts with `context/knowledge/`
-- No `.claude/commands/`, `.claude/skills/`, `CLAUDE.md`, `09_people/`, or `10_career/` touches
+- No `.claude/skills/`, `CLAUDE.md`, `09_people/`, or `10_career/` touches
 - No new file creation outside `context/knowledge/`
 - No governance violation flagged in Step 6
 - **No `type:preference` row in any `learnings.jsonl` append.** Preference rows are gated by Step 7B-2's user-origin check; auto-apply would skip the gate. If the batch contains a preference row, fall back to explicit approval for the entire batch.
 
-**Why:** Knowledge-file patches are additive, reversible via `git revert`, and the cost of round-tripping through explicit approval is higher than the risk. Re-invocation of `/improve` 3+ times in succession is evidence of implicit approval — the auto-apply path removes that ambiguity up front.
+**Why:** Knowledge-file patches are additive, reversible via `git revert`, and the cost of round-tripping through explicit approval is higher than the risk. Repeated use of the session learning capture workflow is evidence of implicit approval. The auto-apply path removes that ambiguity up front.
 
 **Any non-knowledge-file change in the batch reverts to gated approval for the entire batch.** No partial auto-apply.
 
-## Step 5: New Command Detection
+## Step 5: New Skill Detection
 
-Check if any repeated pattern from this session (or across recent sessions) should become a new command.
+Check if any repeated pattern from this session (or across recent sessions) should become a new skill.
 
 **Threshold test - all must be true:**
 - [ ] The pattern is repeatable (not a one-time operation)
 - [ ] It's non-trivial (saves >2 minutes per invocation)
 - [ ] It's self-contained (can run without extensive setup context)
-- [ ] It doesn't duplicate an existing command or skill
-- [ ] **Dedup check:** Run `ls .claude/commands/` to confirm no existing command covers the pattern. If partial overlap exists, propose a flag extension on the existing command, not a new file.
+- [ ] It doesn't duplicate an existing skill
+- [ ] **Dedup check:** Run `find .claude/skills -maxdepth 2 -name SKILL.md` to confirm no existing skill covers the pattern. If partial overlap exists, extend the existing skill instead of creating a new file.
 
-If a new command passes the threshold, draft the `.claude/commands/<name>.md` file and include it in the proposed changes.
+If a new skill passes the threshold, draft `.claude/skills/<name>/SKILL.md` and include it in the proposed changes.
 
 ## Step 6: Governance Sweep
 
@@ -337,7 +339,7 @@ Flag violations. Include fixes in proposed changes.
 
 ### Governance Tasks (Optional)
 
-If the governance sweep surfaces non-trivial fixes that require more than a quick edit in this session, log them as "Deferred Governance Flags" in the session summary output. Only flag issues that cannot be resolved in this /improve session. Skip if all flags are fixable now.
+If the governance sweep surfaces non-trivial fixes that require more than a quick edit in this session, log them as "Deferred Governance Flags" in the session summary output. Only flag issues that cannot be resolved in this run. Skip if all flags are fixable now.
 
 ## Step 7: Knowledge Capture
 
@@ -351,7 +353,7 @@ Route evidence, decisions, and metrics to the brain file system of record:
 |---------------|--------|---------|
 | Evidence, decisions, metrics | Relevant brain file (`09_people/`, `08_metrics/`, etc.) | PR review observation about a direct report |
 | Error corrections | CLAUDE.md error correction log | Agent repeated same failing approach |
-| Command design conventions | The command file itself or CLAUDE.md | No-args picker pattern |
+| Skill design conventions | The skill file itself or CLAUDE.md | No-args picker pattern |
 
 ### Step 7B: Knowledge Graph → `context/knowledge/`
 
@@ -366,7 +368,7 @@ Route technical patterns and tool behaviors to the structured knowledge base:
    - **Bypass gate C — in-session verification:** if the current session contains a canonical fetch for the referenced artifact (e.g., `notion-fetch` on the page ID, `Read` of the config file, `gh api` on the template), VBC passes regardless of Gate A/B.
    - **Failure action:** if Gates A+B fire and Gate C does not pass, HALT the knowledge write and report: "Pattern premise not verified against canonical source in this session. Either fetch the source and re-propose, or rewrite as a question. Blocked pattern: [text]".
    - **Never bypass VBC by deferring to a prior session's fetch** — drift accumulates between sessions, and skill-file caches are the exact failure mode VBC guards against.
-   - Source: 2026-04-22 `/review-checklist` §8 hallucination — skill hardcoded 7 of 8 wrong section names, /improve canonized a fabricated "§8 commonly skipped on tooling PRs" pattern from the corrupted upstream, self-reinforcing corruption loop across multiple cycles (see `deep-agent-evals.md`).
+   - Source: 2026-04-22 `/review-checklist` §8 hallucination. The skill hardcoded 7 of 8 wrong section names, and this workflow canonized a fabricated "§8 commonly skipped on tooling PRs" pattern from the corrupted upstream, creating a self-reinforcing loop across multiple cycles (see `deep-agent-evals.md`).
 4. Update the topic file with the new pattern. Include date and source.
 5. Update `index.md` Last Updated date for modified files.
 
@@ -415,7 +417,7 @@ In addition to the human-readable knowledge files (`context/knowledge/<topic>.md
 - 4-5: inference, not yet validated.
 - 1-3: hypothesis, would not act on without confirmation.
 
-**Files array:** when the learning references specific files (skill paths, brain files, code paths), list them. The next /improve run uses this for staleness detection. If a referenced file has been deleted or renamed, the learning is flagged for review.
+**Files array:** when the learning references specific files (skill paths, brain files, code paths), list them. The next run uses this for staleness detection. If a referenced file has been deleted or renamed, the learning is flagged for review.
 
 **Append command (use bash redirect; substitute the actual ISO timestamp, never the placeholder):**
 
@@ -471,7 +473,7 @@ Report gaps in the improvement summary. Create topic files for approved addition
 Output a brief summary:
 
 ```
-## /improve Summary
+## Session Learning Capture Summary
 
 **Session focus:** [What this session accomplished]
 **Changes proposed:** N
@@ -528,7 +530,7 @@ Read each changed file fresh. Look for:
 **Skill structural integrity (added 2026-05-08 from gstack port retro):**
 - **Step ordering monotonic:** sub-steps under a parent Step N must be alphabetically ordered (1a → 1b → 1c → 1d). Do not use `-pre` or `-prep` suffixes that place a sub-step BEFORE its alphabetic position. Source: this session shipped `Step 1c-pre` placed before `Step 1c`; review pass renamed to `Step 1d` and reordered.
 - **Heading hierarchy consistent with siblings:** if existing Step Na, Nb, Nc are H2 (`## Step Na`), a new Step N0 or Nd MUST also be H2. Mismatched levels (H3 sibling under H2 siblings) break the parent-file convention. Source: this session shipped `Step 0a` at H3 while `Step 1a/1b/1c` were H2.
-- **Placeholder substitution:** any literal placeholder string that would land verbatim in a generated artifact (`<today>`, `YYYY-MM-DD`, `2026-MM-DDTHH:MM:SSZ`, `<repo>`, `<one-line summary>`) inside an executable bash heredoc or write command must be paired with an explicit substitution example (e.g., `TS=$(date -u +%Y-%m-%dT%H:%M:%SZ)`). Surface as defect when a placeholder appears INSIDE an unguarded write command (not just inside a documentation block). Source: this session's pre-fix /improve Step 7B-1 example would have written `2026-MM-DDTHH:MM:SSZ` literally to `learnings.jsonl` on first user copy-paste.
+- **Placeholder substitution:** any literal placeholder string that would land verbatim in a generated artifact (`<today>`, `YYYY-MM-DD`, `2026-MM-DDTHH:MM:SSZ`, `<repo>`, `<one-line summary>`) inside an executable bash heredoc or write command must be paired with an explicit substitution example (for example `TS=$(date -u +%Y-%m-%dT%H:%M:%SZ)`). Surface as defect when a placeholder appears inside an unguarded write command, not just inside a documentation block. Source: this session's pre-fix Step 7B-1 example would have written `2026-MM-DDTHH:MM:SSZ` literally to `learnings.jsonl` on first user copy-paste.
 
 ### Three Outcomes (sentinel emitted at end of step)
 
@@ -576,7 +578,7 @@ Ensure all session changes reach main. This step is the final gate. Do not skip.
 
 Execute the Conductor Commit Protocol per CLAUDE.md Git & GitHub section. Commit subject: `"Session improvements: [brief summary]"`. Body must include the `Co-Authored-By: Claude <noreply@anthropic.com>` trailer (mandatory per CLAUDE.md so [Your IDP Tool] `AiCommitRatio` counts the commit as AI-assisted).
 
-Display the git log output as the final line of `/improve`. This is proof that all session improvements landed on main.
+Display the git log output as the final line of the session learning capture summary. This is proof that all session improvements landed on main.
 
 ## Step 10: Sentinel Emission (MANDATORY)
 
@@ -604,7 +606,7 @@ This row feeds the 2026-06-06 Tier 3 #7 decision per `12_projects/tier3_meeting_
 
 | Failure | Behavior |
 |---------|----------|
-| Conversation too short for meaningful audit | Output: "Session too short for /improve. Skip." Stop. |
+| Conversation too short for meaningful audit | Output: "Session too short for the session learning capture workflow. Skip." Stop. |
 | Brain file read failure | Skip that file in governance sweep. Note gap. |
 | Git push fails | Warn: "Push to main failed. Check `git status`." Do not retry automatically. |
 | Primary repo sync fails (non-fast-forward) | Warn per Conductor Commit Protocol. Do not force. |
@@ -614,17 +616,17 @@ This row feeds the 2026-06-06 Tier 3 #7 decision per `12_projects/tier3_meeting_
 
 ## Important Notes
 
-- This command reads the FULL conversation history to extract learnings
+- This workflow reads the FULL conversation history to extract learnings
 - Changes to CLAUDE.md and brain files follow the existing governance rules
-- New commands are created in `.claude/commands/` directory
+- New skills are created in `.claude/skills/` directories
 - Knowledge base is at `context/knowledge/` (durable). Memory files (`~/.claude/projects/.../memory/`) are ephemeral scratch only
 - All external communications remain gated (draft-only) per autonomy guardrails
 - If past improvements aren't helping, flag them for revert - don't patch forever
-- The brain governance ban on the word "improve" applies to brain file *content* (use specific measurable language instead). The /improve command name is exempt - it refers to the compounding loop process, not vague aspirational language.
+- The brain governance ban on the word "improve" applies to brain file *content* (use specific measurable language instead). The `improve` skill name is exempt because it refers to the compounding loop process, not vague aspirational language.
 
 ## Operating Rules (migrated from memory tier 2026-04-27)
 
-- **Self-review work with agents before presenting.** Run `/devils-advocate` or a critic agent over any proposal, draft, or strategic doc before showing it to [Brain Owner]. The session learning that landed in /improve was: "self-review with agents catches blind spots [Brain Owner] would otherwise have to catch himself, slowing his throughput."
+- **Self-review work with agents before presenting.** Run `devils-advocate` or a critic agent over any proposal, draft, or strategic doc before showing it to [Brain Owner]. The session learning that landed here was: "self-review with agents catches blind spots [Brain Owner] would otherwise have to catch himself, slowing his throughput."
 - **No AI Phase 1 deadlines before "how layer" + 1:1 discussion.** When proposing AI adoption phases, do not commit to Phase 1 dates until [Brain Owner] has had the "how layer" discussion with the relevant team / IC. Source: 2026-03 sequencing failure where Phase 1 deadline was set before alignment.
 - **Internal-tooling plans = atomic build + flag-gated operational states.** No sequential dev phases ("Phase 1 → Phase 2 → Phase 3" with calendar deadlines) unless owner confirms. Ship the atomic build, flag-gate operational states, iterate. Calendar estimates only with explicit owner sign-off.
 - **LampHost spec workflow: research + compete first.** Come with positions, not questions. When evaluating LampHost (or any personal AI-native SaaS) specs, do the competitive analysis first, form a position, then ask [Brain Owner] to confirm or push back. Asking "what should I do?" without a position is the anti-pattern.

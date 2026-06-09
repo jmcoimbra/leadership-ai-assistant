@@ -12,7 +12,7 @@ triggers:
 
 # Writing Docs Lens
 
-Auto-triggered lens that checks doc structure and revision discipline before the draft lands. Not a standalone command.
+Auto-triggered lens that checks doc structure and revision discipline before the draft lands. Not a standalone workflow.
 
 Load `context/knowledge/writing-docs.md` when triggered. Sources: Barbara Minto (Pyramid Principle / SCQA), Diátaxis (Daniele Procida), Dave Girouard "A Founder's Guide to Writing Well" (First Round), MECE (McKinsey), Tremendous handbook "Writing Effectively" bundle.
 

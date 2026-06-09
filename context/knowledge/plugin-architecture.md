@@ -121,13 +121,12 @@ Source: 2026-04-28, slack-thread-share PR #116 review on a 24-line skill markdow
 
 Source types: `"source": "directory"` + `"path"` (local) or `"source": "github"` + `"repo"` (remote). All `claude plugin` commands produce no stdout on success. Verify state by reading JSON files directly.
 
-## Brain Repo Commands
+## Brain Repo Skills
 
-- Live in `.claude/commands/<name>.md`, auto-discovered by Claude Code.
-- Structure: YAML frontmatter (description) → Usage → Autonomy Model → Steps → Error Handling → Notes.
-- Shared constants: `_preamble.md` centralizes Notion DB IDs, Slack channel IDs, team roster path, GH CLI workaround.
-- `_preamble.md` appears as a "skill" but is not user-invocable. Loadable constants file.
-- Brain commands can delegate to plugin commands via `Skill(skill: "[engineering-toolkit]:<name>")`.
+- Live in `.claude/skills/<name>/SKILL.md`.
+- Structure: YAML frontmatter (`name`, `description`, optional `triggers`, optional `user_invocable`) plus the workflow body.
+- Shared runtime guidance now lives in `context/knowledge/skill-runtime.md`.
+- Brain-local skills can still delegate to plugin commands via `Skill(skill: "[engineering-toolkit]:<name>")` when the current tool supports that pattern.
 
 ## Conductor Workspace Edit Restriction
 
@@ -334,7 +333,7 @@ To fork a shared plugin command into the brain for local iteration:
    - `{base}/engineer-profiles/` → `09_people/`
    - `{base}/knowledge/` → `context/knowledge/`
    - `{base}/voice-profile.md` → `context/knowledge/voice-profile.md`
-3. Add `_preamble.md` reference for shared constants
+3. Add `context/knowledge/skill-runtime.md` reference for shared runtime guidance
 4. Remove `REVIEW_CONTEXT_PATH` env var indirection (brain IS the context)
 5. Contribute back as PRs to the source plugin repo
 

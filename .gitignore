@@ -21,3 +21,9 @@ config/team.yaml
 
 # Local names config — your forbidden patterns
 .claude/names.txt
+
+# Conductor local repo settings
+.conductor/settings.local.toml
+
+# Python cache output
+__pycache__/

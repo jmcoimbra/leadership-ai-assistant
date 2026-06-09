@@ -5,12 +5,12 @@ description: Decision-quality lens. Auto-activates on high-stakes ambiguity (arc
 
 # Decision Protocol
 
-Two behavioral patterns that apply across any session that produces decisions or option sets. Auto-fires; not a standalone command.
+Two behavioral patterns that apply across any session that produces decisions or option sets. Auto-fires and works as a lens, not a standalone workflow.
 
 **Owner:** [Brain Owner]
 **Pillar:** Pillar 4 (AI Execution)
 **Measurable Outcome:** Zero silent decisions on architecture, destructive scope, data model, or option presentation. Every option set the agent surfaces to [Brain Owner] includes either a Completeness score per option, or an explicit "differ in kind" note.
-**Escalation Trigger:** If a session produces an architecture or destructive-scope action without a Confusion Protocol output (no STOP, no named ambiguity, no option block), flag in next /improve as a missed gate.
+**Escalation Trigger:** If a session produces an architecture or destructive-scope action without a Confusion Protocol output (no STOP, no named ambiguity, no option block), flag it in the next session learning capture run as a missed gate.
 
 **Source:** gstack `office-hours` Confusion Protocol + Boil-the-Lake completeness scoring, ported and adapted 2026-05-08.
 

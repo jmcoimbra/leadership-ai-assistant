@@ -1,4 +1,4 @@
-# Improve Spec
+# Session Learning Capture Spec
 
 **Owner:** [Brain Owner]
 **Pillar:** Pillar 4 (AI Execution)

@@ -7,7 +7,7 @@ description: WHY-first framing check for any communication that opens a discussi
 
 Auto-triggered framing check that runs on any draft that opens a discussion, proposes a new direction, or changes an existing approach. Output is a short check appended before the draft is presented to [Brain Owner]. Internal application is deep. External language stays jargon-free and free of em dashes.
 
-**This is not a standalone command.** It activates automatically during drafting.
+**This is not a standalone workflow.** It activates automatically during drafting.
 
 ## When to Trigger
 
@@ -21,7 +21,7 @@ Activate when the draft does any of:
 
 ## When to Skip
 
-- Pure brain-internal edits (file refactors, knowledge consolidation, command authoring) with no outbound surface.
+- Pure brain-internal edits (file refactors, knowledge consolidation, skill authoring) with no outbound surface.
 - Operational status pings with no decision attached ("CI is green", "PR merged", "tomorrow's meeting moved").
 - 1:1 logging, meeting ingestion, transcript cleanup, voice-profile linting.
 - Replies inside an active thread where WHY was already established upstream.

@@ -71,7 +71,7 @@ Skills self-activate via their own frontmatter triggers. Essential every-turn ru
 - **Brain file edited:** Commit per the operating model in your environment.
 - **Private content** (anything under `09_people/`, `10_career/`, your private system): never referenced in outbound content.
 - **Brain file paths in outbound:** No brain-internal path (`context/knowledge/...`, `12_projects/...`, etc.) may appear in outbound content. Concepts named in those files are fine; only the path is private.
-- **End of session:** Run `/improve` to capture learnings.
+- **End of session:** Run the session learning capture skill at `.claude/skills/improve/SKILL.md` to capture learnings.
 - **Cross-agent operation:** If the current tool does not support Claude skills or hooks natively, read `ADAPTERS.md` and apply the relevant skill or hook manually.
 - **Pre-commit validation:** Run `python3 scripts/audit_brain.py` before committing brain changes. Fix every error.
 

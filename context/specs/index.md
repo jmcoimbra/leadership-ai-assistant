@@ -7,7 +7,7 @@
 
 ## Purpose
 
-Registry of behavioral specs for long-running skills and command-like workflows. `/improve` reads this file before checking whether session behavior matched the intended contract.
+Registry of behavioral specs for long-running skills and workflows. The session learning capture skill reads this file before checking whether session behavior matched the intended contract.
 
 ## Registered Specs
 
@@ -23,4 +23,4 @@ When a skill exceeds 200 lines or carries an evaluator rubric, add a row here an
 
 ## AI Integration
 
-Use AI during `/improve` to compare session behavior against the registered spec and classify drift as `SPEC-MATCH`, `SPEC-DRIFT`, `SPEC-GAP`, or `SPEC-WRONG`.
+Use AI during the session learning capture workflow to compare session behavior against the registered spec and classify drift as `SPEC-MATCH`, `SPEC-DRIFT`, `SPEC-GAP`, or `SPEC-WRONG`.

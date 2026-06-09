@@ -2,6 +2,29 @@
 
 This brain is provider-neutral at the file layer and provider-specific at the execution layer. Every agent must read `AGENTS.md` first. Tool-specific adapters below define what else the agent can load or enforce.
 
+## Skill Model
+
+Use this model across every tool:
+
+1. `AGENTS.md` sets always-on constraints.
+2. Operator workflows live in `.claude/skills/` and are loaded explicitly when the task matches.
+3. Auto-activation lenses also live in `.claude/skills/`, but they are overlays, not user-facing entrypoints.
+4. `context/knowledge/skill-runtime.md` holds shared runtime guidance that used to live in command-era scaffolding.
+
+Core operator workflows in this skeleton:
+- `weekly-review`
+- `voice-capture`
+- `career-brief`
+- `improve` (session learning capture)
+- `pr-review-patterns`
+
+Core auto-activation lenses:
+- `decision-protocol`
+- `why-lens`
+- `writing-docs`
+- `management-lens`
+- `staff-development`
+
 ## Claude Code
 
 Claude Code has the richest native support in this repository.
@@ -10,7 +33,7 @@ Claude Code has the richest native support in this repository.
 2. Read `AGENTS.md`.
 3. Claude loads `.claude/settings.json` for permissions and outbound hooks.
 4. Claude discovers `.claude/skills/*/SKILL.md` by frontmatter description.
-5. Use `/weekly-review`, `/voice-capture`, `/improve`, and other skills directly.
+5. Load the relevant skill file before acting. Some workflows may also appear in Claude's slash UI when `user_invocable: true` is set, but that is optional convenience, not the contract.
 
 Expected enforcement:
 - Hooks block em dashes, private brain paths, forbidden names, and bare `Pillar N` references in outbound MCP writes.
@@ -19,15 +42,15 @@ Expected enforcement:
 
 ## Codex
 
-Codex reads `AGENTS.md` automatically when the workspace is opened, but it does not execute Claude hooks or slash skills natively.
+Codex reads `AGENTS.md` automatically when the workspace is opened, but it does not execute Claude hooks natively and does not rely on Claude-specific slash UX.
 
 1. Open the repository root in Codex.
 2. Ask Codex to read `AGENTS.md` and the relevant skill file before acting.
-3. For a weekly review, say: `Read .claude/skills/weekly-review/SKILL.md and run the mid-week check-in mode.`
+3. For a weekly review, say: `Read .claude/skills/weekly-review/SKILL.md and run the check-in mode.`
 4. Before any commit, run `python3 scripts/audit_brain.py` and fix every error.
 5. For outbound drafts, ask Codex to run the hook scripts manually against the draft text when the surface matters.
 
-Codex adapter rule: Claude skill files are source material, not executable commands. Codex must apply their procedure explicitly.
+Codex adapter rule: Claude skill files are source material, not the product contract. Codex must apply their procedure explicitly.
 
 ## Cursor
 
@@ -39,6 +62,17 @@ Cursor can use the repository as a rules-backed knowledge base.
 4. Use `.claude/hooks/*.sh` as manual validators for outbound drafts.
 
 Cursor adapter rule: do not assume hook enforcement exists unless Cursor has been configured to call the shell scripts.
+
+## Conductor
+
+Conductor runs agents in isolated workspaces. This repo ships a shared `.conductor/settings.toml` for settings that help every adopter and leaves machine-specific details in `.conductor/settings.local.toml`.
+
+Inside Conductor:
+
+1. Open the workspace root and read `AGENTS.md`.
+2. Use `ADAPTERS.md` to choose the right operator workflow or lens.
+3. Prefer skill-first prompts over command-era phrasing.
+4. Treat Claude slash invocation as optional. The shared repo contract is still `AGENTS.md` plus skill files.
 
 ## Generic CLI Agents
 

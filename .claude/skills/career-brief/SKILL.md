@@ -1,21 +1,23 @@
 ---
+name: career-brief
 description: Synthesize CTO trajectory evidence from 14+ brain files into a 5-min pre-[Your CTO]-1:1 brief. Covers evidence inventory, QA authority scorecard, development goals, and mentorship ROI.
+user_invocable: true
+arguments:
+  - quick
 ---
 
 # Career Brief
 
 Synthesize scattered career evidence into a structured brief for [Your CTO] 1:1 preparation.
 
-Read `.claude/commands/_preamble.md` for shared constants and adapter rules. External systems are optional in the public template.
+Read `context/knowledge/skill-runtime.md` for shared runtime guidance. External systems are optional in the public template.
 
-## Usage
+## Usage Modes
 
 ```
-/career-brief              → Full brief (all 4 sections)
-/career-brief --quick      → Evidence inventory only (Section 1)
+Full brief                → All 4 sections
+Quick mode                → Evidence inventory only (Section 1)
 ```
-
-Arguments: $ARGUMENTS
 
 ## Autonomy Model
 
@@ -187,8 +189,8 @@ After the 4 sections, produce a 3-line summary designed for the opening of a [Yo
 
 ## Important Notes
 
-- This command is designed for **speed**. Output is inline, not saved. Consume in 5 minutes before the meeting.
-- The brief does NOT replace `/meeting-prep` for [Your CTO] 1:1s. It complements it: `/meeting-prep` generates the meeting script with topics and agenda. `/career-brief` generates the career evidence layer.
-- `/meeting-prep` can auto-suggest running `/career-brief` when it detects a [Your CTO] meeting.
+- This workflow is designed for **speed**. Output is inline, not saved. Consume in 5 minutes before the meeting.
+- The brief does NOT replace the 1:1 prep workflow for [Your CTO]. It complements it: 1:1 prep generates the meeting script with topics and agenda. `career-brief` generates the career evidence layer.
+- A 1:1 prep workflow can suggest running `career-brief` when it detects a [Your CTO] meeting.
 - Evidence must be **concrete and dated**. Never say "[Brain Owner] demonstrated leadership" without a specific instance, date, and source file.
 - Use future-value framing per Insight 5: frame evidence as "what this enables" not "what was delivered."

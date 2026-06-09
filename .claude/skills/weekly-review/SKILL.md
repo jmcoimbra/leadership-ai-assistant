@@ -1,12 +1,18 @@
 ---
+name: weekly-review
 description: Monday weekly review. Scans all brain state, generates ranked topics, audits execution/metrics/people/career/compliance, and produces next-week plan with action items. Takes 30-45 min. Non-negotiable operating rhythm.
+user_invocable: true
+arguments:
+  - check-in
+  - <topic>
+  - continue
 ---
 
 # Weekly Review
 
 Scan full brain state, generate ranked topics, audit all operating domains, and produce next week's plan. This is your Monday operating rhythm. Without it, initiatives drift, metrics stale, and the brain decays.
 
-Read `.claude/commands/_preamble.md` for shared constants and adapter rules. In the public template, external systems are optional. Use local brain files first and label unavailable external facts as unverified.
+Read `context/knowledge/skill-runtime.md` for shared runtime guidance. In the public template, external systems are optional. Use local brain files first and label unavailable external facts as unverified.
 
 **Runtime:** 30-45 minutes. Non-negotiable.
 
@@ -16,10 +22,10 @@ Pick the mode before loading any brain files. Most invocations are full Monday r
 
 | Mode | Trigger | Scope | Time |
 |------|---------|-------|------|
-| **Full Monday review** | No argument, or `/weekly-review` on a Monday | All steps 0-10, all 9 core files, all 8 person files | 30-45 min |
-| **Mid-week check-in** | `/weekly-review check-in` or invoked Tue-Fri | Steps 0, 1, 2 only (topics + execution + metrics). Skip people/career/compliance | 10-15 min |
-| **Targeted topic** | `/weekly-review <topic>` (e.g., `metrics`, `people`, `career`) | Only the named step. Other steps skipped | 5-10 min |
-| **Continuation** | `/weekly-review --continue` after prior run truncated | Resume from last completed step. Steps 7-9 if those were deferred | Varies |
+| **Full Monday review** | No explicit mode, or a Monday weekly review request | All steps 0-10, all 9 core files, all 8 person files | 30-45 min |
+| **Mid-week check-in** | Explicit `check-in` mode or invoked Tue-Fri | Steps 0, 1, 2 only (topics + execution + metrics). Skip people/career/compliance | 10-15 min |
+| **Targeted topic** | Explicit topic mode (for example `metrics`, `people`, `career`) | Only the named step. Other steps skipped | 5-10 min |
+| **Continuation** | Explicit `continue` mode after prior run truncated | Resume from last completed step. Steps 7-9 if those were deferred | Varies |
 
 Mode pick gates Phase A. Different modes load different sets of brain files. Picking the wrong mode wastes context window.
 
@@ -292,8 +298,8 @@ Output:
 
 Data sources:
 - `12_projects/projects_tracker.md` (already loaded)
-- GitHub PRs via shell: `GH_TOKEN="" gh search prs --author=[your-github-handle] --state=open --json number,title,url,repository,createdAt,updatedAt` (GH CLI workaround per `_preamble.md`)
-- Notion Initiatives DB via `mcp__claude_ai_Notion__notion-fetch` (ID per `_preamble.md`)
+- GitHub PRs via shell: `GH_TOKEN="" gh search prs --author=[your-github-handle] --state=open --json number,title,url,repository,createdAt,updatedAt` (GH CLI workaround per `context/knowledge/skill-runtime.md`)
+- Notion Initiatives DB via `mcp__claude_ai_Notion__notion-fetch` if your private setup exposes its ID
 - `12_projects/initiatives_database.md` for sync rules
 
 Checks:
@@ -490,7 +496,7 @@ Output:
 
 ## Step 5: AI Check (5 min)
 
-Optionally read Slack #ai-show-and-tell (channel ID per `_preamble.md`) via `slack_read_channel` for recent team activity.
+Optionally read Slack #ai-show-and-tell via `slack_read_channel` for recent team activity if your private setup exposes that channel.
 
 **AI-assisted ratio comes from Step 0a.** Pull the per-team `ai_ratio` numbers computed in Engineering Activity Quant; do NOT recompute. Reference Step 0a explicitly in the output table.
 
@@ -713,7 +719,7 @@ Output:
 
 Data sources:
 - Google Calendar (`gcal_list_events`) for past week's meetings
-- Notion Meeting Transcripts DB (ID per `_preamble.md`) via `mcp__claude_ai_Notion__notion-search` or `notion-fetch`
+- Notion Meeting Transcripts DB via `mcp__claude_ai_Notion__notion-search` or `notion-fetch` if your private setup exposes that database.
 - `07_operating_rhythms/weekly_review.md` for cadence rules (24h for 1:1s and leadership, 48h for all others)
 
 Checks:
@@ -761,10 +767,10 @@ Check when `/brain-audit` and `/dream` were last run. These are the brain's garb
 ```
 ## Step 10: Brain Maintenance Cadence
 
-| Command | Last Run | Days Since | Status |
-|---------|----------|------------|--------|
-| /brain-audit | YYYY-MM-DD | [N] | GREEN/YELLOW/RED |
-| /dream | YYYY-MM-DD | [N] | GREEN/YELLOW/RED |
+| Workflow | Last Run | Days Since | Status |
+|----------|----------|------------|--------|
+| quarterly governance audit | YYYY-MM-DD | [N] | GREEN/YELLOW/RED |
+| memory-routing cleanup | YYYY-MM-DD | [N] | GREEN/YELLOW/RED |
 
 | Metric | Value | Threshold | Status |
 |--------|-------|-----------|--------|
@@ -772,13 +778,13 @@ Check when `/brain-audit` and `/dream` were last run. These are the brain's garb
 | Memory files | [N] | — | Info |
 
 ### Maintenance Actions
-- [If `/brain-audit` is RED: **HALT THE REVIEW**. Output: `"BLOCKING: /brain-audit overdue (>60 days). Run /brain-audit before continuing the weekly review. Re-invoke /weekly-review after the audit lands. Reason: governance contradictions accumulate silently when audit cadence slips. Same enforcement pattern as the pre-merge self-review rule in CLAUDE.md."` Stop the review. Do NOT proceed to Self-Check or Final Output.]
-- [If `/dream` is RED: "RUN NOW: `/dream` overdue. Schedule in this session or next."]
-- [If YELLOW: "Due soon. Schedule `/brain-audit` or `/dream` within the next 2 weeks."]
+- [If the quarterly governance audit is RED: **HALT THE REVIEW**. Output: `"BLOCKING: governance audit overdue (>60 days). Complete the audit before continuing the weekly review. Rerun this skill after the audit lands. Reason: governance contradictions accumulate silently when audit cadence slips. Same enforcement pattern as the pre-merge self-review rule in CLAUDE.md."` Stop the review. Do NOT proceed to Self-Check or Final Output.]
+- [If memory-routing cleanup is RED: "RUN NOW: memory-routing cleanup overdue. Schedule in this session or next."]
+- [If YELLOW: "Due soon. Schedule the governance audit or memory-routing cleanup within the next 2 weeks."]
 - [If all GREEN: "Brain maintenance on track."]
 ```
 
-**Why blocking on `/brain-audit` RED:** 2026-05-09 weekly review flagged /brain-audit as RED (>120 days since last run) and proceeded anyway. The audit eventually ran but only because the user prompted explicitly. Blocking gate matches the pre-merge self-review enforcement pattern: governance moves from suggestion to mandatory.
+**Why blocking on governance-audit RED:** 2026-05-09 weekly review flagged the governance audit as RED (>120 days since last run) and proceeded anyway. The audit eventually ran but only because the user prompted explicitly. Blocking gate matches the pre-merge self-review enforcement pattern: governance moves from suggestion to mandatory.
 
 ## Self-Check (before presenting Final Output)
 
@@ -873,7 +879,7 @@ Present all proposed brain file updates for approval:
 
 After generating the final report and proposing brain file updates, save the review to Notion:
 
-1. Create a page in "[Brain Owner]'s Weekly Reviews" database (ID per `_preamble.md`) using `mcp__claude_ai_Notion__notion-create-pages`
+1. Create a page in "[Brain Owner]'s Weekly Reviews" database using `mcp__claude_ai_Notion__notion-create-pages` if your private setup exposes that database.
 2. **Page name:** "Weekly Review - [Date]"
    - **Icon:** Derive from the Health Dashboard. Count RED/YELLOW/GREEN domains:
      - Majority GREEN (0-1 RED) → `"icon": "🟢"`
@@ -888,7 +894,7 @@ After generating the final report and proposing brain file updates, save the rev
 
 ## Error Handling
 
-Standard error patterns per `_preamble.md`. Additional:
+Standard error patterns per `context/knowledge/skill-runtime.md`. Additional:
 
 | Failure | Behavior |
 |---------|----------|
@@ -896,24 +902,24 @@ Standard error patterns per `_preamble.md`. Additional:
 | GitHub API unavailable | Skip PR staleness check (Step 1). Note: "PR data unavailable — manual check needed" |
 | Notion DB unavailable | Skip Notion archive (post-review). Save review output to `.context/drafts/{date}-weekly-review.md` |
 | No topics score above 10/20 | Flag: "Zero topics above threshold. Either brain is stale or nothing meaningful happened." Proceed with top 3 regardless |
-| Context window pressure (output quality degrades) | Defer Steps 7-9 to follow-up invocation. Output: "Review truncated at Step [N]. Run `/weekly-review --continue` or re-invoke" |
+| Context window pressure (output quality degrades) | Defer Steps 7-9 to follow-up invocation. Output: "Review truncated at Step [N]. Rerun this skill in `continue` mode." |
 
 
 ## Important Notes
 
-- This command reads 15-20 brain files across all steps. Phase A pre-loads the 9 most-referenced.
+- This workflow reads 15-20 brain files across all steps. Phase A pre-loads the 9 most-referenced.
 - **"Think Freely, Speak Through Me" applies throughout.** AI reads everything, scores everything, drafts everything. But: no Slack messages sent, no Jira updates, no calendar events created, no Notion pages published, no PR comments posted. All external actions are presented as drafts.
-- **GH CLI workaround:** Per `_preamble.md`.
+- **GH CLI workaround:** Per `context/knowledge/skill-runtime.md`.
 - If any MCP tool is unavailable, skip that data source and note the gap. Do not block the review.
 - The weekly review is a forcing function. If it surfaces uncomfortable truths (stale metrics, avoided conversations, missed deadlines), that is the point. Do not soften findings.
 - Topic scoring minimum for selection: 10/20. If 0 topics score above 10, investigate: either the brain is stale or nothing meaningful happened.
 - If this review produces 0 action items, something is wrong. Either the brain is perfectly maintained (unlikely) or the review is too shallow.
-- **Notion DB IDs:** Per `_preamble.md`. Weekly Reviews DB for archive, Initiatives DB for sync check, Meeting Transcripts DB for ingestion audit.
+- **Notion DB IDs:** Per your private setup, if present. Weekly Reviews DB for archive, Initiatives DB for sync check, Meeting Transcripts DB for ingestion audit.
 
 ## Operating Rules (migrated from memory tier 2026-04-27)
 
 - **Verify pending items against live state.** Before claiming "X is still pending" in any review section, cross-check GitHub (PRs, branch state), Calendar (meetings happened), Slack (last replies), and Notion (page status). Stale carry-overs from prior reviews are the #1 erosion of weekly-review trust.
-- **Re-read current state before reporting.** Do not carry stale findings across turns or reviews. If the previous /weekly-review said "needs X", verify X again — do not auto-claim it still needs X.
+- **Re-read current state before reporting.** Do not carry stale findings across turns or reviews. If the previous weekly review said "needs X", verify X again. Do not auto-claim it still needs X.
 - **Drop resolved questions.** Once user confirms a check is done, drop it from all subsequent outputs. Do not re-surface "for completeness." A confirmed check is finished work, not a recurring agenda item.
 - **Disambiguate similar-named projects.** When a keyword matches 2+ memories or initiative files (e.g. "RBAC" matches [your-idp-tool]_rbac AND mx_dashboard_rbac), read ALL matching files + verify from source before drafting. Then disambiguate back to the user explicitly: "I found X and Y matching that name. Which?"
 - **No unconfirmed estimates.** Never include time estimates ("2 weeks", "by mid-May") in reviews unless the initiative owner has confirmed them in writing. Estimates without owner sign-off become [Brain Owner]'s commitments by default.

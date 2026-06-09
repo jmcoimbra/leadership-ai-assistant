@@ -1,4 +1,5 @@
 ---
+name: management-lens
 description: Coaching and management practice lens for all direct report 1:1s. Auto-activates during meeting-prep. Not a standalone tool.
 ---
 
@@ -6,7 +7,7 @@ description: Coaching and management practice lens for all direct report 1:1s. A
 
 Auto-triggered skill that enriches 1:1 prep for ALL direct reports with coaching nudges and management practice checks. Based on "The Manager's Path" (the framework), grounded in [Your Company] role expectations.
 
-**This is not a standalone command.** It activates during `/meeting-prep` when the meeting is a 1:1 with any direct report.
+**This is not a standalone workflow.** It activates during 1:1 prep when the meeting is a 1:1 with any direct report.
 
 ## When Triggered
 

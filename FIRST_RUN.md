@@ -27,7 +27,7 @@ Use this checklist after cloning the template. Complete it before relying on the
 - [ ] Gather five commit messages.
 - [ ] Gather two to three longer documents.
 - [ ] Gather one or two feedback notes.
-- [ ] Run `.claude/skills/voice-capture/SKILL.md` with those samples.
+- [ ] Load `.claude/skills/voice-capture/SKILL.md` with those samples and codify only confirmed patterns.
 - [ ] Replace `context/knowledge/voice-profile.md` with confirmed patterns only.
 
 ## 5. Minimum Operating Data
@@ -46,12 +46,14 @@ Use this checklist after cloning the template. Complete it before relying on the
 - [ ] Review every `WARN` and either fix it or confirm it is template-only.
 - [ ] Run `shellcheck .claude/hooks/*.sh run_agent.sh.example` if `shellcheck` is installed.
 
-## 7. First Weekly Review
+## 7. First Workflows
 
 - [ ] Read `.claude/skills/weekly-review/SKILL.md`.
 - [ ] Run `check-in` mode if the brain has only partial data.
 - [ ] Run full mode after team, people, metrics, projects, and career files exist.
 - [ ] Convert review output into dated decisions, owner assignments, and deadlines.
+- [ ] Read `07_operating_rhythms/one_on_one_protocol.md` and note how `management-lens` and `staff-development` will enrich 1:1 prep.
+- [ ] Read `.claude/skills/career-brief/SKILL.md` before the next manager 1:1 that needs career evidence.
 
 ## 8. Commit
 

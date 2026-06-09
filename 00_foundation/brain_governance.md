@@ -66,7 +66,7 @@ For sensitive data: use a separate private system (encrypted vault, private repo
 Knowledge files in `context/knowledge/` follow a lifecycle:
 - **Split threshold:** When a file exceeds 200 lines AND contains 3+ unrelated topics, split into focused files.
 - **Merge threshold:** When 2 files cover >60% overlapping entities, merge into one.
-- **Archive threshold:** When a topic file has not been referenced by any skill or command for 90 days, archive to `99_archive/knowledge/` with date suffix.
+- **Archive threshold:** When a topic file has not been referenced by any skill or workflow for 90 days, archive to `99_archive/knowledge/` with date suffix.
 - **Quarterly audit:** During quarterly refactor, run `wc -l context/knowledge/*.md` and flag files exceeding thresholds.
 
 ### Rule 14 — Skill-first behavioral patterns
@@ -80,7 +80,7 @@ New durable behavioral patterns go to `.claude/skills/<skill>/SKILL.md` so they 
 | Active project state | `12_projects/<project>.md` | Brain domain folder, surfaced by weekly review |
 
 ### Rule 15 — Spec lifecycle
-Commands >200 lines OR with evaluator rubrics MUST have a behavioral spec in `context/specs/`. Specs describe WHAT a command does (behavioral contract), not HOW (implementation).
+Skills >200 lines OR with evaluator rubrics MUST have a behavioral spec in `context/specs/`. Specs describe WHAT a skill does (behavioral contract), not HOW (implementation).
 
 ## AI Integration
 

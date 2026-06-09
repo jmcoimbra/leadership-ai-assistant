@@ -1,6 +1,8 @@
 ---
+name: devils-advocate
 description: Stress-test a proposal before presenting it. Surfaces logical fallacies, missing perspectives, steelmanned counterarguments, and forcing-pushback patterns against vague-scope / social-proof / platform-vision / trend-only / undefined-term failure modes. Use before R&D Leadership presentations, strategic proposals, or quarterly planning.
-argument-hint: "[proposal or paste proposal text]"
+arguments:
+  - proposal_text
 ---
 
 # Devils Advocate
@@ -9,7 +11,7 @@ Run structured critical analysis on any proposal before it leaves the room.
 
 **Adapted from:** `drn/dots/agents/skills/devils-advocate`. Reframed for leadership context.
 
-Arguments: $ARGUMENTS
+Input required: proposal text or a local artifact that contains the proposal.
 
 ## Autonomy Model
 

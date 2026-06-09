@@ -1,4 +1,5 @@
 ---
+name: staff-development
 description: Lightweight Staff Engineer's Path coaching lens for [Senior IC] and [Senior IC] 1:1s. Auto-activates during meeting-prep. Not a standalone tool.
 ---
 
@@ -8,7 +9,7 @@ Auto-triggered skill that enriches 1:1 prep for [Senior IC] and [Senior IC] with
 
 **Doctrinal sources:** the career-skills book (the framework, engineer-side framing) + Notion Books DB entry for Staff Engineer's Path. the framework defines what a Staff role IS at scale companies; the framework gives the engineer-side playbook for getting there.
 
-**This is not a standalone command.** It activates during `/meeting-prep` when the meeting is a 1:1 with [Senior IC] or [Senior IC].
+**This is not a standalone workflow.** It activates during 1:1 prep when the meeting is a 1:1 with [Senior IC] or [Senior IC].
 
 ## When Triggered
 

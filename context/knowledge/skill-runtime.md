@@ -1,6 +1,6 @@
-# Shared Command Preamble
+# Skill Runtime Guidance
 
-Shared constants for Claude skills. This file is intentionally generic in the public template.
+Shared runtime guidance for local skills in this skeleton.
 
 ## Configuration Sources
 

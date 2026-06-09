@@ -26,6 +26,7 @@ OPTIONAL_LOCAL_REFS = {
     "config/team.yaml",
     ".claude/names.txt",
     ".claude/settings.local.json",
+    ".conductor/settings.local.toml",
     "01_strategy/strategic_pillars.md",
     "09_people/team_roster.md",
     "10_career/career_trajectory.md",
@@ -38,8 +39,34 @@ PLACEHOLDER_ALLOWED = {
     "CLAUDE.md",
     "config/team.yaml.example",
     ".claude/names.txt.example",
-    ".claude/commands/_preamble.md",
 }
+CANONICAL_DOCS = (
+    "README.md",
+    "FIRST_RUN.md",
+    "ADAPTERS.md",
+    "AGENTS.md",
+    "00_foundation/brain_governance.md",
+    "context/specs/index.md",
+)
+REQUIRED_WORKFLOW_PHRASES = (
+    "weekly review",
+    "voice capture",
+    "1:1 prep",
+    "career brief",
+    "pr review",
+    "decision protocol",
+    "document writing",
+    "session learning capture",
+)
+REQUIRED_SKILL_FRONTMATTER = ("name", "description")
+REQUIRED_USER_INVOCABLE = {"weekly-review", "voice-capture", "career-brief", "improve"}
+AUTO_LENSES = {"decision-protocol", "management-lens", "staff-development", "why-lens", "writing-docs"}
+FORBIDDEN_CANONICAL_PATTERNS = (
+    r"Use `/[^`]+`",
+    r"Run `/[^`]+`",
+    r"\.claude/commands/",
+    r"create .*\.claude/commands",
+)
 
 PRIVATE_ID_RE = re.compile(r"\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b", re.I)
 HEADER_RE = re.compile(r"Owner:\s*.+\|\s*Pillar:\s*.+\|\s*Status:\s*.+\|\s*Last Audit:")
@@ -82,6 +109,10 @@ def iter_files() -> list[Path]:
 
 def markdown_files() -> list[Path]:
     return [p for p in iter_files() if p.suffix == ".md"]
+
+
+def skill_files() -> list[Path]:
+    return sorted((ROOT / ".claude" / "skills").glob("*/SKILL.md"))
 
 
 def is_core_file(path: Path) -> bool:
@@ -152,7 +183,7 @@ def candidate_ref(raw: str) -> str | None:
         return None
     prefixes = (
         "00_", "01_", "02_", "03_", "04_", "07_", "08_", "09_", "10_", "11_", "12_", "99_",
-        "context/", ".claude/", "config/", "scripts/", "FIRST_RUN.md", "ADAPTERS.md", "AGENTS.md",
+        "context/", ".claude/", ".conductor/", "config/", "scripts/", "FIRST_RUN.md", "ADAPTERS.md", "AGENTS.md",
     )
     return target if target.startswith(prefixes) else None
 
@@ -171,7 +202,7 @@ def check_refs(errors: list[str]) -> None:
 
 def check_conflicts(errors: list[str]) -> None:
     for path in iter_files():
-        if path.suffix not in {".md", ".json", ".yaml", ".yml", ".sh", ".py", ".txt", ".example"}:
+        if path.suffix not in {".md", ".json", ".yaml", ".yml", ".sh", ".py", ".txt", ".example", ".toml"}:
             continue
         text = path.read_text(errors="ignore")
         for line_no, line in enumerate(text.splitlines(), start=1):
@@ -201,6 +232,81 @@ def check_placeholders(warnings: list[str]) -> None:
             warnings.append(f"{rel(path)}: placeholder remains outside an approved template file")
 
 
+def parse_frontmatter(path: Path) -> dict[str, str]:
+    text = path.read_text(errors="ignore")
+    lines = text.splitlines()
+    if not lines or lines[0].strip() != "---":
+        return {}
+    data: dict[str, str] = {}
+    for line in lines[1:]:
+        if line.strip() == "---":
+            break
+        if ":" not in line:
+            continue
+        key, value = line.split(":", 1)
+        data[key.strip()] = value.strip()
+    return data
+
+
+def check_skill_metadata(errors: list[str], warnings: list[str]) -> None:
+    for path in skill_files():
+        frontmatter = parse_frontmatter(path)
+        name = path.parent.name
+        if not frontmatter:
+            errors.append(f"{rel(path)}: missing YAML frontmatter")
+            continue
+        for field in REQUIRED_SKILL_FRONTMATTER:
+            if not frontmatter.get(field):
+                errors.append(f"{rel(path)}: missing frontmatter field `{field}`")
+        if frontmatter.get("name") and frontmatter["name"] != name:
+            warnings.append(f"{rel(path)}: frontmatter name `{frontmatter['name']}` does not match directory `{name}`")
+        if name in REQUIRED_USER_INVOCABLE and frontmatter.get("user_invocable") != "true":
+            errors.append(f"{rel(path)}: `{name}` must set `user_invocable: true`")
+        if name in AUTO_LENSES and frontmatter.get("user_invocable") == "true":
+            errors.append(f"{rel(path)}: auto-activation lens should not set `user_invocable: true`")
+        body = path.read_text(errors="ignore")
+        if name in AUTO_LENSES and "standalone command" in body.lower():
+            errors.append(f"{rel(path)}: auto-activation lens still uses command-era standalone wording")
+
+
+def check_skill_specs(errors: list[str], warnings: list[str]) -> None:
+    for path in skill_files():
+        line_count = sum(1 for _ in path.open(errors="ignore"))
+        if line_count <= 200:
+            continue
+        spec_path = ROOT / "context" / "specs" / f"{path.parent.name}.md"
+        frontmatter = parse_frontmatter(path)
+        if spec_path.exists():
+            continue
+        if frontmatter.get("user_invocable") == "true":
+            errors.append(f"{rel(path)}: operator workflow exceeds 200 lines but lacks {rel(spec_path)}")
+        else:
+            warnings.append(f"{rel(path)}: long skill lacks {rel(spec_path)}")
+
+
+def check_canonical_skill_first_contract(errors: list[str]) -> None:
+    for rel_path in CANONICAL_DOCS:
+        path = ROOT / rel_path
+        if not path.exists():
+            continue
+        text = path.read_text(errors="ignore")
+        for pattern in FORBIDDEN_CANONICAL_PATTERNS:
+            if re.search(pattern, text):
+                errors.append(f"{rel_path}: contains command-era guidance matching `{pattern}`")
+
+
+def check_onboarding_coverage(errors: list[str]) -> None:
+    readme = (ROOT / "README.md").read_text(errors="ignore").lower()
+    for phrase in REQUIRED_WORKFLOW_PHRASES:
+        if phrase not in readme:
+            errors.append(f"README.md: missing onboarding workflow phrase `{phrase}`")
+
+    first_run = (ROOT / "FIRST_RUN.md").read_text(errors="ignore")
+    for skill in ("voice-capture", "weekly-review", "career-brief"):
+        if skill not in first_run:
+            errors.append(f"FIRST_RUN.md: missing first-run reference to `{skill}`")
+
+
 def main() -> int:
     errors: list[str] = []
     warnings: list[str] = []
@@ -209,6 +315,10 @@ def main() -> int:
     check_governance(errors, warnings)
     check_refs(errors)
     check_conflicts(errors)
+    check_skill_metadata(errors, warnings)
+    check_skill_specs(errors, warnings)
+    check_canonical_skill_first_contract(errors)
+    check_onboarding_coverage(errors)
     check_private_data(errors, warnings if strict_public else [])
     if strict_placeholders:
         check_placeholders(warnings)
