@@ -72,7 +72,7 @@ Skills self-activate via their own frontmatter triggers. Essential every-turn ru
 - **Private content** (anything under `09_people/`, `10_career/`, your private system): never referenced in outbound content.
 - **Brain file paths in outbound:** No brain-internal path (`context/knowledge/...`, `12_projects/...`, etc.) may appear in outbound content. Concepts named in those files are fine; only the path is private.
 - **End of session:** Run the session learning capture skill at `.claude/skills/improve/SKILL.md` to capture learnings.
-- **Cross-agent operation:** If the current tool does not support Claude skills or hooks natively, read `ADAPTERS.md` and apply the relevant skill or hook manually.
+- **Cross-agent operation:** If the current tool does not support Claude skills or hooks natively, read `ADAPTERS.md` and apply the relevant skill or hook manually. Skills are also discoverable at `.agents/skills/` for tools that scan that path (e.g., Codex).
 - **Pre-commit validation:** Run `python3 scripts/audit_brain.py` before committing brain changes. Fix every error.
 
 ## Context
@@ -85,3 +85,23 @@ Customize per brain owner:
 - **Manager:** Reference by role, not by name, in this file.
 - **Pillars:** Defined in `01_strategy/` (placeholder — set your own).
 - **Knowledge base:** `context/knowledge/categories/README.md` — load categories on demand.
+
+## Skill Routing
+
+Skills live in `.agents/skills/` (auto-discovered by Codex) and `.claude/skills/` (auto-activated by Claude Code via frontmatter). Claude Code matches trigger phrases automatically. For Codex and other agents without auto-activation, use this table:
+
+| Trigger phrases | Skill file |
+|---|---|
+| "review this PR", "code review", "review diff", "pre-landing review" | `.agents/skills/pr-review-patterns/SKILL.md` |
+| "weekly review", "weekly check-in", "weekly rhythm" | `.agents/skills/weekly-review/SKILL.md` |
+| "explain like I'm 5", "eli5", "dumb it down", "explain simply" | `.agents/skills/eli5/SKILL.md` |
+| "play devil's advocate", "challenge this", "find weaknesses in" | `.agents/skills/devils-advocate/SKILL.md` |
+| "decision", "ambiguity", "which option", "trade-off analysis" | `.agents/skills/decision-protocol/SKILL.md` |
+| "why are we doing this", "what is the purpose", "first principles" | `.agents/skills/why-lens/SKILL.md` |
+| "capture learnings", "improve skills", "end of session" | `.agents/skills/improve/SKILL.md` |
+| "career brief", "interview prep", "job readiness" | `.agents/skills/career-brief/SKILL.md` |
+| "1:1 prep", "manager influence", "upward communication" | `.agents/skills/manager-influence-strategy/SKILL.md` |
+| "staff development", "performance review", "coaching" | `.agents/skills/staff-development/SKILL.md` |
+| "leadership lens", "management review" | `.agents/skills/management-lens/SKILL.md` |
+| "tone check", "voice capture", "writing style" | `.agents/skills/voice-capture/SKILL.md` |
+| "writing docs", "documentation review" | `.agents/skills/writing-docs/SKILL.md` |

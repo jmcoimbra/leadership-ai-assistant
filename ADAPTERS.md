@@ -42,15 +42,16 @@ Expected enforcement:
 
 ## Codex
 
-Codex reads `AGENTS.md` automatically when the workspace is opened, but it does not execute Claude hooks natively and does not rely on Claude-specific slash UX.
+Codex reads `AGENTS.md` automatically when the workspace is opened. Skills are auto-discovered from `.agents/skills/` (symlinked to `.claude/skills/`). Codex does not execute Claude hooks natively and has no frontmatter-based auto-activation.
 
 1. Open the repository root in Codex.
-2. Ask Codex to read `AGENTS.md` and the relevant skill file before acting.
-3. For a weekly review, say: `Read .claude/skills/weekly-review/SKILL.md and run the check-in mode.`
-4. Before any commit, run `python3 scripts/audit_brain.py` and fix every error.
-5. For outbound drafts, ask Codex to run the hook scripts manually against the draft text when the surface matters.
+2. Codex reads `AGENTS.md` on startup — constraints and voice rules apply immediately.
+3. Use the **Skill Routing** table at the bottom of `AGENTS.md` to identify which skill file matches the task.
+4. Load the skill file explicitly: `Read .agents/skills/<skill>/SKILL.md and follow its procedure.`
+5. Before any commit, run `python3 scripts/audit_brain.py` and fix every error.
+6. For outbound drafts, run the relevant `.claude/hooks/*.sh` scripts manually against the draft text.
 
-Codex adapter rule: Claude skill files are source material, not the product contract. Codex must apply their procedure explicitly.
+Codex adapter rule: skill files are source material, not the product contract. Apply the procedure explicitly — Codex does not auto-execute them.
 
 ## Cursor
 
