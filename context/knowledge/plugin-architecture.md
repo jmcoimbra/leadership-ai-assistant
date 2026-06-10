@@ -266,7 +266,7 @@ Do not attempt to read `.claude/skills/<name>` as a file — it is a directory.
 | Source | Skills Ported | Target Plugin | PR | Date |
 |--------|--------------|---------------|-----|------|
 | garrytan/gstack | browse, qa-only | [your-org]-qa-claude-plugins | #13 | 2026-03-18 |
-| drn/dots | eli5 (ADEPT pattern explainer) | brain `.claude/commands/` | direct commit | 2026-03-24 |
+| drn/dots | eli5 (ADEPT pattern explainer) | `.claude/skills/eli5/` | direct commit | 2026-06-09 |
 
 When porting external skills: strip vendor-specific preamble (update checks, contributor mode), adapt frontmatter to plugin command format (description-only), preserve core functionality.
 
