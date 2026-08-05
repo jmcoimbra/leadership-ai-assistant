@@ -21,7 +21,7 @@ CLAUDE.md already mandates "evidence-first, no guesses". This file converts the 
 | URL (any kind) | Must be (a) given by the user in this conversation, (b) present in a brain file you just read, or (c) returned by an MCP tool in this session. Never construct URLs from patterns. |
 | Private workspace page or DB ID | Fetch it with the configured connector, or read the canonical list in the private adapter file. Never claim a page exists without fetching. |
 | Jira ticket | `getJiraIssue` or `searchJiraIssuesUsingJql` before claiming state, ownership, or status. Stale ticket state is the most common failure mode. |
-| GitHub PR | `gh pr view <N>` (with `GH_TOKEN=""` prefix) before classifying as open / merged / approved / needs-review. |
+| GitHub PR | `gh pr view <N>` before classifying as open / merged / approved / needs-review. |
 | Looker dashboard, metric, or number | Query the canonical source (Notion DB, Sheet, Looker URL) directly. Brain dashboard summaries drift. The source is authoritative. See `contextual-rules.md` "Brain dashboards drift" rule. |
 | Calendar event or meeting time | `mcp__claude_ai_Google_Calendar__list_events` or `mcp__google-calendar__list_events`. Never call something a meeting without confirming it on the calendar. |
 | Decision or commitment | Search `99_archive/` and recent meeting-ingest commits before asserting "X was decided". See `contextual-rules.md` "Before deferring an answer to a future person/meeting" rule. |

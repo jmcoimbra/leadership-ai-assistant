@@ -102,7 +102,7 @@ resource "datadog_logs_metric" "example" {
 
 - **`manage_status_definition`** is the correct widget for monitor summary in dashboards. It is NOT deprecated despite AI-generated reviews claiming otherwise (2026-03-09).
 - **`monitor_summary_definition` does NOT exist** in the Datadog Terraform provider (v3.90.0). `terraform validate` will fail with "unknown block type." This was hallucinated by an AI-assisted reviewer.
-- Before renaming any Terraform resource type based on AI review feedback, verify it exists: `GH_TOKEN="" gh search code "<attribute>" --repo DataDog/terraform-provider-datadog`
+- Before renaming any Terraform resource type based on AI review feedback, verify it exists: `gh search code "<attribute>" --repo DataDog/terraform-provider-datadog`
 
 ## Monitor Best Practices
 

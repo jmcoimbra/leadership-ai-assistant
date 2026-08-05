@@ -21,7 +21,7 @@ When a skill references a missing external system:
 
 ## GitHub CLI
 
-If using `gh`, run it as `GH_TOKEN="" gh ...` so the CLI falls back to the authenticated keyring token.
+Call `gh` directly; it authenticates through the keyring. Never export `GH_TOKEN` or `GITHUB_TOKEN`.
 
 ## Output Boundary
 

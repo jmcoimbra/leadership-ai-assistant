@@ -85,7 +85,7 @@ Format: `[your-org]/<name>-claude-skills`. Active examples in the [your-company]
 
 Before recommending any new repo with `claude`, `plugin`, `skill`, `ai`, `agent`, or `prompt` in the name:
 
-1. Run `GH_TOKEN="" gh repo list [your-company] --limit 200 --json name | jq -r '.[].name' | grep -iE 'claude|plugin|skill|ai|agent|prompt'`
+1. Run `gh repo list [your-company] --limit 200 --json name | jq -r '.[].name' | grep -iE 'claude|plugin|skill|ai|agent|prompt'`
 2. Run the same against `[your-org]-ai`.
 3. If the proposed name (or a near-synonym) already exists, reframe the work as "extend or contribute to the existing repo" instead of "create new".
 4. If the proposed repo truly fills a gap, note the gap explicitly: which team, which doctrine, what is missing from the existing options.

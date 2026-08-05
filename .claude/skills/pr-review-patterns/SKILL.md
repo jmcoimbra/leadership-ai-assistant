@@ -101,10 +101,10 @@ The trigger fires when ALL of these are true:
 
 ```bash
 # List unresolved threads
-GH_TOKEN="" gh api graphql -f query='query { repository(owner: "{o}", name: "{r}") { pullRequest(number: {n}) { reviewThreads(first: 50) { nodes { id isResolved path line comments(first: 1) { nodes { author { login } body } } } } } } }'
+gh api graphql -f query='query { repository(owner: "{o}", name: "{r}") { pullRequest(number: {n}) { reviewThreads(first: 50) { nodes { id isResolved path line comments(first: 1) { nodes { author { login } body } } } } } } }'
 
 # Resolve one thread
-GH_TOKEN="" gh api graphql -f query='mutation { resolveReviewThread(input: {threadId: "<id>"}) { thread { id isResolved } } }'
+gh api graphql -f query='mutation { resolveReviewThread(input: {threadId: "<id>"}) { thread { id isResolved } } }'
 ```
 
 After all threads handled, find Slack thread where reviewers were notified, draft response confirming fixes (and skips, if any).
@@ -122,7 +122,7 @@ After all threads handled, find Slack thread where reviewers were notified, draf
 
 - `gh pr list --author` only works within a single repo. Use `gh search prs --author=<user> --state=open` for cross-repo.
 - `gh pr reviews` is NOT a valid subcommand. Use `gh api repos/{org}/{repo}/pulls/{n}/reviews`.
-- Always prefix with `GH_TOKEN=""` to fall back to keyring token.
+- Call `gh` directly; it uses the keyring. Never export `GH_TOKEN` or `GITHUB_TOKEN`.
 - **`gh pr view` repo+PR syntax.** Positional arg uses `--repo <org>/<repo> <PRNUM>`. Hash form `<org>/<repo>#<PRNUM>` returns `no pull requests found for branch`. Hash works only when reading PR references in PR/issue bodies, not as a CLI positional.
 - **[Your CTO]'s GitHub username:** `drn`
 
@@ -131,7 +131,7 @@ After all threads handled, find Slack thread where reviewers were notified, draf
 When a PR author claims "all CI green" (DM, comment, Slack thread), verify `statusCheckRollup` on the head SHA before any sign-off:
 
 ```bash
-GH_TOKEN="" gh pr view <N> --repo <org>/<repo> --json statusCheckRollup,headRefOid
+gh pr view <N> --repo <org>/<repo> --json statusCheckRollup,headRefOid
 ```
 
 Any `state: ERROR` or `conclusion: FAILURE` on the head SHA is grounds to send back, even with `reviewDecision: APPROVED`. The status `description` field is usually the smoking gun (e.g., `"Error calling workflow: 'sync-rn-upgrade-branch'"`). Quote it verbatim in the pushback.
@@ -299,7 +299,7 @@ Output: ordered checklist of [test/fix] tasks. Use Conductor TODOs when 3+ steps
 
 Use `headRefName` from PR metadata — do not guess branch names:
 ```bash
-GH_TOKEN="" gh pr view $PR --repo $ORG/$REPO --json headRefName --jq '.headRefName'
+gh pr view $PR --repo $ORG/$REPO --json headRefName --jq '.headRefName'
 ```
 
 ## Bot Findings Ingestion (Before Reviewing)
@@ -308,11 +308,11 @@ Fetch existing reviewer comments BEFORE running the review agent. Prevents dupli
 
 ```bash
 # qlty (static analysis — similar-code, file-complexity)
-GH_TOKEN="" gh api repos/{o}/{r}/pulls/{n}/comments --jq '.[] | select(.user.login == "qltysh[bot]") | {path, line, body}'
+gh api repos/{o}/{r}/pulls/{n}/comments --jq '.[] | select(.user.login == "qltysh[bot]") | {path, line, body}'
 # robo[your-company] ([engineering-toolkit] automated review)
-GH_TOKEN="" gh api repos/{o}/{r}/pulls/{n}/comments --jq '.[] | select(.user.login == "robo[your-company]") | {path, line, body}'
+gh api repos/{o}/{r}/pulls/{n}/comments --jq '.[] | select(.user.login == "robo[your-company]") | {path, line, body}'
 # other human reviewers
-GH_TOKEN="" gh api repos/{o}/{r}/pulls/{n}/comments --jq '.[] | select(.user.login != "[your-github-handle]" and .user.login != "qltysh[bot]" and .user.login != "robo[your-company]") | {user: .user.login, path, line, body}'
+gh api repos/{o}/{r}/pulls/{n}/comments --jq '.[] | select(.user.login != "[your-github-handle]" and .user.login != "qltysh[bot]" and .user.login != "robo[your-company]") | {user: .user.login, path, line, body}'
 ```
 
 **Rules:**

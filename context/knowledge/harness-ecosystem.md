@@ -226,7 +226,7 @@ func filterGHTokenEnv(env []string) []string {
 }
 ```
 
-Route ALL gh invocations through `ghCommand`. Match brain rule "Always prefix gh commands with `GH_TOKEN=\"\"`" at the binary level so any tool inheriting CCC's env behaves consistently.
+Route ALL gh invocations through `ghCommand`. Stripping the vars at the binary level is what makes any tool inheriting CCC's env behave consistently. The brain rule that told every caller to prefix `GH_TOKEN=""` by hand was retired on 2026-08-05, once the export was removed from the shell rc: the root cause is the export, not the call site.
 
 **Verification trick:** if a gh CLI call returns 401, run `env -u GH_TOKEN -u GITHUB_TOKEN gh ...` to confirm the env vars are the cause. If that works, the fix is to strip them in the calling code.
 

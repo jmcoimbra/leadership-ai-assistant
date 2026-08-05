@@ -186,7 +186,7 @@ For each resolved repo path, run:
 
 ```bash
 REPO="$HOME/Development/<repo>"
-DEFAULT=$(GH_TOKEN="" gh -R [your-company]/<repo> repo view --json defaultBranchRef --jq .defaultBranchRef.name)
+DEFAULT=$(gh -R [your-company]/<repo> repo view --json defaultBranchRef --jq .defaultBranchRef.name)
 
 # 1. Total commits this window
 TOTAL=$(git -C "$REPO" log "origin/$DEFAULT" --since="7 days ago" --oneline | wc -l | tr -d ' ')
@@ -220,7 +220,7 @@ git -C "$REPO" log "origin/$DEFAULT" --since="7 days ago" --format="" --name-onl
 git -C "$REPO" log "origin/$DEFAULT" --format="%ad" --date=format:"%Y-%m-%d" | sort -u
 
 # 10. Ship of the week (highest-LOC merged PR; requires gh)
-GH_TOKEN="" gh -R [your-company]/<repo> pr list --state merged --search "merged:>=$(date -v-7d +%Y-%m-%d)" \
+gh -R [your-company]/<repo> pr list --state merged --search "merged:>=$(date -v-7d +%Y-%m-%d)" \
   --json number,title,additions,deletions,author --jq 'sort_by(.additions + .deletions) | reverse | .[0]'
 ```
 
@@ -298,7 +298,7 @@ Output:
 
 Data sources:
 - `12_projects/projects_tracker.md` (already loaded)
-- GitHub PRs via shell: `GH_TOKEN="" gh search prs --author=[your-github-handle] --state=open --json number,title,url,repository,createdAt,updatedAt` (GH CLI workaround per `context/knowledge/skill-runtime.md`)
+- GitHub PRs via shell: `gh search prs --author=[your-github-handle] --state=open --json number,title,url,repository,createdAt,updatedAt` (GH CLI workaround per `context/knowledge/skill-runtime.md`)
 - Notion Initiatives DB via `mcp__claude_ai_Notion__notion-fetch` if your private setup exposes its ID
 - `12_projects/initiatives_database.md` for sync rules
 
