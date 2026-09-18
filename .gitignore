@@ -27,3 +27,8 @@ config/team.yaml
 
 # Python cache output
 __pycache__/
+
+# Git worktrees criadas pelo Claude Code. Sao checkouts descartaveis do proprio
+# repo: aparecem como untracked no status e um "git add -A" distraido commitaria
+# o diretorio inteiro dentro dele mesmo.
+.claude/worktrees/
